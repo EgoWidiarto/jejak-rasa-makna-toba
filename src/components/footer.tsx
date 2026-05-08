@@ -1,0 +1,123 @@
+import Image from "next/image";
+import Link from "next/link";
+
+const footerLinks = [
+  {
+    title: "Eksplorasi",
+    items: [
+      { label: "Beranda", href: "#home" },
+      { label: "Sejarah", href: "#history" },
+      { label: "Hidangan", href: "#course" },
+    ],
+  },
+  {
+    title: "Informasi",
+    items: [
+      { label: "Rempah", href: "#spices" },
+      { label: "Geografi", href: "#geography" },
+      { label: "Kontak", href: "#kontak" },
+    ],
+  },
+  {
+    title: "Tentang",
+    items: [
+      { label: "Jejak Rasa Makna Toba", href: "#home" },
+      { label: "Website interaktif", href: "#home" },
+      { label: "DKV Project", href: "#home" },
+    ],
+  },
+];
+
+const contactItems = [
+  {
+    label: "@jejakrasa.maknatoba",
+    href: "https://instagram.com",
+    icon: (
+      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-none stroke-current stroke-[1.8]">
+        <rect x="4" y="4" width="16" height="16" rx="4" />
+        <circle cx="12" cy="12" r="3.5" />
+        <circle cx="17.5" cy="6.5" r="1" />
+      </svg>
+    ),
+  },
+  {
+    label: "+628 1119 0425 ii",
+    href: "tel:+62811190425",
+    icon: (
+      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-none stroke-current stroke-[1.8]">
+        <path d="M6.5 4.5h3l1.3 4-2 1.8c.9 1.8 2.4 3.3 4.2 4.2l1.8-2 4 1.3v3c0 .8-.6 1.5-1.4 1.5C10.9 18.3 5.7 13.1 5.5 5.9c0-.8.7-1.4 1.5-1.4Z" />
+      </svg>
+    ),
+  },
+  {
+    label: "jejakrasa.maknatoba",
+    href: "mailto:hello@jejakrasa.id",
+    icon: (
+      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-none stroke-current stroke-[1.8]">
+        <rect x="4" y="6" width="16" height="12" rx="2" />
+        <path d="m5.5 7.5 6.5 5 6.5-5" />
+      </svg>
+    ),
+  },
+];
+
+export function Footer() {
+  return (
+    <footer className="bg-[#2C2424] font-[family:var(--font-poppins)] text-[#FFFDF0]">
+      <div className="mx-auto w-full max-w-7xl px-5 py-10 sm:px-6 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-[1.3fr_0.8fr_1fr_1fr_1fr]">
+          <section className="space-y-5">
+            <div className="flex items-center">
+              <Image src="/icon/icon-footer.png" alt="Jejak Rasa Makna Toba" width={160} height={160} className="h-12 w-auto" />
+            </div>
+
+            <p className="max-w-xs text-xs leading-6 text-[#FFFDF0]/90">Portal informasi digital yang didedikasikan untuk melestarikan pengetahuan tentang kuliner, sejarah, dan budaya Batak bagi generasi mendatang.</p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-semibold text-[#D98F2D]">Eksplorasi</h2>
+            <div className="mt-5 space-y-3 text-sm text-[#FFFDF0]/92">
+              {footerLinks[0].items.map((item) => (
+                <Link key={item.label} href={item.href} className="block transition-opacity hover:opacity-75">
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-semibold text-[#D98F2D]">Hubungi Kami</h2>
+            <div className="mt-5 space-y-3 text-sm text-[#FFFDF0]/92">
+              {contactItems.map((item) => (
+                <a key={item.label} href={item.href} className="flex items-start gap-2 transition-opacity hover:opacity-75">
+                  <span className="mt-0.5 text-[#FFFDF0]">{item.icon}</span>
+                  <span>{item.label}</span>
+                </a>
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-semibold text-[#D98F2D]">Newsletter</h2>
+            <p className="mt-5 max-w-xs text-sm leading-6 text-[#FFFDF0]/92">Dapatkan artikel terbaru tentang Budaya Batak Toba.</p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-semibold text-[#D98F2D]">Komentar</h2>
+            <p className="mt-5 text-sm leading-6 text-[#FFFDF0]/92">Berikan komentar terbaikmu</p>
+            <div className="mt-4">
+              <label className="sr-only" htmlFor="footer-comment">
+                Komentar
+              </label>
+              <input id="footer-comment" type="text" placeholder="....." className="h-10 w-full rounded-full border border-white/10 bg-white/10 px-4 text-sm text-[#FFFDF0] outline-none placeholder:text-[#FFFDF0]/45" />
+            </div>
+          </section>
+        </div>
+
+        <div className="mt-10 flex items-center justify-end">
+          <span className="text-sm italic text-[#FFFDF0]/70">Hons!</span>
+        </div>
+      </div>
+    </footer>
+  );
+}

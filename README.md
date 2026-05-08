@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jejak Rasa Makna Toba
 
-## Getting Started
+Website interaktif untuk proyek DKV bertema Jejak Rasa Makna Toba. Project ini dibangun dengan Next.js dan disiapkan untuk konten visual, carousel, peta interaktif, navbar, dan footer yang konsisten secara branding.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 App Router
+- TypeScript
+- Tailwind CSS v4
+- Swiper untuk carousel
+- Mapbox GL JS untuk peta interaktif
+
+## Fitur yang sudah disiapkan
+
+- Navbar dengan logo brand dan link navigasi berwarna `#8F1C1D`
+- Footer dengan warna dasar `#2C2424`, aksen `#D98F2D`, dan teks `#FFFDF0`
+- Font global `Poppins` dan `Roboto`
+- Strip pattern bergerak di bawah hero section
+- Asset statis tersimpan di `public/icon` dan `public/images`
+
+## Struktur Folder
+
+- `src/app` — layout, globals, dan homepage
+- `src/components` — komponen reusable seperti navbar dan footer
+- `src/lib` — helper atau utilitas proyek
+- `public/icon` — logo dan ikon brand
+- `public/images` — gambar dan pattern visual
+
+## Menjalankan Project
+
+```bash
+npm install
+npm run dev
+```
+
+Buka `http://localhost:3000` untuk melihat hasilnya.
+
+## Script Utama
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm run start
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Catatan
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Logo utama website ada di `public/icon/logo-jejak-rasa.png`
+- Ikon footer ada di `public/icon/icon-footer.png`
+- Pattern bergerak memakai `public/images/pattern.png`
