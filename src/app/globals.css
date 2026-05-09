@@ -68,6 +68,11 @@ body {
   animation: section-carousel-scroll 30s linear infinite;
 }
 
+/* reverse the marquee direction when needed (e.g., adat dishes) */
+.section-carousel-reverse {
+  animation-direction: reverse;
+}
+
 .section-carousel-track:hover {
   animation-play-state: paused;
 }
@@ -82,4 +87,7 @@ body {
     animation: none;
     transform: translate3d(0, 0, 0);
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
 }

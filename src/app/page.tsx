@@ -1,13 +1,18 @@
 import { HeroCarousel } from "@/components/hero-carousel";
 import { SectionCarousel } from "../components/section-carousel";
+import { DishCarousel } from "@/components/dish-carousel";
+import { dishes } from "@/data/tradition-dishes";
+import { dailyDishes } from "../data/daily-dishes";
 
 export default function Home() {
   return (
     <main className="flex-1 bg-white text-zinc-900">
+      {/* Hero Image */}
       <section id="home" className="pb-8 pt-4 sm:pb-10 sm:pt-6 lg:pb-12">
         <HeroCarousel />
       </section>
 
+      {/* Pattern */}
       <section aria-label="Motif Batak berjalan" className="w-full overflow-hidden">
         <div className="pattern-marquee-track flex w-max">
           <div className="pattern-scroll h-16 w-screen shrink-0 sm:h-20 lg:h-24" />
@@ -15,7 +20,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="tentang" className="mx-auto mt-10 w-full max-w-7xl px-4 py-20 sm:mt-12 sm:px-6 sm:py-24 lg:mt-16 lg:px-8 lg:py-28">
+      {/* History Section */}
+      <section id="history" className="mx-auto mt-10 w-full max-w-7xl px-4 py-20 sm:mt-12 sm:px-6 sm:py-24 lg:mt-16 lg:px-8 lg:py-28">
         <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <h2 className="mt-2 text-3xl font-semibold leading-tight sm:text-4xl text-[#D98F2D]">Sejarah dan Filosofi</h2>
@@ -37,11 +43,26 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="galeri" className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="rounded-3xl border border-dashed border-black/10 p-8">
-          <h2 className="text-2xl font-semibold">Galeri</h2>
-          <p className="mt-3 text-zinc-600">Nanti bisa diisi carousel gambar dan highlight konten.</p>
+      <section id="hidangan" className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold leading-tight text-[#D93B2D] sm:text-4xl [font-family:var(--font-roboto)]">Hidangan yang Disajikan pada Upacara Adat</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-xs font-normal leading-relaxed text-zinc-600 sm:text-base [font-family:var(--font-poppins)]">
+            Dokumentasi dan informasi tentang ragam kuliner yang menjadi identitas budaya kuliner Batak Toba.
+          </p>
         </div>
+
+        <DishCarousel direction="ltr" items={dishes} />
+      </section>
+
+      <section id="hidangan-harian" className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold leading-tight text-[#D93B2D] sm:text-4xl [font-family:var(--font-roboto)]">Hidangan yang Disajikan Setiap Hari</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-xs font-normal leading-relaxed text-zinc-600 sm:text-base [font-family:var(--font-poppins)]">
+            Dokumentasi dan informasi tentang ragam kuliner yang menjadi identitas budaya kuliner Batak Toba.
+          </p>
+        </div>
+
+        <DishCarousel direction="rtl" items={dailyDishes} />
       </section>
 
       <section id="peta" className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
