@@ -44,18 +44,21 @@ body {
 }
 
 @keyframes section-carousel-scroll {
-  from {
-    transform: translateX(0);
+  0% {
+    transform: translate3d(0, 0, 0);
   }
 
-  to {
-    transform: translateX(-50%);
+  100% {
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 .section-carousel-track {
   will-change: transform;
-  animation: section-carousel-scroll 9s linear infinite;
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  animation: section-carousel-scroll 12s linear infinite;
 }
 
 .section-carousel-track:hover {

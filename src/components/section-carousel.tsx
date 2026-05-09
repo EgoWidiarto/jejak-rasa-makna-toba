@@ -19,16 +19,16 @@ const slides = [
 
 export function SectionCarousel() {
   // duplicate slides for seamless looping
-  const doubled = [...slides, ...slides];
+  const tripled = [...slides, ...slides, ...slides];
 
   return (
     <div className="overflow-hidden rounded-2xl">
       <div className="relative aspect-square w-full">
         <div className="section-carousel-track flex h-full items-start gap-3">
-          {doubled.map((slide, i) => (
+          {tripled.map((slide, i) => (
             <div key={`${slide.src}-${i}`} className="relative aspect-square w-[clamp(200px,30vw,320px)] shrink-0 overflow-hidden rounded-2xl bg-zinc-50">
               {/* card div is the moving block; image fills the card */}
-              <Image src={slide.src} alt={slide.alt} fill priority={i === 0} sizes="(max-width: 768px) 100vw, 520px" className="object-cover" />
+              <Image src={slide.src} alt={slide.alt} fill priority={i === 0} loading="eager" sizes="(max-width: 768px) 100vw, 520px" className="object-cover" />
             </div>
           ))}
         </div>
