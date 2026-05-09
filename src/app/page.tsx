@@ -9,7 +9,10 @@ export default function Home() {
       </section>
 
       <section aria-label="Motif Batak berjalan" className="w-full overflow-hidden">
-        <div className="pattern-scroll h-16 w-full sm:h-20 lg:h-24" />
+        <div className="pattern-marquee-track flex w-max">
+          <div className="pattern-scroll h-16 w-screen shrink-0 sm:h-20 lg:h-24" />
+          <div className="pattern-scroll h-16 w-screen shrink-0 sm:h-20 lg:h-24" />
+        </div>
       </section>
 
       <section id="tentang" className="mx-auto mt-10 w-full max-w-7xl px-4 py-20 sm:mt-12 sm:px-6 sm:py-24 lg:mt-16 lg:px-8 lg:py-28">
