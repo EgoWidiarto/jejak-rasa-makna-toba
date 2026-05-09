@@ -6,7 +6,7 @@ import { dailyDishes } from "../data/daily-dishes";
 
 export default function Home() {
   return (
-    <main className="flex-1 bg-white text-zinc-900">
+    <main className="flex-1 overflow-x-clip bg-white text-zinc-900">
       {/* Hero Image */}
       <section id="home" className="pb-8 pt-4 sm:pb-10 sm:pt-6 lg:pb-12">
         <HeroCarousel />
@@ -21,7 +21,7 @@ export default function Home() {
       </section>
 
       {/* History Section */}
-      <section id="history" className="mx-auto mt-10 w-full max-w-7xl px-4 py-20 sm:mt-12 sm:px-6 sm:py-24 lg:mt-16 lg:px-8 lg:py-28">
+      <section id="history" className="mx-auto mt-6 w-full max-w-7xl px-4 py-10 sm:mt-8 sm:px-6 sm:py-12 lg:mt-14 lg:px-8 lg:py-24">
         <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <h2 className="mt-2 text-3xl font-semibold leading-tight sm:text-4xl text-[#D98F2D]">Sejarah dan Filosofi</h2>
@@ -43,7 +43,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="hidangan" className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <section id="tradition-dishes" className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-12">
         <div className="text-center">
           <h2 className="text-3xl font-bold leading-tight text-[#D93B2D] sm:text-4xl [font-family:var(--font-roboto)]">Hidangan yang Disajikan pada Upacara Adat</h2>
           <p className="mx-auto mt-3 max-w-2xl text-xs font-normal leading-relaxed text-zinc-600 sm:text-base [font-family:var(--font-poppins)]">
@@ -54,7 +54,7 @@ export default function Home() {
         <DishCarousel direction="ltr" items={dishes} />
       </section>
 
-      <section id="hidangan-harian" className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <section id="daily-dishes" className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-12">
         <div className="text-center">
           <h2 className="text-3xl font-bold leading-tight text-[#D93B2D] sm:text-4xl [font-family:var(--font-roboto)]">Hidangan yang Disajikan Setiap Hari</h2>
           <p className="mx-auto mt-3 max-w-2xl text-xs font-normal leading-relaxed text-zinc-600 sm:text-base [font-family:var(--font-poppins)]">

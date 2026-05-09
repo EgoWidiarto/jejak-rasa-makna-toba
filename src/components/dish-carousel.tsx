@@ -9,6 +9,16 @@ type DishItem = {
   description: string;
 };
 
+function getPreviewText(description: string, wordCount = 8) {
+  const words = description.trim().split(/\s+/);
+
+  if (words.length <= wordCount) {
+    return description;
+  }
+
+  return `${words.slice(0, wordCount).join(" ")}...`;
+}
+
 export function DishCarousel({ direction = "rtl", items }: { direction?: "ltr" | "rtl"; items?: DishItem[] }) {
   const itemsList = items ?? dishes;
 
@@ -27,7 +37,7 @@ export function DishCarousel({ direction = "rtl", items }: { direction?: "ltr" |
 
                 <div className="flex h-full gap-0 flex-col">
                   <h3 className="mt-3 min-h-10 text-center text-[1rem] font-semibold text-[#D93B2D] sm:min-h-10">{dish.title}</h3>
-                  <p className="min-h-18 text-center text-[0.7rem] leading-relaxed text-zinc-600 sm:min-h-18 sm:text-[0.8rem]">{dish.description}</p>
+                  <p className="min-h-18 text-center text-[0.7rem] leading-relaxed text-zinc-600 sm:min-h-18 sm:text-[0.8rem]">{getPreviewText(dish.description)}</p>
                 </div>
               </article>
             ))}

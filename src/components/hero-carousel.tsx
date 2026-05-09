@@ -35,7 +35,7 @@ export function HeroCarousel() {
         <div className="relative aspect-video w-full">
           {slides.map((slide, index) => (
             <div key={slide.src} aria-hidden={index !== activeIndex} className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${index === activeIndex ? "opacity-100" : "opacity-0"}`}>
-              <Image src={slide.src} alt={slide.alt} fill priority={index === 0} sizes="(max-width: 1024px) 100vw, 1280px" className="object-cover" />
+              <Image src={slide.src} alt={slide.alt} fill priority={index === 0} loading={index <= 1 ? "eager" : "lazy"} sizes="(max-width: 1024px) 100vw, 1280px" className="object-cover" />
               <div className="absolute inset-0 bg-linear-to-t from-black/35 via-black/10 to-transparent" />
             </div>
           ))}
