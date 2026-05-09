@@ -23,10 +23,10 @@ function GlobeIcon() {
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-black/5 bg-white/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-black/5 bg-white backdrop-blur-sm">
       <div className="mx-auto grid w-full max-w-7xl grid-cols-3 items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <Link href="#home" className="flex items-center justify-self-start">
-          <Image src="/icon/logo-jejak-rasa.png" alt="Jejak Rasa Makna Toba" width={180} height={55} priority className="h-12 w-auto" />
+          <Image src="/icon/logo-jejak-rasa.png" alt="Jejak Rasa Makna Toba" width={140} height={44} priority className="h-10 w-auto" />
         </Link>
 
         <nav aria-label="Primary" className="hidden items-center justify-center gap-8 md:flex justify-self-center font-(--font-roboto)">

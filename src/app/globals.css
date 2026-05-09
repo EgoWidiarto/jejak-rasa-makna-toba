@@ -42,3 +42,22 @@ body {
   background-size: auto 90%;
   animation: pattern-scroll 18s linear infinite;
 }
+
+@keyframes section-carousel-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.section-carousel-track {
+  will-change: transform;
+  animation: section-carousel-scroll 9s linear infinite;
+}
+
+.section-carousel-track:hover {
+  animation-play-state: paused;
+}
