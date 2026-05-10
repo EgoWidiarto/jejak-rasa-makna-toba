@@ -24,8 +24,8 @@ const cardo = Cardo({
 });
 
 export const metadata: Metadata = {
-  title: "Tata Rasa Toba",
-  description: "Website interaktif untuk proyek Tata Rasa Toba.",
+  title: "Jejak Rasa Toba",
+  description: "Website Menuju Wisata Kuliner di Daerah Toba",
   icons: {
     icon: "/icon/logo-jejak-rasa.png",
   },
