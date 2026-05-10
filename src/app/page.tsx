@@ -17,7 +17,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="flex-1 overflow-x-clip bg-white text-zinc-900">
+    <main className="flex-1 overflow-x-clip bg-white text-zinc-900 pb-60">
       {/* Hero Image */}
       <section id="home" className="pb-8 pt-4 sm:pb-10 sm:pt-6 lg:pb-12">
         <HeroCarousel />
@@ -104,6 +104,14 @@ export default function Home() {
 
       {/* Map Location Section */}
       <LocationMap />
+
+      {/* Bottom Pattern */}
+      <section aria-label="Motif Batak bawah peta" className="w-full overflow-hidden mt-10">
+        <div className="pattern-marquee-track pattern-marquee-reverse flex w-max">
+          <div className="pattern-scroll h-16 w-screen shrink-0 sm:h-20 lg:h-24" />
+          <div className="pattern-scroll h-16 w-screen shrink-0 sm:h-20 lg:h-24" />
+        </div>
+      </section>
     </main>
   );
 }

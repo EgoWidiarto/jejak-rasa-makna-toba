@@ -50,6 +50,10 @@ body {
   animation: pattern-marquee-scroll 60s linear infinite;
 }
 
+.pattern-marquee-reverse {
+  animation-direction: reverse;
+}
+
 @keyframes section-carousel-scroll {
   0% {
     transform: translate3d(0, 0, 0);
@@ -79,6 +83,11 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .pattern-marquee-track {
+    animation: none;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .pattern-marquee-reverse {
     animation: none;
     transform: translate3d(0, 0, 0);
   }
