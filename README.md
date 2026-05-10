@@ -1,41 +1,44 @@
-# Jejak Rasa Makna Toba
 
-Website interaktif untuk proyek DKV bertema Jejak Rasa Makna Toba. Project ini dibangun dengan Next.js dan disiapkan untuk konten visual, carousel, peta interaktif, navbar, dan footer yang konsisten secara branding.
+Jejak Rasa Makna Toba adalah website interaktif yang dirancang untuk mendukung presentasi visual dan narasi budaya dalam konteks proyek DKV. Project ini disiapkan sebagai fondasi website yang akan menampilkan pengalaman eksploratif, identitas visual yang kuat, serta elemen interaktif seperti carousel dan peta.
 
-## Stack
+## Ringkasan Project
 
-- Next.js 16 App Router
+Website ini dibangun dengan pendekatan modular agar mudah dikembangkan untuk kebutuhan presentasi, promosi, maupun publikasi konten budaya. Struktur dasarnya sudah menyiapkan area utama untuk navigasi, hero section, konten informasi, galeri visual, peta interaktif, dan footer.
+
+## Teknologi yang Digunakan
+
+- Next.js 16 dengan App Router
 - TypeScript
 - Tailwind CSS v4
-- Swiper untuk carousel
-- Mapbox GL JS untuk peta interaktif
+- Swiper untuk kebutuhan carousel
+- Mapbox GL JS untuk tampilan peta interaktif
 
-## Fitur yang sudah disiapkan
+## Komponen yang Sudah Disiapkan
 
-- Navbar dengan logo brand dan link navigasi berwarna `#8F1C1D`
-- Footer dengan warna dasar `#2C2424`, aksen `#D98F2D`, dan teks `#FFFDF0`
+- Navbar dengan logo brand dan navigasi utama
+- Footer dengan identitas visual brand
 - Font global `Poppins` dan `Roboto`
-- Strip pattern bergerak di bawah hero section
-- Asset statis tersimpan di `public/icon` dan `public/images`
+- Section pattern bergerak sebagai elemen visual
+- Asset statis pada `public/icon` dan `public/images`
 
-## Struktur Folder
+## Struktur Folder Utama
 
-- `src/app` — layout, globals, dan homepage
+- `src/app` — layout aplikasi, global styles, dan halaman utama
 - `src/components` — komponen reusable seperti navbar dan footer
-- `src/lib` — helper atau utilitas proyek
+- `src/lib` — utilitas atau helper pendukung
 - `public/icon` — logo dan ikon brand
-- `public/images` — gambar dan pattern visual
+- `public/images` — gambar, pattern, dan asset visual lainnya
 
-## Menjalankan Project
+## Menjalankan Project Secara Lokal
 
 ```bash
 npm install
 npm run dev
 ```
 
-Buka `http://localhost:3000` untuk melihat hasilnya.
+Setelah server berjalan, buka `http://localhost:3000` di browser.
 
-## Script Utama
+## Script yang Tersedia
 
 ```bash
 npm run dev
@@ -44,8 +47,8 @@ npm run start
 npm run lint
 ```
 
-## Catatan
+## Catatan Implementasi
 
-- Logo utama website ada di `public/icon/logo-jejak-rasa.png`
-- Ikon footer ada di `public/icon/icon-footer.png`
-- Pattern bergerak memakai `public/images/pattern.png`
+- Logo utama website tersedia di `public/icon/logo-jejak-rasa.png`
+- Ikon footer tersedia di `public/icon/icon-footer.png`
+- Pattern bergerak menggunakan `public/images/pattern.png`
