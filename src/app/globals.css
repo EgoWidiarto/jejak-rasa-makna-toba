@@ -25,20 +25,78 @@ body {
   font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
 }
 
-@keyframes pattern-scroll {
-  from {
-    background-position: 0 0;
-  }
-
-  to {
-    background-position: -1200px 0;
-  }
-}
-
 .pattern-scroll {
   background-image: url("/images/pattern.png");
   background-repeat: repeat-x;
   background-position: 0 0;
   background-size: auto 90%;
-  animation: pattern-scroll 18s linear infinite;
+}
+
+@keyframes pattern-marquee-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.pattern-marquee-track {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  animation: pattern-marquee-scroll 60s linear infinite;
+}
+
+.pattern-marquee-reverse {
+  animation-direction: reverse;
+}
+
+@keyframes section-carousel-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.section-carousel-track {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  animation: section-carousel-scroll 30s linear infinite;
+}
+
+/* reverse the marquee direction when needed (e.g., adat dishes) */
+.section-carousel-reverse {
+  animation-direction: reverse;
+}
+
+.section-carousel-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pattern-marquee-track {
+    animation: none;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .pattern-marquee-reverse {
+    animation: none;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .section-carousel-track {
+    animation: none;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
 }
