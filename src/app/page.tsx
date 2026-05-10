@@ -4,6 +4,7 @@ import { DishCarousel } from "@/components/dish-carousel";
 import { dishes } from "@/data/tradition-dishes";
 import { dailyDishes } from "../data/daily-dishes";
 import Image from "next/image";
+import { LocationMap } from "@/components/location-map";
 
 export default function Home() {
   const herbs = [
@@ -101,12 +102,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="kontak" className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="rounded-3xl border border-black/5 bg-zinc-50 p-8">
-          <h2 className="text-2xl font-semibold">Kontak</h2>
-          <p className="mt-3 text-zinc-600">Bagian ini bisa dipakai untuk CTA, form, atau detail kontak.</p>
-        </div>
-      </section>
+      {/* Map Location Section */}
+      <LocationMap />
     </main>
   );
 }
