@@ -83,11 +83,11 @@ body {
 
 @keyframes history-carousel-scroll {
   0% {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(-75%, 0, 0);
   }
 
   100% {
-    transform: translate3d(50%, 0, 0);
+    transform: translate3d(-25%, 0, 0);
   }
 }
 
@@ -96,7 +96,8 @@ body {
   transform: translate3d(0, 0, 0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  animation: history-carousel-scroll 40s linear infinite reverse;
+  animation: history-carousel-scroll 40s linear infinite;
+  animation-delay: -20s;
 }
 
 .history-carousel-track:hover {
@@ -123,7 +124,4 @@ body {
     animation: none;
     transform: translate3d(0, 0, 0);
   }
-}
-
-@media (prefers-reduced-motion: reduce) {
 }

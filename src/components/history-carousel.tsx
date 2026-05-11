@@ -23,19 +23,17 @@ const historySlides = [
 
 export function HistoryCarousel() {
   return (
-    <div className="overflow-hidden rounded-2xl">
-      <div className="relative w-full py-2">
-        <div className="history-carousel-track flex w-max items-start gap-4">
-          {[0, 1].map((group) => (
-            <div key={group} className="flex items-start gap-4 shrink-0">
-              {historySlides.map((slide, i) => (
-                <div key={`${group}-${slide.src}-${i}`} className="relative aspect-square w-[clamp(180px,25vw,280px)] shrink-0 overflow-hidden rounded-xl bg-zinc-50 shadow-md hover:shadow-lg transition-shadow">
-                  <Image src={slide.src} alt={slide.alt} fill priority={group === 0 && i === 0} loading="eager" sizes="(max-width: 768px) 100vw, 280px" className="object-cover" />
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
+    <div className="overflow-x-hidden overflow-y-visible pb-16 sm:pb-20">
+      <div className="section-carousel-track section-carousel-reverse overflow-visible flex w-max items-start gap-4">
+        {[0, 1].map((group) => (
+          <div key={group} className="flex items-start gap-4 shrink-0">
+            {historySlides.map((slide, i) => (
+              <div key={`${group}-${slide.src}-${i}`} className="relative aspect-square w-[clamp(180px,25vw,280px)] shrink-0 overflow-hidden rounded-xl bg-zinc-50 shadow-md">
+                <Image src={slide.src} alt={slide.alt} fill priority={group === 0 && i === 0} loading="eager" sizes="(max-width: 768px) 100vw, 280px" className="object-cover" />
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
     </div>
   );
