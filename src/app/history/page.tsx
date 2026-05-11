@@ -24,18 +24,35 @@ export default function HistoryPage() {
       {/* Description Section */}
       <section className="mx-auto w-full max-w-7xl px-4 sm:px-6 sm:py-16 lg:px-8">
         <div className="prose prose-sm sm:prose lg:prose-lg max-w-none">
-          <p className="text-zinc-600 leading-relaxed mb-6 [font-family:var(--font-poppins)]">
-            Batak Toba merupakan sub-etnis yang memiliki kekayaan budaya luar biasa, mulai dari arsitektur Rumah Bolon yang khas, kain Ulos, hingga tarian Tor-Tor. Keberagaman ini tidak hanya terlihat secara visual,
-            tetapi juga menyatu dalam bahasa dan sistem adat yang dijaga erat secara turun-temurun. Hal menarik lainnya adalah bagaimana warisan ini tercermin dalam kulinernya. Bagi masyarakat Toba, setiap makanan
-            tradisional bukan sekadar sajian, melainkan identitas yang sarat akan makna dan filosofi hidup.
+          <p className="text-zinc-600 leading-relaxed mb-6 indent-8 text-justify [font-family:var(--font-poppins)]">
+            &ldquo;Batak Toba merupakan sub-etnis yang memiliki kekayaan budaya luar biasa, mulai dari arsitektur Rumah Bolon yang khas, kain Ulos, hingga tarian Tor-Tor. Keberagaman ini tidak hanya terlihat secara
+            visual, tetapi juga menyatu dalam bahasa dan sistem adat yang dijaga erat secara turun-temurun. Hal menarik lainnya adalah bagaimana warisan ini tercermin dalam kulinernya. Bagi masyarakat Toba, setiap
+            makanan tradisional bukan sekadar sajian, melainkan identitas yang sarat akan makna dan filosofi hidup.&rdquo;
           </p>
         </div>
       </section>
 
       {/* History Images Carousel Section */}
-      <section className="mx-auto w-full max-w-7xl px-4 pb-12 sm:px-6 sm:pb-16 lg:px-8 lg:pb-20">
+      <section className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex justify-center">
           <HistoryCarousel />
+        </div>
+      </section>
+
+      {/* Description Section */}
+      <section className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="prose prose-sm sm:prose lg:prose-lg max-w-none">
+          <p className="text-zinc-600 leading-relaxed mb-6 indent-8 text-justify [font-family:var(--font-poppins)]">
+            Seluruh sendi kehidupan masyarakat Batak Toba memang diatur oleh sistem adat yang bertujuan menciptakan harmoni. Adat-istiadat ini terangkum dalam tiga fase besar daur hidup: kelahiran, pernikahan, dan
+            kematian. Dalam setiap tahapan krusial ini, makanan hadir bukan hanya sebagai jamuan, melainkan sebagai sistem adat yang krusial. Seperti halnya dalam upacara kelahiran dan perkawinan, kehadiran Arsik Ikan
+            Mas menjadi menu wajib yang mempertegas simbol kehidupan dan doa tulus bagi mereka yang menerimanya.
+          </p>
+          <p className="text-zinc-600 leading-relaxed mb-6 indent-8 text-justify [font-family:var(--font-poppins)]">
+            Di antara berbagai kekayaan kuliner yang dimiliki, Arsik Ikan Mas menempati posisi yang paling sakral sebagai representasi identitas budaya Batak Toba. Hidangan ini merupakan elemen wajib dalam upacara daur
+            hidup, mulai dari adat kelahiran (tardidi) hingga upacara pernikahan. Lebih dari sekadar sajian fisik, Arsik Ikan Mas mengandung nilai esensial sebagai simbol kehidupan, berkat (pasu-pasu), kemakmuran, dan
+            harapan baik. Autentisitas dan kesakralan hidangan ini tercermin dalam aturan penyajiannya yang sangat spesifik, di mana ikan harus disajikan secara utuh tanpa dibelah, dalam jumlah ganjil (1, 3, 5, atau 7),
+            dengan posisi kepala menghadap penerima sebagai simbol doa restu dan kesuburan.
+          </p>
         </div>
       </section>
 
