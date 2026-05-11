@@ -81,6 +81,29 @@ body {
   animation-play-state: paused;
 }
 
+@keyframes history-carousel-scroll {
+  0% {
+    transform: translate3d(-75%, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-25%, 0, 0);
+  }
+}
+
+.history-carousel-track {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  animation: history-carousel-scroll 40s linear infinite;
+  animation-delay: -20s;
+}
+
+.history-carousel-track:hover {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .pattern-marquee-track {
     animation: none;
@@ -96,7 +119,9 @@ body {
     animation: none;
     transform: translate3d(0, 0, 0);
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
+  .history-carousel-track {
+    animation: none;
+    transform: translate3d(0, 0, 0);
+  }
 }
