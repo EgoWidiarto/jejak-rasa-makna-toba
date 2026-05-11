@@ -5,8 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 const navigationItems = [
-  { label: "Beranda", href: "#home" },
-  { label: "Sejarah", href: "#history" },
+  { label: "Beranda", href: "/" },
+  { label: "Sejarah", href: "/history" },
   { label: "Hidangan", href: "#hidangan" },
   { label: "Rempah", href: "#spices" },
   { label: "Geografi", href: "#geography" },

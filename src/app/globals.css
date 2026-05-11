@@ -81,6 +81,28 @@ body {
   animation-play-state: paused;
 }
 
+@keyframes history-carousel-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(50%, 0, 0);
+  }
+}
+
+.history-carousel-track {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  animation: history-carousel-scroll 40s linear infinite reverse;
+}
+
+.history-carousel-track:hover {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .pattern-marquee-track {
     animation: none;
@@ -93,6 +115,11 @@ body {
   }
 
   .section-carousel-track {
+    animation: none;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .history-carousel-track {
     animation: none;
     transform: translate3d(0, 0, 0);
   }
