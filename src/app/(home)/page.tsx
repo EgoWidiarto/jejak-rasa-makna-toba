@@ -54,7 +54,7 @@ export default function Home() {
           </p>
         </div>
 
-        <DishCarousel direction="ltr" items={dishes} />
+        <DishCarousel direction="ltr" items={dishes} section="tradition-dishes" />
       </section>
 
       {/* Daily Dishes Section */}
@@ -66,7 +66,7 @@ export default function Home() {
           </p>
         </div>
 
-        <DishCarousel direction="rtl" items={dailyDishes} />
+        <DishCarousel direction="rtl" items={dailyDishes} section="daily-dishes" />
       </section>
 
       <HerbsSection />
