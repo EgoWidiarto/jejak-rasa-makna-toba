@@ -11,7 +11,7 @@ type DishItem = {
   description: string;
 };
 
-function getPreviewText(description: string, wordCount = 8) {
+function getPreviewText(description: string, wordCount = 30) {
   const words = description.trim().split(/\s+/);
 
   if (words.length <= wordCount) {

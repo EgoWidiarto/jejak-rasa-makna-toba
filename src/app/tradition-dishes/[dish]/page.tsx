@@ -36,7 +36,7 @@ export default async function DishDetailPage(props: PageProps) {
   return (
     <main className="min-h-screen bg-[#F4F4F4] py-8 sm:py-12 lg:py-16">
       {/* Hero Section */}
-      <section className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="mx-auto pb-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Title Outside Container */}
         <h1 className="text-2xl text-center font-bold text-[#B02627] sm:text-3xl lg:text-4xl mb-6 [font-family:var(--font-roboto)]">{dish.title}</h1>
 
@@ -62,7 +62,7 @@ export default async function DishDetailPage(props: PageProps) {
 
       {/* Recipe Section */}
       {dish.recipe && (
-        <section className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 mt-12">
+        <section className="mx-auto w-full max-w-7xl pt-20 px-4 sm:px-6 lg:px-8 mt-12">
           <div className="rounded-lg bg-white p-6 sm:p-8 lg:p-10">
             <div className="grid gap-8 lg:grid-cols-2">
               {/* Left Column - Ingredients and Spice */}
@@ -111,7 +111,7 @@ export default async function DishDetailPage(props: PageProps) {
 
       {/* Steps Section */}
       {dish.recipe && dish.recipe.steps.length > 0 && (
-        <section className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 mt-12">
+        <section className="mx-auto pt-10 pb-20 w-full max-w-7xl px-4 sm:px-6 lg:px-8 mt-12">
           <div className="rounded-lg bg-white p-6 sm:p-8 lg:p-10">
             <h3 className="text-lg font-bold text-[#B02627] mb-6 [font-family:var(--font-roboto)]">Cara Membuat:</h3>
             <ol className="space-y-3 text-sm text-black sm:text-base list-decimal list-inside">
@@ -126,7 +126,7 @@ export default async function DishDetailPage(props: PageProps) {
       )}
 
       {/* Navigation / More Dishes Section */}
-      <section className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 mt-12">
+      <section className="mx-auto w-full pb-30 max-w-7xl px-4 sm:px-6 lg:px-8 mt-12">
         <div className="text-center mb-6">
           <h2 className="text-3xl font-bold leading-tight text-[#B02627] sm:text-4xl [font-family:var(--font-roboto)]">Kenali Lebih Dalam</h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm [font-family:var(--font-roboto)] text-[#B02627]">Hidangan yang Disajikan pada Upacara Adat</p>
