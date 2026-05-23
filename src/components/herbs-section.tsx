@@ -76,9 +76,9 @@ export function HerbsSection() {
         </p>
       </div>
 
-      <div className="mt-8 sm:mt-10 grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-6 lg:items-start">
+      <div className="mt-8 sm:mt-10 flex flex-col lg:flex-row gap-6 lg:gap-12 justify-center items-start">
         {/* Herbs List */}
-        <div>
+        <div className={`${isExiting && !displayedHerb ? "herb-list-slide-out" : ""} w-full max-w-sm`}>
           {herbs.map((herb) => {
             const isActive = herb.name === activeHerbName;
             return (
@@ -98,10 +98,8 @@ export function HerbsSection() {
 
         {/* Image Container */}
         {displayedHerb && (
-          <div
-            key={displayedHerb.name}
-            className={`${isSwitching ? "herb-image-cross-fade" : isExiting ? "herb-image-exit" : "herb-image-enter"} relative w-full h-64 sm:h-80 lg:h-96 rounded-lg border border-zinc-300 overflow-hidden bg-zinc-100`}>
-            <Image src={displayedHerb.src} alt={displayedHerb.name} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 600px" priority />
+          <div key={displayedHerb.name} className={`${isSwitching ? "herb-image-cross-fade" : isExiting ? "herb-image-exit" : "herb-image-enter"} relative w-md aspect-square rounded-lg overflow-hidden`}>
+            <Image src={displayedHerb.src} alt={displayedHerb.name} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 320px" priority />
           </div>
         )}
       </div>
