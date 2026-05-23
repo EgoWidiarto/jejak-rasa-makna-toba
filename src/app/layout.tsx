@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cardo, Poppins, Roboto } from "next/font/google";
+import { Cardo, Poppins, Roboto, Dancing_Script } from "next/font/google";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import "./globals.css";
@@ -23,6 +23,12 @@ const cardo = Cardo({
   style: ["italic"],
 });
 
+const dancingScript = Dancing_Script({
+  variable: "--font-dancing-script",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
 export const metadata: Metadata = {
   title: "Jejak Rasa Toba",
   description: "Website Menuju Wisata Kuliner di Daerah Toba",
@@ -37,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} ${roboto.variable} ${cardo.variable} h-full antialiased`} suppressHydrationWarning>
+    <html lang="en" className={`${poppins.variable} ${roboto.variable} ${cardo.variable} ${dancingScript.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <Navbar />
         {children}
