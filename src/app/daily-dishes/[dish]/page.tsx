@@ -101,7 +101,7 @@ export default async function DishDetailPage(props: PageProps) {
               {/* Right Column - Recipe Image */}
               {dish.recipeImgSrc && (
                 <div className="relative h-96 w-full sm:h-125 lg:h-150 flex items-center justify-center">
-                  <div className="relative h-full w-48 sm:w-64 lg:w-80">
+                  <div className="relative h-full w-50 sm:w-70 lg:w-110">
                     <Image src={dish.recipeImgSrc} alt={`${dish.title} recipe`} fill className="rounded-lg object-cover" sizes="(max-width: 768px) 192px, (max-width: 1024px) 256px, 320px" />
                   </div>
                 </div>
