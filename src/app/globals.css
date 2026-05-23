@@ -104,6 +104,76 @@ body {
   animation-play-state: paused;
 }
 
+@keyframes herb-image-enter {
+  0% {
+    opacity: 0;
+    transform: translate3d(24px, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes herb-image-exit {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-24px, 0, 0);
+  }
+}
+
+@keyframes herb-image-cross-fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes herb-list-slide-out {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(24px, 0, 0);
+  }
+}
+
+.herb-image-enter {
+  animation: herb-image-enter 560ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.herb-image-exit {
+  animation: herb-image-exit 560ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: opacity, transform;
+}
+
+.herb-image-cross-fade {
+  animation: herb-image-cross-fade 400ms ease-out;
+  will-change: opacity;
+}
+
+.herb-list-slide-out {
+  animation: herb-list-slide-out 560ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+.herb-image-cross-fade {
+  animation: herb-image-cross-fade 400ms ease-out;
+  will-change: opacity;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .pattern-marquee-track {
     animation: none;
@@ -123,5 +193,11 @@ body {
   .history-carousel-track {
     animation: none;
     transform: translate3d(0, 0, 0);
+  }
+
+  .herb-image-enter {
+    animation: none;
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
   }
 }

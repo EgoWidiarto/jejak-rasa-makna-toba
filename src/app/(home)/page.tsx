@@ -3,19 +3,10 @@ import { SectionCarousel } from "../../components/section-carousel";
 import { DishCarousel } from "@/components/dish-carousel";
 import { dishes } from "@/data/tradition-dishes";
 import { dailyDishes } from "../../data/daily-dishes";
-import Image from "next/image";
 import { LocationMap } from "@/components/location-map";
+import { HerbsSection } from "@/components/herbs-section";
 
 export default function Home() {
-  const herbs = [
-    { src: "/images/herbs/herb-1.png", name: "Kecombrang" },
-    { src: "/images/herbs/herb-2.png", name: "Andaliman" },
-    { src: "/images/herbs/herb-3.png", name: "Asam Cikala" },
-    { src: "/images/herbs/herb-4.png", name: "Jeruk Purut" },
-    { src: "/images/herbs/herb-5.png", name: "Kincung" },
-    { src: "/images/herbs/herb-6.png", name: "Lokio" },
-  ];
-
   return (
     <main className="flex-1 overflow-x-clip bg-white text-zinc-900 pb-60">
       {/* Hero Image */}
@@ -78,29 +69,7 @@ export default function Home() {
         <DishCarousel direction="rtl" items={dailyDishes} />
       </section>
 
-      {/* Herbs Section */}
-      <section id="herbs" className="mx-auto w-full max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-black [font-family:var(--font-roboto)] sm:text-4xl">Rempah - Rempah</h2>
-          <p className="mx-auto mt-2 max-w-3xl text-sm font-normal text-black [font-family:var(--font-poppins)] sm:text-base">
-            Makanan khas Batak Toba banyak menggunakan berbagai macam rempah-rempah, namun rempah yang sangat ikonik dan khas, ada pada rempah andaliman.
-          </p>
-        </div>
-
-        <div className="mt-8 grid grid-cols-2 justify-items-center gap-3 sm:mt-10 sm:grid-cols-3 sm:gap-4">
-          {herbs.map((herb, index) => (
-            <article key={herb.name} className="group relative w-full max-w-52 h-42.5 shadow-md overflow-hidden rounded-xl border border-black/10 sm:max-w-64 sm:h-55">
-              <div className="relative h-full w-full">
-                <Image src={herb.src} alt={herb.name} fill priority={index < 3} sizes="(max-width: 640px) 48vw, (max-width: 1024px) 32vw, 300px" className="h-full w-full scale-[1.07] transform-gpu object-cover" />
-              </div>
-
-              <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white/20 opacity-0 backdrop-blur-md transition-opacity duration-300 group-hover:opacity-100">
-                <span className="rounded-full border border-white/30 bg-white/25 px-4 py-2 text-sm font-medium text-zinc-700 [font-family:var(--font-poppins)] sm:text-base">{herb.name}</span>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+      <HerbsSection />
 
       {/* Map Location Section */}
       <LocationMap />
