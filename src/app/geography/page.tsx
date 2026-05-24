@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import InteractiveMap from "@/components/interactive-map";
 
 export default function GeographyPage() {
   const description = `Pulau Sumatera merupakan salah satu wilayah di Indonesia yang memiliki kekayaan budaya luar biasa dengan keragaman suku bangsa yang mendiaminya. Di antara sekian banyak etnis tersebut, suku Batak menjadi kelompok masyarakat yang paling dominan di Provinsi Sumatera Utara. Penting untuk dipahami bahwa suku Batak bukanlah sebuah entitas tunggal, melainkan sebuah rumpun besar yang terdiri dari beberapa sub-etnis. Setiap cabang ini memiliki identitas, adat istiadat, dialek, serta wilayah persebaran geografis yang spesifik dan berbeda satu sama lain.
@@ -9,8 +9,8 @@ export default function GeographyPage() {
 
   return (
     <main className="min-h-screen bg-[#F4F4F4] py-12">
-      <section className="mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold text-black mb-6 [font-family:var(--font-roboto)]">Letak Geografi Suku Batak</h1>
+      <section className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
+        <h1 className="text-center text-3xl font-bold text-black mb-6 [font-family:var(--font-roboto)]">Letak Geografi Suku Batak</h1>
 
         <div className="rounded-lg bg-white p-6 sm:p-8 lg:p-10 shadow-sm">
           <div className="flex flex-col gap-6">
@@ -25,12 +25,17 @@ export default function GeographyPage() {
                 </p>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+      <section className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8 mt-12">
+        <div className="flex flex-col lg:flex-row lg:items-start">
+          <div className="flex-1 min-w-0 justify-end">
+            <InteractiveMap fullBleed={false} />
+          </div>
 
-            <div className="mt-4">
-              <Link href="/" className="inline-block rounded-lg bg-[#D9D9D9]/80 px-5 py-2.5 text-sm font-normal text-[#B02627] transition-transform duration-200 hover:scale-[1.02] [font-family:var(--font-poppins)]">
-                Kembali ke Beranda
-              </Link>
-            </div>
+          <div className="w-full lg:w-70 lg:pt-0">
+            <h2 className="text-2xl font-bold text-black [font-family:var(--font-roboto)] lg:mt-0 lg:sticky lg:top-3">Peta Interaktif Persebaran Suku Batak</h2>
           </div>
         </div>
       </section>
