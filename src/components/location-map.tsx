@@ -86,7 +86,7 @@ export function LocationMap() {
 
   return (
     <section id="location" className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-      <div className="overflow-hidden rounded-[28px] border border-black/5 bg-[#f1f1ef] p-3 shadow-[0_12px_40px_rgba(0,0,0,0.08)] sm:p-4 lg:p-5">
+      <div className="overflow-hidden rounded-[28px] border border-black/5 p-3 sm:p-4 lg:p-5">
         <div
           className="relative min-h-124 overflow-hidden rounded-3xl bg-[#ddebf3] select-none"
           style={{ cursor: isDragging ? "grabbing" : "grab" }}
