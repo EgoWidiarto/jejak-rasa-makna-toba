@@ -116,7 +116,7 @@ export function LocationMap() {
             </svg>
           </div>
 
-          <div className="pointer-events-none absolute left-1/2 top-1/2 z-50" style={{ transform: `translate(calc(-50% + ${panPosition.x}px), calc(-50% + ${panPosition.y}px))`, width: "240%", height: "240%" }}>
+          <div className="pointer-events-none absolute left-1/2 top-1/2 z-0" style={{ transform: `translate(calc(-50% + ${panPosition.x}px), calc(-50% + ${panPosition.y}px))`, width: "240%", height: "240%" }}>
             <svg width="911" height="1413" viewBox="0 0 911 1413" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-full w-full overflow-visible object-contain">
               <g transform={`translate(${tobaPinPosition.x - 72} ${tobaPinPosition.y - 148})`}>
                 <g filter="url(#filter0_d_523_2979)">

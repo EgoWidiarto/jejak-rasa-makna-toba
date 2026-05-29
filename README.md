@@ -1,4 +1,3 @@
-
 Jejak Rasa Makna Toba adalah website interaktif yang dirancang untuk mendukung presentasi visual dan narasi budaya dalam konteks proyek DKV. Project ini disiapkan sebagai fondasi website yang akan menampilkan pengalaman eksploratif, identitas visual yang kuat, serta elemen interaktif seperti carousel dan peta.
 
 ## Ringkasan Project
@@ -52,3 +51,25 @@ npm run lint
 - Logo utama website tersedia di `public/icon/logo-jejak-rasa.png`
 - Ikon footer tersedia di `public/icon/icon-footer.png`
 - Pattern bergerak menggunakan `public/images/pattern.png`
+
+## Fitur Testimoni User (Modal + Persisten)
+
+Form testimoni sudah terhubung ke modal komentar di footer:
+
+- User memilih jumlah hati (1–5)
+- User mengisi nama
+- User menulis komentar
+- Data tersimpan dan langsung muncul di section testimoni halaman home
+
+### Penyimpanan data saat deploy ke Vercel
+
+Implementasi API ada di `src/app/api/testimonials/route.ts` dan menggunakan Vercel KV (`@vercel/kv`) sebagai penyimpanan utama, dengan fallback file lokal (`data/testimonials.json`) untuk development.
+
+Langkah di Vercel:
+
+1. Buka project di Vercel
+2. Tambahkan integration storage (KV/Redis dari Marketplace)
+3. Pastikan environment variables storage otomatis terpasang ke project
+4. Redeploy
+
+Setelah itu, komentar user akan tetap tersimpan antar deployment.

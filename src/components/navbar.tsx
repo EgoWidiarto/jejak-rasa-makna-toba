@@ -3,13 +3,14 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navigationItems = [
   { label: "Beranda", href: "/" },
   { label: "Sejarah", href: "/history" },
-  { label: "Hidangan", href: "#hidangan" },
-  { label: "Rempah", href: "#spices" },
-  { label: "Geografi", href: "#geography" },
+  { label: "Hidangan", href: "#tradition-dishes" },
+  { label: "Rempah", href: "#herbs" },
+  { label: "Geografi", href: "/geography" },
 ];
 
 function GlobeIcon() {
@@ -45,16 +46,19 @@ function CloseIcon() {
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+  const visibleNavigationItems = isHomePage ? navigationItems : navigationItems.filter((item) => item.label !== "Hidangan" && item.label !== "Rempah");
 
   return (
     <header className="sticky top-0 z-50 border-b border-black/5 bg-white/95 backdrop-blur-sm">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="#home" className="flex items-center">
+        <Link href="/" className="flex items-center">
           <Image src="/icon/logo-jejak-rasa.png" alt="Jejak Rasa Makna Toba" width={140} height={44} priority className="h-10 w-auto" />
         </Link>
 
         <nav aria-label="Primary" className="hidden items-center gap-8 md:flex font-(--font-roboto)">
-          {navigationItems.map((item) => (
+          {visibleNavigationItems.map((item) => (
             <Link key={item.label} href={item.href} className="text-sm font-medium tracking-wide transition-opacity hover:opacity-75" style={{ color: "#8F1C1D" }}>
               {item.label}
             </Link>
@@ -62,7 +66,7 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3 text-[#8F1C1D]">
-          <Link href="#home" aria-label="Website icon" className="hidden items-center justify-center transition-opacity hover:opacity-75 sm:inline-flex">
+          <Link href="/" aria-label="Website icon" className="hidden items-center justify-center transition-opacity hover:opacity-75 sm:inline-flex">
             <GlobeIcon />
           </Link>
 
@@ -79,7 +83,7 @@ export function Navbar() {
 
       <div className={`border-t border-black/5 bg-white px-4 pb-4 pt-2 md:hidden ${menuOpen ? "block" : "hidden"}`}>
         <nav aria-label="Mobile primary" className="mx-auto flex w-full max-w-7xl flex-col gap-2">
-          {navigationItems.map((item) => (
+          {visibleNavigationItems.map((item) => (
             <Link
               key={item.label}
               href={item.href}
