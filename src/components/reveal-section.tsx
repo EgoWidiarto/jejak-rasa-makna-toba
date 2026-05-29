@@ -1,27 +1,39 @@
 "use client";
 
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
-type RevealSectionProps = ComponentPropsWithoutRef<"section"> & {
+type RevealSectionProps = {
   children: ReactNode;
   delay?: number;
   as?: "section" | "div";
+  id?: string;
+  className?: string;
+  "aria-label"?: string;
 };
 
 export function RevealSection({ children, className, delay = 0, as = "section", ...props }: RevealSectionProps) {
   const prefersReducedMotion = useReducedMotion();
-  const MotionTag = as === "div" ? motion.div : motion.section;
+
+  const sharedMotionProps = {
+    initial: prefersReducedMotion ? false : { opacity: 0, y: 24 },
+    whileInView: prefersReducedMotion ? undefined : { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.22 as const },
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const, delay },
+    className,
+  };
+
+  if (as === "div") {
+    return (
+      <motion.div {...sharedMotionProps} {...props}>
+        {children}
+      </motion.div>
+    );
+  }
 
   return (
-    <MotionTag
-      initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
-      whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.22 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay }}
-      className={className}
-      {...props}>
+    <motion.section {...sharedMotionProps} {...props}>
       {children}
-    </MotionTag>
+    </motion.section>
   );
 }
