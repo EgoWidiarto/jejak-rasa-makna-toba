@@ -6,6 +6,7 @@ import { dailyDishes } from "../../data/daily-dishes";
 import { LocationMap } from "@/components/location-map";
 import { HerbsSection } from "@/components/herbs-section";
 import { RevealSection } from "@/components/reveal-section";
+import { TestimonialsList } from "@/components/testimonials-list";
 
 export default function Home() {
   return (
@@ -86,68 +87,7 @@ export default function Home() {
           <h2 className="mt-2 text-3xl font-bold leading-tight text-[#B02627] sm:text-4xl [font-family:var(--font-roboto)]">Komentar Penikmat Budaya</h2>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            {
-              name: "Raditia Rahman",
-              location: "Jakarta",
-              text: "Dokumentasi makanan khas Batak Toba yang sangat lengkap dan mendalam. Memberikan wawasan baru tentang kekayaan kuliner Indonesia.",
-            },
-            {
-              name: "Dera Montannah",
-              location: "Medan",
-              text: "Sangat menghargai usaha melestarikan warisan budaya kuliner Batak Toba melalui platform digital ini.",
-            },
-            {
-              name: "Arya Tariq",
-              location: "Bandung",
-              text: "Platform ini memberikan informasi yang akurat dan menarik tentang tradisi kuliner Batak Toba.",
-            },
-            {
-              name: "Rari Yunitagus",
-              location: "Surabaya",
-              text: "Apresiasi tinggi untuk dokumentasi yang detail dan informatif tentang makanan tradisional Batak.",
-            },
-            {
-              name: "Raditia Rahman",
-              location: "Jakarta",
-              text: "Dokumentasi makanan khas Batak Toba yang sangat lengkap dan mendalam. Memberikan wawasan baru tentang kekayaan kuliner Indonesia.",
-            },
-            {
-              name: "Dera Montannah",
-              location: "Medan",
-              text: "Sangat menghargai usaha melestarikan warisan budaya kuliner Batak Toba melalui platform digital ini.",
-            },
-            {
-              name: "Arya Tariq",
-              location: "Bandung",
-              text: "Platform ini memberikan informasi yang akurat dan menarik tentang tradisi kuliner Batak Toba.",
-            },
-            {
-              name: "Rari Yunitagus",
-              location: "Surabaya",
-              text: "Apresiasi tinggi untuk dokumentasi yang detail dan informatif tentang makanan tradisional Batak.",
-            },
-          ].map((testimonial, index) => (
-            <div key={index} className="rounded-lg border border-zinc-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" viewBox="0 0 20 20">
-                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="mt-4 text-sm leading-relaxed text-zinc-700 [font-family:var(--font-poppins)]">{testimonial.text}</p>
-              <div className="mt-4 flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-zinc-300" />
-                <div>
-                  <p className="text-sm font-semibold text-zinc-900 [font-family:var(--font-poppins)]">{testimonial.name}</p>
-                  <p className="text-xs text-zinc-600 [font-family:var(--font-poppins)]">{testimonial.location}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <TestimonialsList />
       </RevealSection>
 
       {/* Bottom Pattern */}

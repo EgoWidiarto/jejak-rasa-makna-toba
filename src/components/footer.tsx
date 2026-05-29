@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import CommentModal from "./comment-modal";
 
 const footerLinks = [
   {
@@ -62,62 +66,73 @@ const contactItems = [
 ];
 
 export function Footer() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <footer className="bg-[#2C2424] font-[family:var(--font-poppins)] text-[#FFFDF0]">
-      <div className="mx-auto w-full max-w-7xl px-5 py-10 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[1.3fr_0.8fr_1fr_1fr_1fr]">
-          <section className="space-y-5">
-            <div className="flex items-center">
-              <Image src="/icon/icon-footer.png" alt="Jejak Rasa Makna Toba" width={160} height={160} className="h-12 w-auto" />
-            </div>
+    <>
+      <CommentModal open={open} onClose={() => setOpen(false)} />
+      <footer className="bg-[#2C2424] font-(--font-poppins) text-[#FFFDF0]">
+        <div className="mx-auto w-full max-w-7xl px-5 py-10 sm:px-6 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-[1.3fr_0.8fr_1fr_1fr_1fr]">
+            <section className="space-y-5">
+              <div className="flex items-center">
+                <Image src="/icon/icon-footer.png" alt="Jejak Rasa Makna Toba" width={160} height={160} className="h-12 w-auto" />
+              </div>
 
-            <p className="max-w-xs text-xs leading-6 text-[#FFFDF0]/90">Portal informasi digital yang didedikasikan untuk melestarikan pengetahuan tentang kuliner, sejarah, dan budaya Batak bagi generasi mendatang.</p>
-          </section>
+              <p className="max-w-xs text-xs leading-6 text-[#FFFDF0]/90">Portal informasi digital yang didedikasikan untuk melestarikan pengetahuan tentang kuliner, sejarah, dan budaya Batak bagi generasi mendatang.</p>
+            </section>
 
-          <section>
-            <h2 className="text-lg font-semibold text-[#D98F2D]">Eksplorasi</h2>
-            <div className="mt-5 space-y-3 text-sm text-[#FFFDF0]/92">
-              {footerLinks[0].items.map((item) => (
-                <Link key={item.label} href={item.href} className="block transition-opacity hover:opacity-75">
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </section>
+            <section>
+              <h2 className="text-lg font-semibold text-[#D98F2D]">Eksplorasi</h2>
+              <div className="mt-5 space-y-3 text-sm text-[#FFFDF0]/92">
+                {footerLinks[0].items.map((item) => (
+                  <Link key={item.label} href={item.href} className="block transition-opacity hover:opacity-75">
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </section>
 
-          <section>
-            <h2 className="text-lg font-semibold text-[#D98F2D]">Hubungi Kami</h2>
-            <div className="mt-5 space-y-3 text-sm text-[#FFFDF0]/92">
-              {contactItems.map((item) => (
-                <a key={item.label} href={item.href} className="flex items-start gap-2 transition-opacity hover:opacity-75">
-                  <span className="mt-0.5 text-[#FFFDF0]">{item.icon}</span>
-                  <span>{item.label}</span>
-                </a>
-              ))}
-            </div>
-          </section>
+            <section>
+              <h2 className="text-lg font-semibold text-[#D98F2D]">Hubungi Kami</h2>
+              <div className="mt-5 space-y-3 text-sm text-[#FFFDF0]/92">
+                {contactItems.map((item) => (
+                  <a key={item.label} href={item.href} className="flex items-start gap-2 transition-opacity hover:opacity-75">
+                    <span className="mt-0.5 text-[#FFFDF0]">{item.icon}</span>
+                    <span>{item.label}</span>
+                  </a>
+                ))}
+              </div>
+            </section>
 
-          <section>
-            <h2 className="text-lg font-semibold text-[#D98F2D]">Newsletter</h2>
-            <p className="mt-5 max-w-xs text-sm leading-6 text-[#FFFDF0]/92">Dapatkan artikel terbaru tentang Budaya Batak Toba.</p>
-          </section>
+            <section>
+              <h2 className="text-lg font-semibold text-[#D98F2D]">Newsletter</h2>
+              <p className="mt-5 max-w-xs text-sm leading-6 text-[#FFFDF0]/92">Dapatkan artikel terbaru tentang Budaya Batak Toba.</p>
+            </section>
 
-          <section>
-            <h2 className="text-lg font-semibold text-[#D98F2D]">Komentar</h2>
-            <p className="mt-5 text-sm leading-6 text-[#FFFDF0]/92">Berikan komentar terbaikmu</p>
-            <div className="mt-4">
-              <label className="sr-only" htmlFor="footer-comment">
-                Komentar
-              </label>
-              <input id="footer-comment" type="text" placeholder="....." className="h-10 w-full rounded-full border border-white/10 bg-white/10 px-4 text-sm text-[#FFFDF0] outline-none placeholder:text-[#FFFDF0]/45" />
-            </div>
-          </section>
+            <section>
+              <h2 className="text-lg font-semibold text-[#D98F2D]">Komentar</h2>
+              <p className="mt-5 text-sm leading-6 text-[#FFFDF0]/92">Berikan komentar terbaikmu</p>
+              <div className="mt-4">
+                <label className="sr-only" htmlFor="footer-comment">
+                  Komentar
+                </label>
+                <button
+                  id="footer-comment"
+                  type="button"
+                  onClick={() => setOpen(true)}
+                  className="h-10 w-full rounded-full border border-white/10 bg-white/10 px-4 text-left text-sm text-[#FFFDF0] outline-none placeholder:text-[#FFFDF0]/45">
+                  Klik untuk menulis komentar...
+                </button>
+              </div>
+            </section>
+          </div>
+
+          <div className="mt-10 flex items-center justify-end">
+            <span className="text-sm italic text-[#FFFDF0]/70">Hons!</span>
+          </div>
         </div>
-
-        <div className="mt-10 flex items-center justify-end">
-          <span className="text-sm italic text-[#FFFDF0]/70">Hons!</span>
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 }
