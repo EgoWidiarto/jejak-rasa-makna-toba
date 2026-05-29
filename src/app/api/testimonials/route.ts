@@ -3,6 +3,7 @@ import fs from "fs/promises";
 import path from "path";
 
 const DATA_FILE = path.join(process.cwd(), "data", "testimonials.json");
+const IS_PRODUCTION = process.env.NODE_ENV === "production";
 
 type Testimonial = {
   id: string;
@@ -23,12 +24,8 @@ async function readLocal(): Promise<Testimonial[]> {
 }
 
 async function writeLocal(arr: Testimonial[]) {
-  try {
-    await fs.mkdir(path.dirname(DATA_FILE), { recursive: true });
-    await fs.writeFile(DATA_FILE, JSON.stringify(arr, null, 2), "utf-8");
-  } catch {
-    // ignore
-  }
+  await fs.mkdir(path.dirname(DATA_FILE), { recursive: true });
+  await fs.writeFile(DATA_FILE, JSON.stringify(arr, null, 2), "utf-8");
 }
 
 export async function GET() {
@@ -46,7 +43,9 @@ export async function GET() {
   }
 
   const local = await readLocal();
-  return new Response(JSON.stringify(local), { headers: { "Content-Type": "application/json" } });
+  return new Response(JSON.stringify(local), {
+    headers: { "Content-Type": "application/json", "Cache-Control": "no-store" },
+  });
 }
 
 export async function POST(req: Request) {
@@ -69,11 +68,25 @@ export async function POST(req: Request) {
       await kv.set("testimonials", JSON.stringify(arr));
       return new Response(JSON.stringify(item), { status: 201, headers: { "Content-Type": "application/json" } });
     } catch {
-      // fallback to local file
-      const arr = await readLocal();
-      arr.unshift(item);
-      await writeLocal(arr);
-      return new Response(JSON.stringify(item), { status: 201, headers: { "Content-Type": "application/json" } });
+      if (IS_PRODUCTION) {
+        return new Response(JSON.stringify({ error: "Storage belum terkonfigurasi di server (Vercel KV)." }), {
+          status: 503,
+          headers: { "Content-Type": "application/json" },
+        });
+      }
+
+      // local development fallback
+      try {
+        const arr = await readLocal();
+        arr.unshift(item);
+        await writeLocal(arr);
+        return new Response(JSON.stringify(item), { status: 201, headers: { "Content-Type": "application/json" } });
+      } catch {
+        return new Response(JSON.stringify({ error: "Gagal menyimpan komentar di lokal." }), {
+          status: 500,
+          headers: { "Content-Type": "application/json" },
+        });
+      }
     }
   } catch {
     return new Response(JSON.stringify({ error: "invalid" }), { status: 400, headers: { "Content-Type": "application/json" } });

@@ -33,7 +33,10 @@ export default function CommentModal({ open, onClose }: Props) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ rating, name: name.trim(), comment: comment.trim() }),
       });
-      if (!res.ok) throw new Error("Gagal menyimpan komentar");
+      if (!res.ok) {
+        const payload = (await res.json().catch(() => null)) as { error?: string } | null;
+        throw new Error(payload?.error || "Gagal menyimpan komentar");
+      }
       // notify other components to refresh
       window.dispatchEvent(new CustomEvent("testimonials:updated"));
       onClose();

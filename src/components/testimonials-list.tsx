@@ -46,7 +46,7 @@ export function TestimonialsList() {
   const [loading, setLoading] = useState(true);
 
   async function fetchItems(): Promise<Testimonial[]> {
-    const res = await fetch("/api/testimonials");
+    const res = await fetch("/api/testimonials", { cache: "no-store" });
     if (!res.ok) throw new Error("Gagal memuat komentar");
     const data = await res.json();
     return Array.isArray(data) ? (data as Testimonial[]) : [];
