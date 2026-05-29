@@ -102,7 +102,7 @@ export function TestimonialsList() {
               </span>
             ))}
           </div>
-          <p className="mt-4 text-[13px] italic leading-6 text-zinc-600 [font-family:var(--font-poppins)]">{t.comment}</p>
+          <p className="mt-4 text-[13px] italic leading-6 text-zinc-600 [font-family:var(--font-poppins)] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] overflow-hidden">{t.comment}</p>
           <div className="mt-auto flex items-center gap-2 pt-6">
             <div className="h-7 w-7 rounded-full bg-zinc-300" />
             <div>
