@@ -1,5 +1,6 @@
 import Image from "next/image";
 import InteractiveMap from "@/components/interactive-map";
+import { RevealSection } from "@/components/reveal-section";
 
 export default function GeographyPage() {
   const description = `Pulau Sumatera merupakan salah satu wilayah di Indonesia yang memiliki kekayaan budaya luar biasa dengan keragaman suku bangsa yang mendiaminya. Di antara sekian banyak etnis tersebut, suku Batak menjadi kelompok masyarakat yang paling dominan di Provinsi Sumatera Utara. Penting untuk dipahami bahwa suku Batak bukanlah sebuah entitas tunggal, melainkan sebuah rumpun besar yang terdiri dari beberapa sub-etnis. Setiap cabang ini memiliki identitas, adat istiadat, dialek, serta wilayah persebaran geografis yang spesifik dan berbeda satu sama lain.
@@ -9,13 +10,13 @@ export default function GeographyPage() {
 
   return (
     <main className="min-h-screen bg-[#F4F4F4] py-12">
-      <section className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
-        <h1 className="text-center text-3xl font-bold text-black mb-6 [font-family:var(--font-roboto)]">Letak Geografi Suku Batak</h1>
+      <RevealSection as="div" className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8" delay={0.05}>
+        <h1 className="mb-6 text-center text-3xl font-bold text-black [font-family:var(--font-roboto)]">Letak Geografi Suku Batak</h1>
 
-        <div className="rounded-lg bg-white p-6 sm:p-8 lg:p-10 shadow-sm">
+        <div className="rounded-lg bg-white p-6 shadow-sm sm:p-8 lg:p-10">
           <div className="flex flex-col gap-6">
             <div className="w-full overflow-hidden rounded-lg">
-              <Image src="/images/hero-img-3.png" alt="Letak Geografi" width={1200} height={700} className="w-full h-auto object-cover rounded-lg" priority />
+              <Image src="/images/hero-img-3.png" alt="Letak Geografi" width={1200} height={700} className="h-auto w-full rounded-lg object-cover" priority />
             </div>
 
             <div>
@@ -27,18 +28,19 @@ export default function GeographyPage() {
             </div>
           </div>
         </div>
-      </section>
-      <section className="mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8 mt-12">
+      </RevealSection>
+
+      <RevealSection as="div" className="mx-auto mt-12 w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8" delay={0.1}>
         <div className="flex flex-col lg:flex-row lg:items-start">
-          <div className="flex-1 min-w-0 justify-end">
+          <div className="min-w-0 flex-1 justify-end">
             <InteractiveMap fullBleed={false} />
           </div>
 
           <div className="w-full lg:w-70 lg:pt-0">
-            <h2 className="text-2xl font-bold text-black [font-family:var(--font-roboto)] lg:mt-0 lg:sticky lg:top-3">Peta Interaktif Persebaran Suku Batak</h2>
+            <h2 className="text-2xl font-bold text-black [font-family:var(--font-roboto)] lg:sticky lg:top-3 lg:mt-0">Peta Interaktif Persebaran Suku Batak</h2>
           </div>
         </div>
-      </section>
+      </RevealSection>
     </main>
   );
 }

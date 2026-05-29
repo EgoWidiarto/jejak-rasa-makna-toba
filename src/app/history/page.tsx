@@ -2,21 +2,24 @@
 
 import Image from "next/image";
 import { HistoryCarousel } from "@/components/history-carousel";
+import { RevealSection } from "@/components/reveal-section";
 
 export default function HistoryPage() {
   return (
     <main className="flex-1 overflow-x-clip bg-[#F4F4F4] text-zinc-900 pb-40">
       {/* Judul di luar card hero */}
-      <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mt-8 mb-6 [font-family:var(--font-roboto)]">Sejarah dan Makna Dibalik Sajian</h1>
+      <RevealSection as="div" className="mt-8 mb-6" delay={0.05}>
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center [font-family:var(--font-roboto)]">Sejarah dan Makna Dibalik Sajian</h1>
+      </RevealSection>
       {/* Hero Section dalam bentuk card */}
-      <section className="mx-auto w-[90%] max-w-6xl rounded-3xl bg-white shadow-md px-5 sm:px-10 lg:px-14 pt-8 sm:pt-12 lg:pt-16 mb-10">
+      <RevealSection className="mx-auto w-[90%] max-w-6xl rounded-3xl bg-white shadow-md px-5 sm:px-10 lg:px-14 pt-8 sm:pt-12 lg:pt-16 mb-10" delay={0.08}>
         <div className="relative w-full h-75 sm:h-100 lg:h-125 overflow-hidden rounded-3xl">
           <Image src="/images/hero-img-3.png" alt="Kuliner Batak Toba" fill className="object-cover" priority />
           <div className="absolute inset-0 bg-black/20" />
           <div className="absolute bottom-0 left-0 right-0 w-full h-full flex items-end">
             <div className="w-full px-6 sm:px-8 lg:px-12 pb-6 sm:pb-8 lg:pb-12">
               <p className="text-l sm:text-xl lg:text-2xl font-black text-white mb-1 [font-family:var(--font-roboto)]">Menjelajahi Warisan Budaya</p>
-              <span className="text-3xl sm:text-4xl lg:text-5xl text-white italic [font-family:'Atziluth']">Kuliner Batak Toba</span>
+              <span className="text-3xl sm:text-4xl lg:text-5xl text-white italic font-['Atziluth']">Kuliner Batak Toba</span>
             </div>
           </div>
         </div>
@@ -28,17 +31,17 @@ export default function HistoryPage() {
             makanan tradisional bukan sekadar sajian, melainkan identitas yang sarat akan makna dan filosofi hidup.&rdquo;
           </p>
         </div>
-      </section>
+      </RevealSection>
 
       {/* History Images Carousel Section */}
-      <section className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+      <RevealSection className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8" delay={0.1}>
         <div className="flex justify-center">
           <HistoryCarousel />
         </div>
-      </section>
+      </RevealSection>
 
       {/* Description and Large Arsik Image Section in Card */}
-      <section className="mx-auto w-[90%] max-w-6xl rounded-3xl bg-white shadow-md px-5 sm:px-10 lg:px-14 pt-8 sm:pt-12 lg:pt-16 mt-12 mb-10">
+      <RevealSection className="mx-auto w-[90%] max-w-6xl rounded-3xl bg-white shadow-md px-5 sm:px-10 lg:px-14 pt-8 sm:pt-12 lg:pt-16 mt-12 mb-10" delay={0.12}>
         <div className="relative w-full h-75 sm:h-100 lg:h-125 overflow-hidden rounded-3xl mb-6 sm:mb-8">
           <Image src="/images/hero-img-1.png" alt="Arsik Ikan Mas yang Disajikan" fill className="object-cover" />
           <div className="absolute inset-0 bg-black/20" />
@@ -55,7 +58,7 @@ export default function HistoryPage() {
             dengan posisi kepala menghadap penerima sebagai simbol doa restu dan kesuburan.
           </p>
         </div>
-      </section>
+      </RevealSection>
     </main>
   );
 }
