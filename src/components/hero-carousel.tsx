@@ -44,7 +44,7 @@ export function HeroCarousel() {
             <p className="text-sm tracking-[0.08em] sm:text-base" style={{ fontFamily: "var(--font-roboto)", fontWeight: 700 }}>
               Website Informasi
             </p>
-            <h1 className="mt-1 text-2xl italic leading-none sm:text-4xl" style={{ fontFamily: "var(--font-cardo)" }}>
+            <h1 className="mt-1 text-2xl italic leading-none sm:text-4xl" style={{ fontFamily: "Atziluth" }}>
               Kuliner Batak Toba
             </h1>
           </div>

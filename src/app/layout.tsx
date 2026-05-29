@@ -43,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} ${roboto.variable} ${cardo.variable} ${dancingScript.variable} h-full antialiased`} suppressHydrationWarning>
+    <html lang="en" className={`${poppins.variable} ${roboto.variable} ${cardo.variable} ${dancingScript.variable} h-full scroll-smooth scroll-pt-24 antialiased`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <Navbar />
         {children}

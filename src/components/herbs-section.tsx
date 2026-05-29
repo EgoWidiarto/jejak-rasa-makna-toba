@@ -68,7 +68,7 @@ export function HerbsSection() {
   };
 
   return (
-    <section id="herbs" className="mx-auto w-full max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+    <section id="herbs" className="mx-auto w-full max-w-5xl scroll-mt-28 px-4 py-12 sm:px-6 lg:px-8">
       <div className="text-center">
         <h2 className="text-3xl font-bold text-black [font-family:var(--font-roboto)] sm:text-4xl">Rempah - Rempah</h2>
         <p className="mx-auto mt-2 max-w-3xl text-sm font-normal text-black [font-family:var(--font-poppins)] sm:text-base">
