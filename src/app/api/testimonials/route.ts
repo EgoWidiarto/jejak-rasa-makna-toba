@@ -1,9 +1,6 @@
-import { kv } from "@vercel/kv";
-import fs from "fs/promises";
-import path from "path";
+import { createSupabaseAdminClient } from "@/lib/supabase";
 
-const DATA_FILE = path.join(process.cwd(), "data", "testimonials.json");
-const IS_PRODUCTION = process.env.NODE_ENV === "production";
+export const dynamic = "force-dynamic";
 
 type Testimonial = {
   id: string;
@@ -13,82 +10,98 @@ type Testimonial = {
   createdAt: string;
 };
 
-async function readLocal(): Promise<Testimonial[]> {
-  try {
-    const raw = await fs.readFile(DATA_FILE, "utf-8");
-    const parsed = JSON.parse(raw || "[]");
-    return Array.isArray(parsed) ? (parsed as Testimonial[]) : [];
-  } catch {
-    return [];
-  }
-}
-
-async function writeLocal(arr: Testimonial[]) {
-  await fs.mkdir(path.dirname(DATA_FILE), { recursive: true });
-  await fs.writeFile(DATA_FILE, JSON.stringify(arr, null, 2), "utf-8");
-}
+type SupabaseTestimonialRow = {
+  id: string;
+  rating: number;
+  name: string;
+  comment: string;
+  created_at: string;
+};
 
 export async function GET() {
   try {
-    const raw = await kv.get("testimonials");
-    if (raw) {
-      try {
-        return new Response(JSON.stringify(JSON.parse(raw as string)), { headers: { "Content-Type": "application/json" } });
-      } catch {
-        return new Response(JSON.stringify(raw), { headers: { "Content-Type": "application/json" } });
-      }
-    }
-  } catch {
-    // fallthrough to local
-  }
+    const supabase = createSupabaseAdminClient();
+    const { data, error } = await supabase
+      .from("testimonials")
+      .select("id, rating, name, comment, created_at")
+      .order("created_at", { ascending: false })
+      .limit(48);
 
-  const local = await readLocal();
-  return new Response(JSON.stringify(local), {
-    headers: { "Content-Type": "application/json", "Cache-Control": "no-store" },
-  });
+    if (error) {
+      return new Response(JSON.stringify({ error: error.message }), {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
+    const testimonials: Testimonial[] = (data ?? []).map((item: SupabaseTestimonialRow) => ({
+      id: item.id,
+      rating: item.rating,
+      name: item.name,
+      comment: item.comment,
+      createdAt: item.created_at,
+    }));
+
+    return new Response(JSON.stringify(testimonials), {
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-store",
+      },
+    });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Gagal mengambil komentar.";
+    return new Response(JSON.stringify({ error: message }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
 }
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { rating, name, comment } = body;
-    if (!name || !comment) return new Response(JSON.stringify({ error: "invalid" }), { status: 400 });
-    const item: Testimonial = {
-      id: Date.now().toString(),
-      rating: Math.max(1, Math.min(5, Number(rating) || 1)),
-      name,
-      comment,
-      createdAt: new Date().toISOString(),
+    const rating = Math.max(1, Math.min(5, Number(body.rating) || 1));
+    const name = String(body.name ?? "").trim();
+    const comment = String(body.comment ?? "").trim();
+
+    if (!name || !comment) {
+      return new Response(JSON.stringify({ error: "Nama dan komentar harus diisi." }), {
+        status: 400,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
+    const supabase = createSupabaseAdminClient();
+    const { data, error } = await supabase
+      .from("testimonials")
+      .insert({ rating, name, comment })
+      .select("id, rating, name, comment, created_at")
+      .single<SupabaseTestimonialRow>();
+
+    if (error) {
+      return new Response(JSON.stringify({ error: error.message }), {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
+    const inserted: Testimonial = {
+      id: data.id,
+      rating: data.rating,
+      name: data.name,
+      comment: data.comment,
+      createdAt: data.created_at,
     };
 
-    try {
-      const raw = await kv.get("testimonials");
-      const arr = raw ? (Array.isArray(raw) ? (raw as Testimonial[]) : (JSON.parse(raw as string) as Testimonial[])) : [];
-      arr.unshift(item);
-      await kv.set("testimonials", JSON.stringify(arr));
-      return new Response(JSON.stringify(item), { status: 201, headers: { "Content-Type": "application/json" } });
-    } catch {
-      if (IS_PRODUCTION) {
-        return new Response(JSON.stringify({ error: "Storage belum terkonfigurasi di server (Vercel KV)." }), {
-          status: 503,
-          headers: { "Content-Type": "application/json" },
-        });
-      }
-
-      // local development fallback
-      try {
-        const arr = await readLocal();
-        arr.unshift(item);
-        await writeLocal(arr);
-        return new Response(JSON.stringify(item), { status: 201, headers: { "Content-Type": "application/json" } });
-      } catch {
-        return new Response(JSON.stringify({ error: "Gagal menyimpan komentar di lokal." }), {
-          status: 500,
-          headers: { "Content-Type": "application/json" },
-        });
-      }
-    }
-  } catch {
-    return new Response(JSON.stringify({ error: "invalid" }), { status: 400, headers: { "Content-Type": "application/json" } });
+    return new Response(JSON.stringify(inserted), {
+      status: 201,
+      headers: { "Content-Type": "application/json" },
+    });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Permintaan tidak valid.";
+    return new Response(JSON.stringify({ error: message }), {
+      status: 400,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 }

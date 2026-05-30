@@ -63,13 +63,22 @@ Form testimoni sudah terhubung ke modal komentar di footer:
 
 ### Penyimpanan data saat deploy ke Vercel
 
-Implementasi API ada di `src/app/api/testimonials/route.ts` dan menggunakan Vercel KV (`@vercel/kv`) sebagai penyimpanan utama, dengan fallback file lokal (`data/testimonials.json`) untuk development.
+Implementasi API ada di `src/app/api/testimonials/route.ts` dan sekarang menggunakan **Supabase** sebagai penyimpanan utama.
 
-Langkah di Vercel:
+#### Env yang dibutuhkan
 
-1. Buka project di Vercel
-2. Tambahkan integration storage (KV/Redis dari Marketplace)
-3. Pastikan environment variables storage otomatis terpasang ke project
-4. Redeploy
+- `SUPABASE_URL`
+- `SUPABASE_SERVICE_ROLE_KEY`
 
-Setelah itu, komentar user akan tetap tersimpan antar deployment.
+#### Tabel yang harus dibuat
+
+Gunakan SQL di `supabase/schema.sql` untuk membuat tabel `testimonials`.
+
+#### Langkah setup
+
+1. Buka project di Supabase
+2. Jalankan schema dari `supabase/schema.sql`
+3. Copy `SUPABASE_URL` dan `SUPABASE_SERVICE_ROLE_KEY` ke environment variables project di Vercel
+4. Redeploy project
+
+Setelah itu, komentar user akan tetap tersimpan antar deployment dan langsung muncul di section testimoni.
