@@ -47,7 +47,7 @@ export function TestimonialsList() {
 
   async function fetchItems(): Promise<Testimonial[]> {
     const res = await fetch("/api/testimonials", { cache: "no-store" });
-    if (!res.ok) throw new Error("Gagal memuat komentar");
+    if (!res.ok) return [];
     const data = await res.json();
     return Array.isArray(data) ? (data as Testimonial[]) : [];
   }
@@ -94,7 +94,7 @@ export function TestimonialsList() {
   return (
     <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {displayedItems.map((t) => (
-        <div key={t.id} className="flex min-h-65 flex-col rounded-2xl bg-[#F1F1F1] p-5 shadow-sm transition-shadow hover:shadow-md">
+        <div key={t.id} className="flex min-h-65 flex-col rounded-2xl bg-[#FFF] p-5 shadow-sm transition-shadow hover:shadow-md">
           <div className="flex gap-1">
             {Array.from({ length: 5 }).map((_, i) => (
               <span key={i} className={`text-sm leading-none ${i < t.rating ? "text-[#B02627]" : "text-zinc-300"}`}>
