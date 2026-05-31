@@ -12,32 +12,32 @@ type Herb = {
 const herbs: Herb[] = [
   {
     name: "Andaliman",
-    src: "/images/herbs/herb-2.png",
+    src: "/images/herbs/andaliman.png",
     description: "Andaliman, tuba atau itir-itir adalah tumbuhan dengan buah berbentuk bulat dan bergerombol yang biasa digunakan sebagai bumbu masak khas Batak dan Asia.",
   },
   {
     name: "Kecombrang",
-    src: "/images/herbs/herb-1.png",
+    src: "/images/herbs/kecombrang.png",
     description: "Kecombrang memberi aroma segar khas pada masakan Batak Toba dan sering dipadukan untuk memperkaya rasa ikan serta olahan berkuah.",
   },
   {
     name: "Asam Gelugur",
-    src: "/images/herbs/herb-4.png",
+    src: "/images/herbs/asam-gelugur.png",
     description: "Asam gelugur digunakan untuk memberi rasa asam yang ringan dan menyeimbangkan cita rasa rempah kuat pada hidangan tradisional.",
   },
   {
     name: "Asam Jungga",
-    src: "/images/herbs/herb-5.png",
+    src: "/images/herbs/asam-jungga.png",
     description: "Asam jungga dikenal sebagai penambah rasa asam alami yang membuat rasa masakan menjadi lebih segar dan berlapis.",
   },
   {
     name: "Asam Cikala",
-    src: "/images/herbs/herb-3.png",
+    src: "/images/herbs/asam-cikala.png",
     description: "Asam cikala umum dipakai dalam masakan Batak untuk menghadirkan rasa asam khas dan memperkuat karakter kuah berbumbu.",
   },
   {
     name: "Bawang Batak / Lokio",
-    src: "/images/herbs/herb-6.png",
+    src: "/images/herbs/bawang-batak.png",
     description: "Lokio atau bawang Batak memberi wangi bawang yang tajam, gurih, dan menjadi penyeimbang penting dalam campuran rempah tradisional.",
   },
 ];
