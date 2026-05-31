@@ -37,7 +37,7 @@ export default async function DishDetailPage(props: PageProps) {
   return (
     <main className="min-h-screen bg-[#F4F4F4] py-8 sm:py-12 lg:py-16">
       {/* Hero Section */}
-      <RevealSection as="div" className="mx-auto pb-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8" delay={0.05}>
+      <RevealSection as="div" className="mx-auto pb-10 pt-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8" delay={0.05}>
         {/* Title Outside Container */}
         <h1 className="text-2xl text-center font-bold text-[#B02627] sm:text-3xl lg:text-4xl mb-6 [font-family:var(--font-roboto)]">{dish.title}</h1>
 
@@ -63,7 +63,7 @@ export default async function DishDetailPage(props: PageProps) {
 
       {/* Recipe Section */}
       {dish.recipe && (
-        <RevealSection as="div" className="mx-auto w-full max-w-7xl pt-20 px-4 sm:px-6 lg:px-8 mt-12" delay={0.08}>
+        <RevealSection as="div" className="mx-auto w-full max-w-7xl pt-10 px-4 sm:px-6 lg:px-8 mt-12" delay={0.08}>
           <div className="rounded-lg bg-white p-6 sm:p-8 lg:p-10">
             <div className="grid gap-8 lg:grid-cols-2">
               {/* Left Column - Ingredients and Spice */}
@@ -129,7 +129,7 @@ export default async function DishDetailPage(props: PageProps) {
       )}
 
       {/* Navigation / More Dishes Section */}
-      <RevealSection as="div" className="mx-auto w-full pb-30 max-w-7xl px-4 sm:px-6 lg:px-8 mt-12" delay={0.12}>
+      <RevealSection as="div" className="mx-auto pt-10 w-full pb-30 max-w-7xl px-4 sm:px-6 lg:px-8 mt-12" delay={0.12}>
         <div className="text-center mb-6">
           <h2 className="text-3xl font-bold leading-tight text-[#B02627] sm:text-4xl [font-family:var(--font-roboto)]">Hidangan Lainnya</h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm [font-family:var(--font-roboto)] text-[#B02627]">Makanan Rumahan Kaya Cita Rasa</p>

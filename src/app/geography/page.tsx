@@ -10,7 +10,7 @@ export default function GeographyPage() {
 
   return (
     <main className="min-h-screen bg-[#F4F4F4] py-12">
-      <RevealSection as="div" className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8" delay={0.05}>
+      <RevealSection as="div" className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 pt-10" delay={0.05}>
         <h1 className="mb-6 text-center text-3xl font-bold text-black [font-family:var(--font-roboto)]">Letak Geografi Suku Batak</h1>
 
         <div className="rounded-lg bg-white p-6 shadow-sm sm:p-8 lg:p-10">
@@ -30,7 +30,7 @@ export default function GeographyPage() {
         </div>
       </RevealSection>
 
-      <RevealSection as="div" className="mx-auto mt-12 w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8" delay={0.1}>
+      <RevealSection as="div" className="mx-auto mt-12 w-full max-w-7xl px-4 pb-20 sm:px-6 lg:px-8 pt-10" delay={0.1}>
         <div className="flex flex-col lg:flex-row lg:items-start">
           <div className="min-w-0 flex-1 justify-end">
             <InteractiveMap fullBleed={false} />
