@@ -12,6 +12,9 @@
   --font-mono: var(--font-roboto);
   --font-atziluth: var(--font-atziluth);
   --font-roboto-bold: var(--font-roboto-bold);
+  --font-roboto-medium: var(--font-roboto-medium);
+  --font-poppins-regular: var(--font-poppins-regular);
+  --font-poppins-italic: var(--font-poppins-italic);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,6 +28,47 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
+}
+
+/* utility font classes mapped to CSS variables registered via next/font/local */
+.font-roboto-bold {
+  font-family:
+    var(--font-roboto-bold),
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial;
+}
+.font-roboto-medium {
+  font-family:
+    var(--font-roboto-medium),
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial;
+}
+.font-poppins-regular {
+  font-family:
+    var(--font-poppins-regular),
+    "Poppins",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Arial;
+}
+.font-poppins-italic {
+  font-family:
+    var(--font-poppins-italic),
+    "Poppins",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Arial;
+  font-style: italic;
 }
 
 .pattern-scroll {

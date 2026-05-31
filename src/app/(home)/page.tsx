@@ -26,23 +26,24 @@ export default function Home() {
 
       {/* History Section */}
       <RevealSection id="history" className="mx-auto mt-6 w-full max-w-7xl scroll-mt-28 px-4 py-10 sm:mt-8 sm:px-6 sm:py-12 lg:mt-14 lg:px-8 lg:py-24" delay={0.05}>
-        <div className="rounded-3xl bg-[#FFF] p-6 shadow-sm sm:p-8 lg:p-10">
-          <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
-            <div>
-              <h2 className="mt-2 text-3xl font-semibold leading-tight sm:text-4xl text-[#D98F2D]">Sejarah dan Filosofi</h2>
-              <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-[#8F1C1D]">Menjelajahi Warisan Budaya Kuliner Batak Toba</h3>
-              <p className="mt-6 leading-relaxed text-zinc-600">
-                Bagi masyarakat Batak Toba, makanan memiliki peran sentral yang terintegrasi dalam sistem adat istiadat. Hal ini tercermin dalam filosofi Dalihan Na Tolu (DaT) yang menekohkan hubungan timbal balik
-                antarindividu. Di antara berbagai kekayaan kuliner yang dimiliki, Arsik ikan Mas menempati posisi yang paling sakral sebagai representasi identitas budaya Toba.
+        <div className="rounded-3xl bg-[#FFF] p-3 shadow-sm sm:p-4 lg:p-6">
+          <div className="grid items-start gap-4 lg:grid-cols-3 lg:gap-6">
+            <div className="lg:col-span-1">
+              <h2 className="mt-1 text-[22px] sm:text-[28px] md:text-[36px] lg:text-[42px] font-roboto-bold text-[#000000] leading-tight">Sejarah dan Filosofi</h2>
+              <h3 className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[18px] font-roboto-medium uppercase tracking-[0.12em] text-[#D98F2D]">Menjelajahi Warisan Budaya Kuliner Batak Toba</h3>
+              <p className="mt-4 sm:mt-6 leading-relaxed text-[#282F26] text-[14px] sm:text-[16px] md:text-[16px] font-poppins-regular">
+                Bagi masyarakat Batak Toba, makanan memiliki peran sentral yang terintegrasi dalam sistem adat istiadat untuk menciptakan keteraturan dan kerukunan. Hal ini tercermin dalam falsafah{" "}
+                <span className="text-[#B02627] font-poppins-italic text-[14px] sm:text-[16px] md:text-[16px]">Dalihan Na Tolu (DNT)</span>
+                yang menekankan hubungan timbal balik antarindividu.
               </p>
-              <a href="/history" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#8F1C1D] transition-opacity hover:opacity-75">
+              <a href="/history" className="mt-4 inline-flex items-center gap-2 text-[10px] font-poppins-regular text-[#B02627] transition-opacity hover:opacity-75">
                 Telusuri
                 <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </a>
             </div>
-            <div className="self-start w-full max-w-105 lg:max-w-115">
+            <div className="self-start w-full lg:col-span-2">
               <SectionCarousel />
             </div>
           </div>

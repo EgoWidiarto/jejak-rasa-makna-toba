@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Cardo, Poppins, Roboto, Dancing_Script } from "next/font/google";
-import { atziluth, robotoBold } from "./fonts";
+import { atziluth, robotoBold, robotoMedium, poppinsRegular, poppinsItalic } from "./fonts";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import "./globals.css";
@@ -46,7 +46,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${poppins.variable} ${roboto.variable} ${cardo.variable} ${dancingScript.variable} ${atziluth.variable} ${robotoBold.variable} h-full scroll-smooth scroll-pt-24 antialiased`}
+      className={`${poppins.variable} ${roboto.variable} ${cardo.variable} ${dancingScript.variable} ${atziluth.variable} ${robotoBold.variable} ${robotoMedium.variable} ${poppinsRegular.variable} ${poppinsItalic.variable} h-full scroll-smooth scroll-pt-24 antialiased`}
       suppressHydrationWarning>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <Navbar />
