@@ -5,16 +5,20 @@ import Image from "next/image";
 
 const slides = [
   {
-    src: "/images/hero-img-1.png",
+    src: "/images/hero/hero-img-1.png",
     alt: "Kuliner Batak Toba pada jamuan tradisional",
   },
   {
-    src: "/images/hero-img-2.png",
+    src: "/images/hero/hero-img-2.png",
     alt: "Hidangan Batak Toba disajikan dalam suasana budaya",
   },
   {
-    src: "/images/hero-img-3.png",
+    src: "/images/hero/hero-img-3.png",
     alt: "Tampilan kuliner Batak Toba sebagai bagian dari warisan rasa",
+  },
+  {
+    src: "/images/hero/hero-img-4.png",
+    alt: "Hidangan Batak Toba yang menggugah selera dalam konteks budaya",
   },
 ];
 
@@ -41,12 +45,8 @@ export function HeroCarousel() {
           ))}
 
           <div className="absolute left-6 top-6 z-10 max-w-[80%] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] sm:left-8 sm:top-8">
-            <p className="text-sm tracking-[0.08em] sm:text-base" style={{ fontFamily: "var(--font-roboto)", fontWeight: 700 }}>
-              Website Informasi
-            </p>
-            <h1 className="mt-1 text-2xl italic leading-none sm:text-4xl" style={{ fontFamily: "Atziluth" }}>
-              Kuliner Batak Toba
-            </h1>
+            <p className="text-base sm:text-lg md:text-2xl tracking-[0.08em] font-roboto-bold font-bold sm:text-base">Website Informasi</p>
+            <h1 className="mt-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl italic leading-none font-atziluth">Kuliner Batak Toba</h1>
           </div>
 
           <div className="absolute bottom-4 left-0 right-0 z-10 flex justify-center gap-2">

@@ -10,6 +10,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-poppins);
   --font-mono: var(--font-roboto);
+  --font-atziluth: var(--font-atziluth);
+  --font-roboto-bold: var(--font-roboto-bold);
 }
 
 @media (prefers-color-scheme: dark) {
