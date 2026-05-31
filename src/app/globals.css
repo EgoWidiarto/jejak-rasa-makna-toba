@@ -28,6 +28,16 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
+
+  /* Hide scrollbar while keeping scroll functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* utility font classes mapped to CSS variables registered via next/font/local */
@@ -115,16 +125,16 @@ body {
   transform: translate3d(0, 0, 0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  animation: section-carousel-scroll 30s linear infinite;
+  /* Auto animation removed - now manual scroll only */
 }
 
 /* reverse the marquee direction when needed (e.g., adat dishes) */
 .section-carousel-reverse {
-  animation-direction: reverse;
+  /* Animation direction no longer needed */
 }
 
 .section-carousel-track:hover {
-  animation-play-state: paused;
+  /* Hover effect removed - no longer needed with manual scroll */
 }
 
 @keyframes history-carousel-scroll {
