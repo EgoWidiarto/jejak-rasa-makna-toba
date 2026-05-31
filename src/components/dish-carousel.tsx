@@ -33,8 +33,8 @@ export function DishCarousel({ direction = "rtl", items, section }: { direction?
             {itemsList.map((dish, index) => (
               <Link key={`${group}-${dish.title}`} href={`/${finalSection}/${encodeURIComponent(dish.title)}`}>
                 <article className="relative min-h-82 w-60 shrink-0 cursor-pointer self-end rounded-[28px] border border-black/10 bg-white px-5 pb-6 pt-16 shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-all duration-200 hover:mx-3 hover:scale-104 hover:z-9999 origin-bottom sm:min-h-103 sm:w-70 sm:px-6 sm:pb-6 sm:pt-16">
-                  <div className="absolute left-1/2 top-1 z-10 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-white bg-white shadow-lg sm:h-32 sm:w-32">
-                    <Image src={dish.thumbnailSrc} alt={dish.title} fill priority={group === 0 && index === 0} loading="eager" sizes="(max-width: 640px) 128px, 160px" className="rounded-full object-cover" />
+                  <div className="absolute left-1/2 top-0 z-10 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-white bg-white shadow-lg flex items-center justify-center overflow-hidden sm:h-32 sm:w-32">
+                    <Image src={dish.thumbnailSrc} alt={dish.title} fill sizes="128px" priority={group === 0 && index === 0} loading="eager" className="rounded-full object-contain object-center" />
                   </div>
 
                   <div className="flex h-full gap-0 flex-col">
