@@ -4,14 +4,23 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { dishes as traditionDishes } from "@/data/tradition-dishes";
+import { dailyDishes } from "@/data/daily-dishes";
 
 const navigationItems = [
   { label: "Beranda", href: "/" },
   { label: "Sejarah", href: "/history" },
-  { label: "Hidangan", href: "#tradition-dishes" },
+  { label: "Hidangan", href: "#hidangan" },
   { label: "Rempah", href: "#herbs" },
   { label: "Geografi", href: "/geography" },
 ];
+
+function formatDishList(items: typeof traditionDishes) {
+  return items.map((item) => ({
+    title: item.title,
+    href: `/daily-dishes/${encodeURIComponent(item.title)}`,
+  }));
+}
 
 function GlobeIcon() {
   return (
@@ -48,7 +57,11 @@ export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === "/";
-  const visibleNavigationItems = isHomePage ? navigationItems : navigationItems.filter((item) => item.label !== "Hidangan" && item.label !== "Rempah");
+  const traditionalDishLinks = formatDishList(traditionDishes).map((item) => ({
+    ...item,
+    href: `/tradition-dishes/${encodeURIComponent(item.title)}`,
+  }));
+  const dailyDishLinks = formatDishList(dailyDishes);
 
   return (
     <header className="sticky top-0 z-50 border-b border-black/5 bg-white/95 backdrop-blur-sm">
@@ -57,12 +70,48 @@ export function Navbar() {
           <Image src="/icon/logo-jejak-rasa.png" alt="Jejak Rasa Makna Toba" width={140} height={44} priority className="h-10 w-auto" />
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-8 md:flex font-(--font-roboto)">
-          {visibleNavigationItems.map((item) => (
-            <Link key={item.label} href={item.href} className="text-sm font-medium tracking-wide transition-opacity hover:opacity-75" style={{ color: "#8F1C1D" }}>
-              {item.label}
-            </Link>
-          ))}
+        <nav aria-label="Primary" className="hidden items-center gap-8 font-(--font-roboto) md:flex">
+          {navigationItems.map((item) =>
+            item.label === "Hidangan" ? (
+              <div key={item.label} className="group relative">
+                <button type="button" className="cursor-pointer text-sm font-medium tracking-wide transition-opacity hover:opacity-75" style={{ color: "#8F1C1D" }} aria-haspopup="true" aria-expanded="false">
+                  {item.label}
+                </button>
+
+                <div className="invisible absolute left-1/2 top-[calc(100%+1.75rem)] z-50 w-[92vw] max-w-4xl -translate-x-1/2 cursor-pointer opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                  <div className="rounded-[28px] border border-black/10 bg-white px-6 py-6 shadow-[0_18px_60px_rgba(0,0,0,0.12)] sm:px-8 sm:py-7">
+                    <div className="grid gap-6 sm:grid-cols-2">
+                      <div>
+                        <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#B02627]">Traditional Dishes</p>
+                        <div className="grid gap-2">
+                          {traditionalDishLinks.map((dish) => (
+                            <Link key={dish.title} href={dish.href} className="text-sm leading-5 text-[#B02627] transition-colors hover:text-[#6f1617]">
+                              {dish.title}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div>
+                        <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#B02627]">Daily Dishes</p>
+                        <div className="grid gap-2">
+                          {dailyDishLinks.map((dish) => (
+                            <Link key={dish.title} href={dish.href} className="text-sm leading-5 text-[#B02627] transition-colors hover:text-[#6f1617]">
+                              {dish.title}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link key={item.label} href={item.href} className="text-sm font-medium tracking-wide transition-opacity hover:opacity-75" style={{ color: "#8F1C1D" }}>
+                {item.label}
+              </Link>
+            ),
+          )}
         </nav>
 
         <div className="flex items-center gap-3 text-[#8F1C1D]">
@@ -83,7 +132,7 @@ export function Navbar() {
 
       <div className={`border-t border-black/5 bg-white px-4 pb-4 pt-2 md:hidden ${menuOpen ? "block" : "hidden"}`}>
         <nav aria-label="Mobile primary" className="mx-auto flex w-full max-w-7xl flex-col gap-2">
-          {visibleNavigationItems.map((item) => (
+          {navigationItems.map((item) => (
             <Link
               key={item.label}
               href={item.href}
@@ -93,6 +142,34 @@ export function Navbar() {
               {item.label}
             </Link>
           ))}
+
+          <div className="rounded-2xl border border-black/10 bg-white px-3 py-3">
+            <p className="px-1 pb-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#B02627]">Hidangan</p>
+
+            <div className="grid gap-3">
+              <div>
+                <p className="px-1 pb-1 text-xs font-semibold text-[#8F1C1D]">Traditional</p>
+                <div className="grid gap-1">
+                  {traditionalDishLinks.map((item) => (
+                    <Link key={item.title} href={item.href} onClick={() => setMenuOpen(false)} className="rounded-xl px-2 py-1.5 text-sm text-[#8F1C1D] transition-colors hover:bg-[#8F1C1D]/5">
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <p className="px-1 pb-1 text-xs font-semibold text-[#8F1C1D]">Daily</p>
+                <div className="grid gap-1">
+                  {dailyDishLinks.map((item) => (
+                    <Link key={item.title} href={item.href} onClick={() => setMenuOpen(false)} className="rounded-xl px-2 py-1.5 text-sm text-[#8F1C1D] transition-colors hover:bg-[#8F1C1D]/5">
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </nav>
       </div>
     </header>
