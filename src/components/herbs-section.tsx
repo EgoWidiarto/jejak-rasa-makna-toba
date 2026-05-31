@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 type Herb = {
@@ -46,6 +46,19 @@ export function HerbsSection() {
   const [activeHerbName, setActiveHerbName] = useState<string | null>(null);
   const [previousHerbName, setPreviousHerbName] = useState<string | null>(null);
   const [isExiting, setIsExiting] = useState(false);
+
+  useEffect(() => {
+    const herbParam = sessionStorage.getItem("selectedHerb");
+    if (herbParam) {
+      const herb = herbs.find((h) => h.name === herbParam);
+      if (herb) {
+        setActiveHerbName(herbParam);
+        setPreviousHerbName(null);
+        setIsExiting(false);
+      }
+      sessionStorage.removeItem("selectedHerb");
+    }
+  }, []);
 
   const displayedHerb = herbs.find((herb) => herb.name === activeHerbName) || null;
   const isSwitching = previousHerbName !== null && activeHerbName !== null && previousHerbName !== activeHerbName;
