@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { dishes as traditionDishes } from "@/data/tradition-dishes";
 import { dailyDishes } from "@/data/daily-dishes";
 
@@ -59,19 +59,30 @@ export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === "/";
-  const [selectedHerb, setSelectedHerb] = useState<string | null>(null);
+  const router = useRouter();
+  const [selectedHerb, setSelectedHerb] = useState<string | null>(() => {
+    try {
+      if (typeof window === "undefined") return null;
+      return sessionStorage.getItem("selectedHerb");
+    } catch {
+      return null;
+    }
+  });
 
   useEffect(() => {
-    const herbParam = sessionStorage.getItem("selectedHerb");
-    if (herbParam) {
-      setSelectedHerb(herbParam);
-      sessionStorage.removeItem("selectedHerb");
+    // Remove the consumed session key. We intentionally avoid calling setState
+    // inside this effect to prevent cascading renders (state already read
+    // synchronously in the initializer).
+    try {
+      if (typeof window !== "undefined") sessionStorage.removeItem("selectedHerb");
+    } catch {
+      /* ignore */
     }
   }, []);
 
   const handleHerbClick = (herbName: string) => {
     sessionStorage.setItem("selectedHerb", herbName);
-    window.location.href = "#herbs";
+    router.push("#herbs");
   };
   const traditionalDishLinks = formatDishList(traditionDishes).map((item) => ({
     ...item,
@@ -100,7 +111,9 @@ export function Navbar() {
                       <div className="grid gap-8 lg:grid-cols-2">
                         <div>
                           <div>
-                            <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#B02627]">Traditional Dishes</p>
+                            <p className="mb-4 text-xs font-medium text-[#8F1C1D]" style={{ fontFamily: "var(--font-roboto-medium)" }}>
+                              Jelajahi Hidangan
+                            </p>
                             <div className="grid gap-2 mb-6">
                               {traditionalDishLinks.map((dish) => (
                                 <Link key={dish.title} href={dish.href} className="text-sm leading-5 text-[#B02627] font-medium transition-colors hover:text-[#6f1617]" style={{ fontFamily: "var(--font-roboto-medium)" }}>
@@ -111,7 +124,6 @@ export function Navbar() {
                           </div>
 
                           <div>
-                            <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#B02627]">Daily Dishes</p>
                             <div className="grid gap-2">
                               {dailyDishLinks.map((dish) => (
                                 <Link key={dish.title} href={dish.href} className="text-sm leading-5 text-[#B02627] font-medium transition-colors hover:text-[#6f1617]" style={{ fontFamily: "var(--font-roboto-medium)" }}>
@@ -157,7 +169,9 @@ export function Navbar() {
                       <div className="grid gap-8 lg:grid-cols-2">
                         <div>
                           <div>
-                            <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#B02627]">Traditional Dishes</p>
+                            <p className="mb-4 text-xs font-medium text-[#8F1C1D]" style={{ fontFamily: "var(--font-roboto-medium)" }}>
+                              Jelajahi Hidangan
+                            </p>
                             <div className="grid gap-2 mb-6">
                               {traditionalDishLinks.map((dish) => (
                                 <Link key={dish.title} href={dish.href} className="text-sm leading-5 text-[#B02627] font-medium transition-colors hover:text-[#6f1617]" style={{ fontFamily: "var(--font-roboto-medium)" }}>
@@ -168,7 +182,6 @@ export function Navbar() {
                           </div>
 
                           <div>
-                            <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#B02627]">Daily Dishes</p>
                             <div className="grid gap-2">
                               {dailyDishLinks.map((dish) => (
                                 <Link key={dish.title} href={dish.href} className="text-sm leading-5 text-[#B02627] font-medium transition-colors hover:text-[#6f1617]" style={{ fontFamily: "var(--font-roboto-medium)" }}>
