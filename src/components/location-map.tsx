@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import { rawMapSVG } from "@/data/map-svg";
 
@@ -150,17 +151,19 @@ export function LocationMap() {
           <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-white/12 via-transparent to-black/5" />
 
           <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-start px-5 text-center sm:px-10 lg:pl-14">
-            <div className="max-w-xl rounded-[28px] border border-white/25 bg-white/10 p-6 shadow-[0_10px_28px_rgba(0,0,0,0.08)] backdrop-blur-[2px] sm:translate-x-6 sm:p-8 lg:translate-x-10">
+            <div className="pointer-events-auto max-w-xl rounded-[28px] border border-white/25 bg-white/10 p-6 shadow-[0_10px_28px_rgba(0,0,0,0.08)] backdrop-blur-[2px] sm:translate-x-6 sm:p-8 lg:translate-x-10">
               <h2 className="text-3xl font-bold tracking-tight text-[#2C2424] [font-family:var(--font-roboto)] sm:text-5xl">Letak Geografis</h2>
               <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-[#2C2424] [font-family:var(--font-poppins)] sm:text-base">
                 Wilayah Sumatera Utara yang didiami oleh suku Batak yaitu Batak Toba, Batak Karo, Batak Simalungun, Batak Pakpak, Batak Mandailing, Batak Angkola.
               </p>
 
               <div className="mt-7 flex justify-center">
-                <span className="inline-flex items-center gap-2 rounded-lg bg-[#D9D9D9]/80 px-5 py-2.5 text-sm font-normal text-[#B02627] [font-family:var(--font-poppins)]">
+                <Link
+                  href="/geography"
+                  className="pointer-events-auto inline-flex items-center gap-2 rounded-lg bg-[#D9D9D9]/80 px-5 py-2.5 text-sm font-normal text-[#B02627] [font-family:var(--font-poppins)] transition-opacity hover:opacity-80">
                   <span className="h-2.5 w-2.5 rounded-full bg-[#D72C19]" />
-                  Toba ditandai pin merah
-                </span>
+                  Lihat peta budaya
+                </Link>
               </div>
             </div>
           </div>

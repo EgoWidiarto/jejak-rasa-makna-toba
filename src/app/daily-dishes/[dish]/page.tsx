@@ -37,7 +37,7 @@ export default async function DishDetailPage(props: PageProps) {
   return (
     <main className="min-h-screen bg-[#F4F4F4] py-8 sm:py-12 lg:py-16">
       {/* Hero Section */}
-      <RevealSection as="div" className="mx-auto pb-10 pt-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8" delay={0.05}>
+      <RevealSection as="div" className="mx-auto pt-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8" delay={0.05}>
         {/* Title Outside Container */}
         <h1 className="text-2xl text-center font-bold text-[#B02627] sm:text-3xl lg:text-4xl mb-6 [font-family:var(--font-roboto)]">{dish.title}</h1>
 
@@ -48,8 +48,12 @@ export default async function DishDetailPage(props: PageProps) {
               <Image src={dish.fullImgSrc} alt={dish.title} fill priority className="rounded-lg object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 100vw" />
               {/* Bottom Left Text Overlay */}
               <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6">
-                <p className="text-md font-bold leading-tight text-white drop-shadow-lg sm:text-base [font-family:var(--font-roboto)]">Hidangan Sehari-hari</p>
-                <p className="mt-2 text-3xl font-bold text-white drop-shadow-lg sm:text-4xl lg:text-5xl [font-family:var(--font-dancing-script)]">Mari Menjelajahi</p>
+                <p className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] font-roboto-bold leading-tight text-white drop-shadow-2xl" style={{ textShadow: "0 6px 18px rgba(0,0,0,0.75)" }}>
+                  Hidangan Sehari-hari
+                </p>
+                <p className="mt-2 text-[28px] sm:text-[36px] md:text-[48px] lg:text-[70px] leading-tight text-white drop-shadow-2xl font-atziluth" style={{ textShadow: "0 8px 28px rgba(0,0,0,0.8)" }}>
+                  Mari Menjelajahi
+                </p>
               </div>
             </div>
 

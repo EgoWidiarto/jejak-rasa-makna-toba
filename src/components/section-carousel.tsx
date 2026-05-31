@@ -17,7 +17,7 @@ export function SectionCarousel() {
   return (
     <div className="overflow-hidden rounded-2xl">
       <div className="relative aspect-video w-full overflow-hidden">
-        <div className="section-carousel-track flex h-full w-max items-stretch">
+        <div className="history-carousel-track flex h-full w-max items-stretch">
           {[0, 1].map((group) => (
             <div key={group} className="flex h-full items-center gap-3 pr-3 shrink-0">
               {slides.map((slide, i) => (

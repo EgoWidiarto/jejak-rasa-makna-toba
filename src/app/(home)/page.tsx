@@ -33,7 +33,7 @@ export default function Home() {
               <h3 className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[18px] font-roboto-medium uppercase tracking-[0.12em] text-[#D98F2D]">Menjelajahi Warisan Budaya Kuliner Batak Toba</h3>
               <p className="mt-4 sm:mt-6 leading-relaxed text-[#282F26] text-[14px] sm:text-[16px] md:text-[16px] font-poppins-regular">
                 Bagi masyarakat Batak Toba, makanan memiliki peran sentral yang terintegrasi dalam sistem adat istiadat untuk menciptakan keteraturan dan kerukunan. Hal ini tercermin dalam falsafah{" "}
-                <span className="text-[#B02627] font-poppins-italic text-[14px] sm:text-[16px] md:text-[16px]">Dalihan Na Tolu (DNT)</span>
+                <span className="text-[#B02627] font-poppins-italic text-[14px] sm:text-[16px] md:text-[16px]"> Dalihan Na Tolu (DNT)</span>
                 yang menekankan hubungan timbal balik antarindividu.
               </p>
               <a href="/history" className="mt-4 inline-flex items-center gap-2 text-[10px] font-poppins-regular text-[#B02627] transition-opacity hover:opacity-75">

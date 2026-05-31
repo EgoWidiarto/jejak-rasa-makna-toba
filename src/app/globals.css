@@ -125,16 +125,16 @@ body {
   transform: translate3d(0, 0, 0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  /* Auto animation removed - now manual scroll only */
+  /* Manual-scroll only: used by DishCarousel's scroll container. */
 }
 
 /* reverse the marquee direction when needed (e.g., adat dishes) */
 .section-carousel-reverse {
-  /* Animation direction no longer needed */
+  /* No animation here; direction is handled by the component. */
 }
 
 .section-carousel-track:hover {
-  /* Hover effect removed - no longer needed with manual scroll */
+  /* No hover pause needed for manual scroll. */
 }
 
 @keyframes history-carousel-scroll {

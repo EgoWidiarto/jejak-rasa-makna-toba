@@ -37,7 +37,7 @@ export default async function DishDetailPage(props: PageProps) {
   return (
     <main className="min-h-screen bg-[#F4F4F4] py-8 sm:py-12 lg:py-16">
       {/* Hero Section */}
-      <RevealSection as="div" className="mx-auto pb-10 pt-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8" delay={0.05}>
+      <RevealSection as="div" className="mx-auto pt-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8" delay={0.05}>
         {/* Title Outside Container */}
         <h1 className="text-2xl text-center font-bold text-[#B02627] sm:text-3xl lg:text-4xl mb-6 [font-family:var(--font-roboto)]">{dish.title}</h1>
 
@@ -48,8 +48,14 @@ export default async function DishDetailPage(props: PageProps) {
               <Image src={dish.fullImgSrc} alt={dish.title} fill priority className="rounded-lg object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 100vw" />
               {/* Bottom Left Text Overlay */}
               <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6">
-                <p className="text-md font-bold leading-tight text-white drop-shadow-lg sm:text-base [font-family:var(--font-roboto)]">Mari Menjelajahi Warisan Budaya</p>
-                <p className="mt-2 text-3xl font-bold text-white drop-shadow-lg sm:text-4xl lg:text-5xl [font-family:var(--font-dancing-script)]">Mari Menjelajahi</p>
+                <p className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] font-roboto-bold leading-tight text-white drop-shadow-2xl" style={{ textShadow: "0 6px 18px rgba(0,0,0,0.75)" }}>
+                  Mari Menjelajahi Warisan Budaya
+                </p>
+                <p
+                  className="mt-2 text-[28px] sm:text-[36px] md:text-[48px] lg:text-[70px] leading-tight text-white drop-shadow-2xl [font-family:var(--font-atziluth)]"
+                  style={{ textShadow: "0 8px 28px rgba(0,0,0,0.8)" }}>
+                  Mari Menjelajahi
+                </p>
               </div>
             </div>
 
@@ -112,7 +118,7 @@ export default async function DishDetailPage(props: PageProps) {
 
       {/* Steps Section */}
       {dish.recipe && dish.recipe.steps.length > 0 && (
-        <RevealSection as="div" className="mx-auto pt-10 pb-20 w-full max-w-7xl px-4 sm:px-6 lg:px-8 mt-12" delay={0.1}>
+        <RevealSection as="div" className="mx-auto pt-10 pb-8 w-full max-w-7xl px-4 sm:px-6 lg:px-8 mt-12" delay={0.1}>
           <div className="rounded-lg bg-white p-6 sm:p-8 lg:p-10">
             <h3 className="text-lg font-bold text-[#B02627] mb-6 [font-family:var(--font-roboto)]">Cara Membuat:</h3>
             <ol className="space-y-3 text-sm text-black sm:text-base list-decimal list-inside">
@@ -127,7 +133,7 @@ export default async function DishDetailPage(props: PageProps) {
       )}
 
       {/* Navigation / More Dishes Section */}
-      <RevealSection as="div" className="mx-auto pt-10 w-full pb-30 max-w-7xl px-4 sm:px-6 lg:px-8 mt-12" delay={0.12}>
+      <RevealSection as="div" className="mx-auto pt-6 w-full pb-12 max-w-7xl px-4 sm:px-6 lg:px-8 mt-6" delay={0.12}>
         <div className="text-center mb-6">
           <h2 className="text-3xl font-bold leading-tight text-[#B02627] sm:text-4xl [font-family:var(--font-roboto)]">Kenali Lebih Dalam</h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm [font-family:var(--font-roboto)] text-[#B02627]">Hidangan yang Disajikan pada Upacara Adat</p>
