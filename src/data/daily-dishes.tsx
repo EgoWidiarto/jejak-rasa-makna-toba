@@ -1,6 +1,6 @@
 export const dailyDishes = [
   {
-    thumbnailSrc: "/images/daily-dishes/thumbnail/dali-ni-horbo.png",
+    thumbnailSrc: "/images/daily-dishes/thumbnail/dali-ni-horbo-3.png",
     fullImgSrc: "/images/daily-dishes/full-img/dali-ni-horbo.png",
     recipeImgSrc: "/images/daily-dishes/recipe/dali-ni-horbo.png",
     title: "Dali ni Horbo",
@@ -43,7 +43,7 @@ export const dailyDishes = [
       "Mie Gomak adalah mie tradisional khas Batak Toba dari kawasan Danau Toba yang terbuat dari mie lidi. Namanya berasal dari cara penyajiannya yang diambil langsung dengan tangan (digomak). Hidangan berkuah rempah ini biasanya disajikan dengan telur rebus dan menjadi menu sarapan harian favorit masyarakat setempat.",
   },
   {
-    thumbnailSrc: "/images/daily-dishes/thumbnail/sambal-tuktuk.png",
+    thumbnailSrc: "/images/daily-dishes/thumbnail/sambal-tuktuk-2.png",
     fullImgSrc: "/images/daily-dishes/full-img/sambal-tuktuk.png",
     recipeImgSrc: "/images/daily-dishes/recipe/sambal-tuktuk.png",
     title: "Sambal Tuktuk",
@@ -70,7 +70,7 @@ export const dailyDishes = [
       "Sambal yang satu ini merupakan makanan tradisional Batak yang berasal dari Tapanuli. Bahan untuk membuat sambal ini tidak berbeda dengan bahan-bahan pembuat sambal yang lainnya. Salah satu yang membuat berbeda adalah ditambahkannya andaliman ke dalam sambal.",
   },
   {
-    thumbnailSrc: "/images/daily-dishes/thumbnail/sasagun.png",
+    thumbnailSrc: "/images/daily-dishes/thumbnail/sasagun-2.png",
     fullImgSrc: "/images/daily-dishes/full-img/sasagun.png",
     recipeImgSrc: "/images/daily-dishes/recipe/sasagun.png",
     title: "Sasagun",

@@ -1,6 +1,6 @@
 export const dishes = [
   {
-    thumbnailSrc: "/images/tradition-dishes/thumbnail/ikan-arsik.png",
+    thumbnailSrc: "/images/tradition-dishes/thumbnail/ikan-arsik-2.png",
     fullImgSrc: "/images/tradition-dishes/full-img/ikan-arsik.png",
     recipeImgSrc: "/images/tradition-dishes/recipe/ikan-arsik.png",
     title: "Ikan Arsik",
