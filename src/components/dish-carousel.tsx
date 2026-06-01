@@ -25,6 +25,7 @@ function getPreviewText(description: string, wordCount = 30) {
 export function DishCarousel({ direction = "rtl", items, section }: { direction?: "ltr" | "rtl"; items?: DishItem[]; section?: "tradition-dishes" | "daily-dishes" }) {
   const itemsList = items ?? dishes;
   const finalSection = section ?? "tradition-dishes";
+  const showScrollButtons = finalSection !== "daily-dishes";
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scroll = (scrollAmount: number) => {
@@ -40,7 +41,7 @@ export function DishCarousel({ direction = "rtl", items, section }: { direction?
     <div className="overflow-visible py-16 sm:py-20">
       <div className="relative">
         {/* Carousel Container */}
-        <div ref={scrollContainerRef} className="overflow-x-auto overflow-y-visible scrollbar-hide pt-32 sm:pt-36 lg:pt-40">
+        <div ref={scrollContainerRef} className="-mt-10 overflow-x-auto overflow-y-visible scrollbar-hide pt-32 sm:-mt-12 sm:pt-36 lg:-mt-14 lg:pt-40">
           <div className={`section-carousel-track ${direction === "ltr" ? "section-carousel-reverse" : ""} overflow-visible flex w-max items-stretch`}>
             <div className="flex shrink-0 items-stretch gap-4 pr-4 sm:gap-5 sm:pr-5">
               {itemsList.map((dish, index) => (
@@ -64,20 +65,22 @@ export function DishCarousel({ direction = "rtl", items, section }: { direction?
         </div>
 
         {/* Bottom-center scroll buttons */}
-        <div className="mt-6 flex justify-center gap-3">
-          <button
-            onClick={() => scroll(-300)}
-            className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#B02627] bg-white text-sm font-semibold text-[#B02627] shadow-md transition-colors duration-200 hover:bg-[#B02627] hover:text-white"
-            aria-label="Scroll left">
-            &lt;
-          </button>
-          <button
-            onClick={() => scroll(300)}
-            className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#B02627] bg-white text-sm font-semibold text-[#B02627] shadow-md transition-colors duration-200 hover:bg-[#B02627] hover:text-white"
-            aria-label="Scroll right">
-            &gt;
-          </button>
-        </div>
+        {showScrollButtons ? (
+          <div className="mt-6 flex justify-center gap-3">
+            <button
+              onClick={() => scroll(-300)}
+              className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#B02627] bg-white text-sm font-semibold text-[#B02627] shadow-md transition-colors duration-200 hover:bg-[#B02627] hover:text-white"
+              aria-label="Scroll left">
+              &lt;
+            </button>
+            <button
+              onClick={() => scroll(300)}
+              className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#B02627] bg-white text-sm font-semibold text-[#B02627] shadow-md transition-colors duration-200 hover:bg-[#B02627] hover:text-white"
+              aria-label="Scroll right">
+              &gt;
+            </button>
+          </div>
+        ) : null}
       </div>
     </div>
   );

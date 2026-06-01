@@ -46,9 +46,9 @@ export function HeroCarousel() {
             </div>
           ))}
 
-          <div className="absolute left-6 top-6 z-10 max-w-[80%] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] sm:left-8 sm:top-8">
+          <div className="absolute left-12 top-14 z-10 max-w-[80%] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] sm:left-10 sm:top-12">
             <p className="text-base sm:text-lg md:text-2xl tracking-[0.08em] font-roboto-bold font-bold sm:text-base">Website Informasi</p>
-            <h1 className="mt-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl italic leading-none font-atziluth">Kuliner Batak Toba</h1>
+            <h1 className="mt-0 text-4xl sm:text-5xl md:text-6xl lg:text-7xl italic leading-none font-atziluth">Kuliner Batak Toba</h1>
           </div>
 
           <div className="absolute bottom-4 left-0 right-0 z-10 flex justify-center gap-2">
