@@ -10,24 +10,10 @@ const footerLinks = [
     title: "Eksplorasi",
     items: [
       { label: "Beranda", href: "#home" },
-      { label: "Sejarah", href: "#history" },
-      { label: "Hidangan", href: "#course" },
-    ],
-  },
-  {
-    title: "Informasi",
-    items: [
-      { label: "Rempah", href: "#spices" },
-      { label: "Geografi", href: "#geography" },
-      { label: "Kontak", href: "#kontak" },
-    ],
-  },
-  {
-    title: "Tentang",
-    items: [
-      { label: "Jejak Rasa Makna Toba", href: "#home" },
-      { label: "Website interaktif", href: "#home" },
-      { label: "DKV Project", href: "#home" },
+      { label: "Sejarah", href: "/history" },
+      { label: "Hidangan", href: "#tradition-dishes" },
+      { label: "Geografi", href: "/geography" },
+      { label: "Rempah", href: "#herbs" },
     ],
   },
 ];

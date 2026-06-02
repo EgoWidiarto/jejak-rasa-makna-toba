@@ -5,15 +5,19 @@ export const dailyDishes = [
     recipeImgSrc: "/images/daily-dishes/recipe/dali-ni-horbo.png",
     title: "Dali ni Horbo",
     recipe: {
-      ingredients: [],
+      ingredients: ["1 liter susu kerbau segar", "1/2 cangkir air perasan daun pepaya atau air nanas"],
       spice: [],
-      steps: [],
+      steps: [
+        "Susu kerbau cair dimasak pada api dengan suhu kecil sehingga tidak terlalu panas. Kemudian susu cair akan mendidih pelan-pelan dan mengental.",
+        "Lalu dimasukkanlah perasan air daun pepaya kedalam susu kerbau cair yang sedang di masak, hal ini akan membuat susu kerbau cair akan mengental sehingga berbentuk seperti tahu.",
+        "Dalam proses pemasakan biasanya akan muncul buih-buih pada bagian atas susu. Buih-buih ini harus diambil sedikit demi sedikit hingga perlahan-lahan susunya akan mengental.",
+      ],
     },
     description:
       'Dali Ni Horbo (atau Bagot Horbo) adalah "keju" tradisional Batak Toba yang terbuat dari susu kerbau yang diolah hingga bertekstur lembut seperti tahu. Proses pengentalannya dilakukan secara alami dengan memasak susu bersama air daun pepaya, yang juga memberikan rona kehijauan. Hidangan warisan leluhur ini dapat disantap langsung atau dimasak kembali dengan bumbu arsik yang kaya rempah.',
   },
   {
-    thumbnailSrc: "/images/daily-dishes/thumbnail/mie-gomak.png",
+    thumbnailSrc: "/images/daily-dishes/thumbnail/mie-gomak-3.png",
     fullImgSrc: "/images/daily-dishes/full-img/mie-gomak.png",
     recipeImgSrc: "/images/daily-dishes/recipe/mie-gomak.png",
     title: "Mie Gomak",

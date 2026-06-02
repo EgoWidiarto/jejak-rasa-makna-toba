@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRef, useState, type MouseEvent } from "react";
 
 const historySlides = [
   {
@@ -29,20 +30,65 @@ const historySlides = [
 ];
 
 export function HistoryCarousel() {
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
+    if (!carouselRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - carouselRef.current.offsetLeft);
+    setScrollLeft(carouselRef.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (!isDragging || !carouselRef.current) return;
+    e.preventDefault(); // Mencegah highlight text atau perilaku default lainnya
+    const x = e.pageX - carouselRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Angka 2 adalah kecepatan scroll
+    carouselRef.current.scrollLeft = scrollLeft - walk;
+  };
+
   return (
-    <div className="overflow-x-hidden overflow-y-visible pb-16 sm:pb-20">
-      <div className="section-carousel-track section-carousel-reverse overflow-visible flex w-max items-start gap-4">
+    <div
+      ref={carouselRef}
+      onMouseDown={handleMouseDown}
+      onMouseLeave={handleMouseLeave}
+      onMouseUp={handleMouseUp}
+      onMouseMove={handleMouseMove}
+      className="overflow-x-auto overflow-y-visible pb-16 sm:pb-20 select-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+      style={{ cursor: isDragging ? "grabbing" : "grab" }}>
+      {/* Container flex diubah jadi w-max agar bisa di-scroll secara natural */}
+      <div className="flex w-max items-start gap-4 px-4 sm:px-6 lg:px-8">
         {[0, 1].map((group) => (
-          <div key={group} className="flex items-start gap-4 shrink-0">
+          <div key={group} className="flex items-start gap-4 shrink-0 pointer-events-none">
             {historySlides.map((slide, i) => (
               <div key={`${group}-${slide.src}-${i}`} className="flex h-107.5 w-[clamp(220px,28vw,320px)] shrink-0 flex-col overflow-hidden rounded-[22px] border border-zinc-100 bg-white shadow-md sm:h-117.5 lg:h-125">
                 <div className="px-3 pt-3 sm:px-4 sm:pt-4">
                   <div className="relative aspect-4/3 w-full overflow-hidden rounded-[18px]">
-                    <Image src={slide.src} alt={slide.alt} fill priority={group === 0 && i === 0} loading="eager" sizes="(max-width: 768px) 100vw, 320px" className="object-cover" />
+                    <Image
+                      src={slide.src}
+                      alt={slide.alt}
+                      fill
+                      priority={group === 0 && i === 0}
+                      loading="eager"
+                      sizes="(max-width: 768px) 100vw, 320px"
+                      className="object-cover"
+                      draggable={false} // Mencegah ghost drag bawaan browser pada gambar
+                    />
                   </div>
                 </div>
                 <div className="flex flex-1 items-start px-4 py-4 sm:px-5 sm:py-5">
-                  <p className="text-sm text-center leading-relaxed text-zinc-600 [font-family:var(--font-poppins)]">{slide.description}</p>
+                  <p className="lg:text-sm text-center text-xs leading-relaxed text-zinc-600 [font-family:var(--font-poppins)]">{slide.description}</p>
                 </div>
               </div>
             ))}

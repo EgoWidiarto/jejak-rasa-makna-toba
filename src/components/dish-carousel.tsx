@@ -47,8 +47,8 @@ export function DishCarousel({ direction = "rtl", items, section }: { direction?
               {itemsList.map((dish, index) => (
                 <Link key={dish.title} href={`/${finalSection}/${encodeURIComponent(dish.title)}`}>
                   <article className="relative min-h-82 w-60 shrink-0 cursor-pointer self-end rounded-[28px] border border-black/10 bg-white px-5 pb-6 pt-16 shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-all duration-300 hover:mx-3 hover:scale-110 hover:shadow-lg hover:-translate-y-8 origin-bottom sm:min-h-103 sm:w-70 sm:px-6 sm:pb-6 sm:pt-16 sm:hover:mx-4 sm:hover:-translate-y-10">
-                    <div className="absolute left-1/2 top-0 z-10 h-32 w-32 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border-4 border-white bg-white shadow-lg flex items-center justify-center sm:h-32 sm:w-32">
-                      <Image src={dish.thumbnailSrc} alt={dish.title} fill sizes="128px" priority={index === 0} loading={index === 0 ? "eager" : "lazy"} className="rounded-full object-contain object-center" />
+                    <div className="absolute left-1/2 top-0 z-10 h-32 w-32 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full border-4 border-white bg-white shadow-lg flex items-center justify-center sm:h-32 sm:w-32">
+                      <Image src={dish.thumbnailSrc} alt={dish.title} fill sizes="220px" priority={index === 0} loading={index === 0 ? "eager" : "lazy"} className="object-center" />
                     </div>
 
                     <div className="flex h-full flex-col gap-0">
