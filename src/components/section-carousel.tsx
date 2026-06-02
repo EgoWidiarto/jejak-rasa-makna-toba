@@ -16,14 +16,15 @@ const slides = [
 export function SectionCarousel() {
   return (
     <div className="overflow-hidden rounded-2xl">
-      <div className="relative aspect-video w-full overflow-hidden">
+      {/* fixed small-screen height so carousel doesn't become excessively tall */}
+      <div className="relative w-full overflow-hidden h-44 sm:h-56 lg:h-auto">
         <div className="history-carousel-track flex h-full w-max items-stretch">
           {[0, 1].map((group) => (
             <div key={group} className="flex h-full items-center gap-3 pr-3 shrink-0">
               {slides.map((slide, i) => (
-                <div key={`${group}-${slide.src}-${i}`} className="relative aspect-video w-[clamp(300px,50vw,600px)] shrink-0 overflow-hidden rounded-2xl bg-zinc-50">
-                  {/* card div is the moving block; image fills the card */}
-                  <Image src={slide.src} alt={slide.alt} fill priority={group === 0 && i === 0} loading="eager" sizes="(max-width: 768px) 100vw, 800px" className="object-cover" />
+                <div key={`${group}-${slide.src}-${i}`} className="relative h-full lg:aspect-video w-[clamp(200px,50vw,600px)] shrink-0 overflow-hidden rounded-2xl bg-zinc-50 p-2 lg:p-0">
+                  {/* card fills the track height on small screens; uses video aspect on lg+ */}
+                  <Image src={slide.src} alt={slide.alt} width={800} height={450} priority={group === 0 && i === 0} sizes="(max-width: 768px) 100vw, 800px" className="object-cover w-full h-full rounded-xl" />
                 </div>
               ))}
             </div>

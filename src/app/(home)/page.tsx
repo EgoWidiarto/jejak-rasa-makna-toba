@@ -26,14 +26,14 @@ export default function Home() {
 
       {/* History Section */}
       <RevealSection id="history" className="mx-auto mt-6 w-full max-w-7xl scroll-mt-28 px-4 pb-10 sm:mt-8 sm:px-6 sm:pb-12 lg:mt-14 lg:px-8 lg:pb-24 pt-10" delay={0.05}>
-        <div className="rounded-3xl bg-[#FFF] p-3 shadow-sm sm:p-4 lg:p-6">
-          <div className="grid items-start gap-4 lg:grid-cols-3 lg:items-stretch lg:gap-6">
-            <div className="lg:col-span-1 flex h-full flex-col justify-center">
-              <h2 className="mt-1 text-[22px] sm:text-[28px] md:text-[36px] lg:text-[42px] font-roboto-bold text-[#000000] leading-tight">Sejarah dan Filosofi</h2>
-              <h3 className="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[16px] font-roboto-bold tracking-[0.04em] text-[#D98F2D]">Menjelajahi Warisan Budaya Kuliner Batak Toba</h3>
-              <p className="mt-4 sm:mt-6 leading-relaxed text-[#282F26] text-[14px] sm:text-[16px] md:text-[16px] font-poppins-regular">
+        <div className="rounded-3xl overflow-hidden bg-[#FFF] p-4 shadow-sm sm:p-5 lg:p-6">
+          <div className="grid items-start gap-2 lg:grid-cols-3 lg:items-stretch lg:gap-6">
+            <div className="min-w-0 lg:col-span-1 flex flex-col justify-center lg:h-full pr-0 lg:pr-4">
+              <h2 className="mt-1 text-[16px] sm:text-[22px] md:text-[30px] lg:text-[40px] xl:text-[42px] font-roboto-bold text-[#000000] leading-tight">Sejarah dan Filosofi</h2>
+              <h3 className="text-[11px] sm:text-[13px] md:text-[15px] lg:text-[17px] xl:text-[17px] font-roboto-bold tracking-[0.04em] text-[#D98F2D]">Menjelajahi Warisan Budaya Kuliner Batak Toba</h3>
+              <p className="mt-4 sm:mt-6 lg:mt-4 leading-relaxed text-[#282F26] text-[10px] sm:text-[13px] md:text-[13px] lg:text-[13px] xl:text-[14px] font-poppins-regular whitespace-normal wrap-break-word">
                 Bagi masyarakat Batak Toba, makanan memiliki peran sentral yang terintegrasi dalam sistem adat istiadat untuk menciptakan keteraturan dan kerukunan. Hal ini tercermin dalam falsafah{" "}
-                <span className="text-[#B02627] font-poppins-italic text-[14px] sm:text-[16px] md:text-[16px]"> Dalihan Na Tolu (DNT) </span>
+                <span className="text-[#B02627] font-poppins-italic text-[10px] sm:text-[13px] md:text-[13px]"> Dalihan Na Tolu (DNT) </span>
                 yang menekankan hubungan timbal balik antarindividu.
               </p>
               <a href="/history" className="mt-4 inline-flex items-center gap-2 text-[10px] font-poppins-regular text-[#B02627] transition-opacity hover:opacity-75">
@@ -43,8 +43,10 @@ export default function Home() {
                 </svg>
               </a>
             </div>
-            <div className="w-full lg:col-span-2 lg:self-stretch">
-              <SectionCarousel />
+            <div className="min-w-0 w-full h-full lg:col-span-2 lg:self-stretch">
+              <div className="min-w-0 h-full lg:aspect-auto">
+                <SectionCarousel />
+              </div>
             </div>
           </div>
         </div>
