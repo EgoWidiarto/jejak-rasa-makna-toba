@@ -17,12 +17,6 @@ const navigationItems = [
   { label: "Geografi", href: "/geography" },
 ];
 
-function formatDishList(items: typeof traditionDishes) {
-  return items.map((item) => ({
-    title: item.title,
-    href: `/daily-dishes/${encodeURIComponent(item.title)}`,
-  }));
-}
 
 function GlobeIcon() {
   return (
@@ -96,11 +90,14 @@ export function Navbar() {
     router.push("#herbs");
   };
 
-  const traditionalDishLinks = formatDishList(traditionDishes).map((item) => ({
-    ...item,
-    href: `/tradition-dishes/${encodeURIComponent(item.title)}`,
+  const traditionalDishLinks = traditionDishes.map((item) => ({
+    title: item.title,
+    href: `/tradition-dishes/${item.slug}`,
   }));
-  const dailyDishLinks = formatDishList(dailyDishes);
+  const dailyDishLinks = dailyDishes.map((item) => ({
+    title: item.title,
+    href: `/daily-dishes/${item.slug}`,
+  }));
 
   // PERBAIKAN: Melepas focus saat diklik agar tidak ditahan oleh "group-focus-within"
   const toggleDropdown = (e: React.MouseEvent<HTMLButtonElement>, label: string) => {

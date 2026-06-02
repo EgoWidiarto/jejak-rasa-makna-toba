@@ -12,14 +12,14 @@ interface PageProps {
 
 export async function generateStaticParams() {
   return dishes.map((dish) => ({
-    dish: encodeURIComponent(dish.title),
+    dish: dish.slug,
   }));
 }
 
 export default async function DishDetailPage(props: PageProps) {
   const params = await props.params;
-  const dishTitle = decodeURIComponent(params.dish);
-  const dish = dishes.find((d) => d.title === dishTitle);
+  const dishSlug = params.dish;
+  const dish = dishes.find((d) => d.slug === dishSlug);
 
   if (!dish) {
     return (

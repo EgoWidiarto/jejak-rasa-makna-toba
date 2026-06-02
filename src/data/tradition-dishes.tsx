@@ -4,6 +4,7 @@ export const dishes = [
     fullImgSrc: "/images/tradition-dishes/full-img/ikan-arsik.png",
     recipeImgSrc: "/images/tradition-dishes/recipe/ikan-arsik.png",
     title: "Ikan Arsik",
+    slug: "ikan-arsik",
     recipe: {
       ingredients: [
         "1,5 kilo ikan mas tanpa membuang sisiknya",
@@ -43,6 +44,7 @@ export const dishes = [
     fullImgSrc: "/images/tradition-dishes/full-img/dekke-natinombur.png",
     recipeImgSrc: "/images/tradition-dishes/recipe/dekke-natinombur.png",
     title: "Dekke Natinombur",
+    slug: "dekke-natinombur",
     recipe: {
       ingredients: [
         "1 kg Ikan Nila atau Ikan Mas (bersihkan, lumuri garam dan jeruk nipis)",
@@ -70,6 +72,7 @@ export const dishes = [
     fullImgSrc: "/images/tradition-dishes/full-img/manuk-napinadar.png",
     recipeImgSrc: "/images/tradition-dishes/recipe/manuk-napinadar.png",
     title: "Manuk Napinadar",
+    slug: "manuk-napinadar",
     recipe: {
       ingredients: [
         "1 ekor ayam kampung (bersihkan, belah dada/potong 4)",
@@ -104,6 +107,7 @@ export const dishes = [
     fullImgSrc: "/images/tradition-dishes/full-img/naniura.png",
     recipeImgSrc: "/images/tradition-dishes/recipe/naniura.png",
     title: "Naniura",
+    slug: "naniura",
     recipe: {
       ingredients: [
         "1 kg Ikan mas segar (pilih yang segar, bersihkan, ambil dagingnya saja atau potong sela-sela kepala, buang tulang jika perlu)",
@@ -139,6 +143,7 @@ export const dishes = [
     fullImgSrc: "/images/tradition-dishes/full-img/lapet.png",
     recipeImgSrc: "/images/tradition-dishes/recipe/lapet.png",
     title: "Lapet",
+    slug: "lapet",
     recipe: {
       ingredients: [
         "500 gram beras putih",
@@ -171,6 +176,7 @@ export const dishes = [
     fullImgSrc: "/images/tradition-dishes/full-img/itak-gurgur.png",
     recipeImgSrc: "/images/tradition-dishes/recipe/itak-gurgur.png",
     title: "Itak Gurgur",
+    slug: "itak-gurgur",
     recipe: {
       ingredients: [
         "250 gram tepung beras (untuk 4 porsi)",

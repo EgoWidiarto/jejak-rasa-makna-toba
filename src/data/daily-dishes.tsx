@@ -4,6 +4,7 @@ export const dailyDishes = [
     fullImgSrc: "/images/daily-dishes/full-img/dali-ni-horbo.png",
     recipeImgSrc: "/images/daily-dishes/recipe/dali-ni-horbo.png",
     title: "Dali ni Horbo",
+    slug: "dali-ni-horbo",
     recipe: {
       ingredients: ["1 liter susu kerbau segar", "1/2 cangkir air perasan daun pepaya atau air nanas"],
       spice: [],
@@ -21,6 +22,7 @@ export const dailyDishes = [
     fullImgSrc: "/images/daily-dishes/full-img/mie-gomak.png",
     recipeImgSrc: "/images/daily-dishes/recipe/mie-gomak.png",
     title: "Mie Gomak",
+    slug: "mie-gomak",
     recipe: {
       ingredients: [
         "300 g mie lidi",
@@ -51,6 +53,7 @@ export const dailyDishes = [
     fullImgSrc: "/images/daily-dishes/full-img/sambal-tuktuk.png",
     recipeImgSrc: "/images/daily-dishes/recipe/sambal-tuktuk.png",
     title: "Sambal Tuktuk",
+    slug: "sambal-tuktuk",
     recipe: {
       ingredients: [
         "1 sdm Andaliman",
@@ -78,6 +81,7 @@ export const dailyDishes = [
     fullImgSrc: "/images/daily-dishes/full-img/sasagun.png",
     recipeImgSrc: "/images/daily-dishes/recipe/sasagun.png",
     title: "Sasagun",
+    slug: "sasagun",
     recipe: {
       ingredients: ["2 kg Tepung beras kering (bisa disangrai sebentar dulu agar lebih renyah)", "700 gr - 1 kg Kelapa parut (pilih yang muda/setengah tua)", "Gula pasir secukupnya (opsional)", "Garam secukupnya"],
       spice: [],
