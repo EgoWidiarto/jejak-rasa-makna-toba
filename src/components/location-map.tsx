@@ -25,7 +25,7 @@ export function LocationMap() {
   });
 
   const dragThreshold = 5;
-  const mapScaleMultiplier = 2.4;
+  const mapScaleMultiplier = 2;
   const tobaPinPosition = { x: 450, y: 650 };
 
   const handleMapPointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
@@ -87,9 +87,10 @@ export function LocationMap() {
 
   return (
     <section id="location" className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-      <div className="overflow-hidden rounded-[28px] border border-black/5 p-3 sm:p-4 lg:p-5">
+      <div className="overflow-hidden rounded-[28px]">
+        {/* PERUBAHAN DI SINI: Menggunakan h-[70vh] min-h-[420px] max-h-[700px] dan membuang lg:h-191.75 */}
         <div
-          className="relative min-h-124 overflow-hidden rounded-3xl bg-[#ddebf3] select-none"
+          className="relative w-full h-[70vh] min-h-[420px] max-h-[700px] overflow-hidden rounded-3xl bg-[#ffffff] select-none"
           style={{ cursor: isDragging ? "grabbing" : "grab" }}
           onPointerDown={handleMapPointerDown}
           onPointerMove={handleMapPointerMove}
@@ -99,10 +100,17 @@ export function LocationMap() {
             className="absolute left-1/2 top-1/2"
             style={{
               transform: `translate(calc(-50% + ${panPosition.x}px), calc(-50% + ${panPosition.y}px))`,
-              width: "240%",
-              height: "240%",
+              width: "190%",
+              height: "190%",
             }}>
-            <svg width="911" height="1413" viewBox="0 0 911 1413" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-full w-full object-contain" style={{ pointerEvents: isDragging ? "none" : "auto" }}>
+            <svg
+              width="911"
+              height="1413"
+              viewBox="0 0 911 1413"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-full w-full object-contain opacity-65 saturate-75 brightness-95 contrast-90"
+              style={{ pointerEvents: isDragging ? "none" : "auto" }}>
               {Object.entries(rawMapSVG).map(([regionKey, regionData]) => {
                 const region = regionData as RegionData;
 
@@ -117,7 +125,7 @@ export function LocationMap() {
             </svg>
           </div>
 
-          <div className="pointer-events-none absolute left-1/2 top-1/2 z-0" style={{ transform: `translate(calc(-50% + ${panPosition.x}px), calc(-50% + ${panPosition.y}px))`, width: "240%", height: "240%" }}>
+          <div className="pointer-events-none absolute left-1/2 top-1/2 z-0" style={{ transform: `translate(calc(-50% + ${panPosition.x}px), calc(-50% + ${panPosition.y}px))`, width: "190%", height: "190%" }}>
             <svg width="911" height="1413" viewBox="0 0 911 1413" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-full w-full overflow-visible object-contain">
               <g transform={`translate(${tobaPinPosition.x - 72} ${tobaPinPosition.y - 148})`}>
                 <g filter="url(#filter0_d_523_2979)">
@@ -150,18 +158,17 @@ export function LocationMap() {
 
           <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-white/12 via-transparent to-black/5" />
 
-          <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-start px-5 text-center sm:px-10 lg:pl-14">
-            <div className="pointer-events-auto max-w-xl rounded-[28px] border border-white/25 bg-white/10 p-6 shadow-[0_10px_28px_rgba(0,0,0,0.08)] backdrop-blur-[2px] sm:translate-x-6 sm:p-8 lg:translate-x-10">
+          <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center px-5 text-center sm:px-10 lg:px-14">
+            <div className="pointer-events-auto max-w-xl p-0 lg:max-w-2xl">
               <h2 className="text-3xl font-bold tracking-tight text-[#2C2424] [font-family:var(--font-roboto)] sm:text-5xl">Letak Geografis</h2>
-              <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-[#2C2424] [font-family:var(--font-poppins)] sm:text-base">
+              <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-[#2C2424] [font-family:var(--font-poppins)] sm:text-base lg:max-w-3xl">
                 Wilayah Sumatera Utara yang didiami oleh suku Batak yaitu Batak Toba, Batak Karo, Batak Simalungun, Batak Pakpak, Batak Mandailing, Batak Angkola.
               </p>
 
               <div className="mt-7 flex justify-center">
                 <Link
                   href="/geography"
-                  className="pointer-events-auto inline-flex items-center gap-2 rounded-lg bg-[#D9D9D9]/80 px-5 py-2.5 text-sm font-normal text-[#B02627] [font-family:var(--font-poppins)] transition-opacity hover:opacity-80">
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#D72C19]" />
+                  className="pointer-events-auto inline-flex items-center gap-2 rounded-[15px] bg-[#D9D9D9]/80 px-5 py-2.5 text-sm font-normal text-[#B02627] [font-family:var(--font-poppins)] transition-opacity hover:opacity-80">
                   Lihat peta budaya
                 </Link>
               </div>
