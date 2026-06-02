@@ -42,7 +42,7 @@ export default function GeographyPage() {
           </div>
 
           <div className="w-full lg:w-70 lg:pt-0">
-            <h2 className="text-2xl font-bold text-black [font-family:var(--font-roboto)] lg:sticky lg:top-3 lg:mt-0">Peta Interaktif Persebaran Suku Batak</h2>
+            <h2 className="text-4xl text-end font-bold text-black [font-family:var(--font-roboto)] lg:sticky lg:top-3 lg:mt-0">Persebaran Sub-etnis Batak di Sumatera</h2>
           </div>
         </div>
       </RevealSection>

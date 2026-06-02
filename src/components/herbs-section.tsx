@@ -18,32 +18,33 @@ const herbs: Herb[] = [
   {
     name: "Kecombrang",
     src: "/images/herbs/kecombrang.png",
-    description: "Kecombrang memberi aroma segar khas pada masakan Batak Toba dan sering dipadukan untuk memperkaya rasa ikan serta olahan berkuah.",
+    description: "Kecombrang  (Etlingera elatior) adalah sejenis tumbuhan rempah yang bunga, buah, serta bijinya dimanfaatkan sebagai bahan sayuran. ",
   },
   {
     name: "Asam Gelugur",
     src: "/images/herbs/asam-gelugur.png",
-    description: "Asam gelugur digunakan untuk memberi rasa asam yang ringan dan menyeimbangkan cita rasa rempah kuat pada hidangan tradisional.",
+    description: "Asam gelugur, disebut juga asam potong biasanya dimanfaatkan untuk bumbu masak, bahan perasa minuman, dan bahan dasar pengobatan.",
   },
   {
     name: "Asam Jungga",
     src: "/images/herbs/asam-jungga.png",
-    description: "Asam jungga dikenal sebagai penambah rasa asam alami yang membuat rasa masakan menjadi lebih segar dan berlapis.",
+    description: "Jeruk jungga atau disebut juga dengan utte junga atau asam jungga adalah sejenis jeruk purut. Hanya saja jeruk jungga memiliki tingkat keasaman yang tinggi.",
   },
   {
     name: "Asam Cikala",
     src: "/images/herbs/asam-cikala.png",
-    description: "Asam cikala umum dipakai dalam masakan Batak untuk menghadirkan rasa asam khas dan memperkuat karakter kuah berbumbu.",
+    description: "Asam cikala adalah buah dari tanaman kecombrang yang  digunakan dalam masakan tradisional Batak Toba, untuk memberikan rasa asam segar.",
   },
   {
     name: "Bawang Batak / Lokio",
     src: "/images/herbs/bawang-batak.png",
-    description: "Lokio atau bawang Batak memberi wangi bawang yang tajam, gurih, dan menjadi penyeimbang penting dalam campuran rempah tradisional.",
+    description: "Lokio memiliki nama ilmiah  Allium schoenoprasum. Lokio memiliki bentuk yang hampir sama  seperti bawang, namun memiliki tangkai yang lebih panjang.",
   },
 ];
 
 export function HerbsSection() {
-  const [activeHerbName, setActiveHerbName] = useState<string | null>(null);
+  // PERUBAHAN: Set default state ke "Andaliman"
+  const [activeHerbName, setActiveHerbName] = useState<string | null>("Andaliman");
   const [previousHerbName, setPreviousHerbName] = useState<string | null>(null);
   const [isExiting, setIsExiting] = useState(false);
 
@@ -111,7 +112,8 @@ export function HerbsSection() {
 
         {/* Image Container */}
         {displayedHerb && (
-          <div key={displayedHerb.name} className={`${isSwitching ? "herb-image-cross-fade" : isExiting ? "herb-image-exit" : "herb-image-enter"} relative w-md aspect-square rounded-lg overflow-hidden`}>
+          <div key={displayedHerb.name} className={`${isSwitching ? "herb-image-cross-fade" : isExiting ? "herb-image-exit" : "herb-image-enter"} relative w-full sm:w-md aspect-square rounded-lg overflow-hidden`}>
+            {/* Saya tambahkan w-full sm:w-md agar gambar responsive di mobile */}
             <Image src={displayedHerb.src} alt={displayedHerb.name} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 320px" priority />
           </div>
         )}

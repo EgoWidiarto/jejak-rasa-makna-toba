@@ -135,8 +135,8 @@ export default async function DishDetailPage(props: PageProps) {
       {/* Navigation / More Dishes Section */}
       <RevealSection as="div" className="mx-auto pt-10 w-full pb-30 max-w-7xl px-4 sm:px-6 lg:px-8 mt-12" delay={0.12}>
         <div className="text-center mb-6">
-          <h2 className="text-3xl font-bold leading-tight text-[#B02627] sm:text-4xl [font-family:var(--font-roboto)]">Hidangan Lainnya</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm [font-family:var(--font-roboto)] text-[#B02627]">Makanan Rumahan Kaya Cita Rasa</p>
+          <h2 className="text-3xl -mb-3 font-bold leading-tight text-[#B02627] sm:text-4xl [font-family:var(--font-roboto)]">Kenali Lebih Dalam</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-2xl [font-family:var(--font-roboto)] text-[#B02627]">Hidangan yang Disajikan sehari-hari</p>
         </div>
 
         <DishCarousel direction="ltr" items={dailyDishes} section="daily-dishes" />

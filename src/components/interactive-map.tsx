@@ -207,9 +207,9 @@ export default function InteractiveMap({ fullBleed = true }: InteractiveMapProps
       )}
 
       {/* Interactive Map SVG */}
-      <div className={fullBleed ? "w-screen relative left-1/2 right-1/2 ml-[-50vw] mr-[-50vw]" : "w-full relative"} style={fullBleed ? { transform: "skewY(-2deg)" } : undefined}>
+      <div className="w-screen relative left-1/2 right-1/2 ml-[-50vw] mr-[-50vw]">
         <div
-          className="relative h-[85vh] overflow-hidden select-none"
+          className="relative h-[80vh] overflow-hidden select-none"
           style={{ cursor: isDragging ? "grabbing" : "grab" }}
           onPointerDown={handleMapPointerDown}
           onPointerMove={handleMapPointerMove}
@@ -219,10 +219,10 @@ export default function InteractiveMap({ fullBleed = true }: InteractiveMapProps
             className="absolute left-1/2 top-1/2"
             style={{
               transform: `translate(calc(-50% + ${panPosition.x}px), calc(-50% + ${panPosition.y}px))`,
-              width: "145%",
-              height: "145%",
+              width: "99%",
+              height: "99%",
             }}>
-            <svg width="911" height="1413" viewBox="0 0 911 1413" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full object-contain" style={{ pointerEvents: isDragging ? "none" : "auto" }}>
+            <svg width="911" height="1213" viewBox="0 0 911 1413" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full object-contain" style={{ pointerEvents: isDragging ? "none" : "auto" }}>
               {/* Render all regions */}
               {Object.entries(rawMapSVG).map(([regionKey, regionData]) => {
                 const region = regionData as RegionData;
