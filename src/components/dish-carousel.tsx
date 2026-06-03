@@ -53,7 +53,7 @@ export function DishCarousel({ direction = "rtl", items, section }: { direction?
                     </div>
 
                     <div className="flex h-full flex-col gap-0">
-                      <h3 className="mt-3 min-h-10 text-center text-[1rem] font-semibold text-[#D93B2D] sm:min-h-10">{dish.title}</h3>
+                      <h3 className="mt-3 min-h-10 text-center text-[1rem] font-semibold text-[#B02627] sm:min-h-10">{dish.title}</h3>
                       <p className="min-h-18 text-center text-[0.7rem] leading-relaxed text-zinc-600 sm:min-h-18 sm:text-[0.8rem]" suppressHydrationWarning>
                         {getPreviewText(dish.description)}
                       </p>

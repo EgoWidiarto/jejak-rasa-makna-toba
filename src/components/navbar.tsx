@@ -104,7 +104,7 @@ export function Navbar() {
     e.currentTarget.blur(); // Menghapus efek focus pada button
 
     // Jika ukuran layar lg/xl, abaikan perubahan state karena akan diurus oleh hover CSS
-    if (typeof window !== "undefined" && window.innerWidth >= 1024) {
+    if (typeof window !== "undefined" && window.innerWidth >= 1280) {
       return;
     }
     setOpenDropdown(openDropdown === label ? null : label);

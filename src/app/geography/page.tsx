@@ -35,14 +35,14 @@ export default function GeographyPage() {
         </div>
       </RevealSection>
 
-      <RevealSection as="div" className="mx-auto mt-12 w-full max-w-7xl px-4 pb-20 sm:px-6 lg:px-8 pt-10" delay={0.1}>
+      <RevealSection as="div" className="mx-auto mt-12 w-full max-w-5xl px-4 pb-20 sm:px-6 lg:px-8 pt-10" delay={0.1}>
         <div className="flex flex-col lg:flex-row lg:items-start">
           <div className="min-w-0 flex-1 justify-end">
             <InteractiveMap fullBleed={false} />
           </div>
 
           <div className="w-full lg:w-70 lg:pt-0">
-            <h2 className="text-4xl text-end font-bold text-black [font-family:var(--font-roboto)] lg:sticky lg:top-3 lg:mt-0">Persebaran Sub-etnis Batak di Sumatera</h2>
+            <h2 className="text-[2.4rem] text-end font-bold text-black [font-family:var(--font-roboto)] lg:sticky lg:top-3 lg:mt-0">Persebaran Sub-etnis Batak di Sumatera</h2>
           </div>
         </div>
       </RevealSection>
