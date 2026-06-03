@@ -11,6 +11,8 @@ type DishItem = {
   title: string;
   description: string;
   slug: string;
+  imageScale?: string;
+  imageScaleSm?: string;
 };
 
 function getPreviewText(description: string, wordCount = 30) {
@@ -24,7 +26,7 @@ function getPreviewText(description: string, wordCount = 30) {
 }
 
 export function DishCarousel({ direction = "rtl", items, section }: { direction?: "ltr" | "rtl"; items?: DishItem[]; section?: "tradition-dishes" | "daily-dishes" }) {
-  const itemsList = items ?? dishes;
+  const itemsList = (items ?? dishes) as DishItem[];
   const finalSection = section ?? "tradition-dishes";
   const showScrollButtons = finalSection !== "daily-dishes";
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -45,22 +47,69 @@ export function DishCarousel({ direction = "rtl", items, section }: { direction?
         <div ref={scrollContainerRef} className="-mt-10 overflow-x-auto overflow-y-visible scrollbar-hide pt-32 sm:-mt-12 sm:pt-36 lg:-mt-14 lg:pt-40">
           <div className={`section-carousel-track ${direction === "ltr" ? "section-carousel-reverse" : ""} overflow-visible flex w-max items-stretch`}>
             <div className="flex shrink-0 items-stretch gap-4 pr-4 sm:gap-5 sm:pr-5">
-              {itemsList.map((dish, index) => (
-                <Link key={dish.title} href={`/${finalSection}/${dish.slug}`}>
-                  <article className="relative min-h-82 w-60 shrink-0 cursor-pointer self-end rounded-[28px] border border-black/10 bg-white px-5 pb-6 pt-16 shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-all duration-300 hover:mx-3 hover:scale-110 hover:shadow-lg hover:-translate-y-8 origin-bottom sm:min-h-103 sm:w-70 sm:px-6 sm:pb-6 sm:pt-16 sm:hover:mx-4 sm:hover:-translate-y-10">
-                    <div className="absolute left-1/2 top-0 z-10 h-32 w-32 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full border-4 border-white bg-white shadow-lg flex items-center justify-center sm:h-32 sm:w-32">
-                      <Image src={dish.thumbnailSrc} alt={dish.title} fill sizes="220px" priority={index === 0} loading={index === 0 ? "eager" : "lazy"} className="object-center" />
+              {itemsList.map((dish, index) => {
+                const scaleClass = dish.imageScale ?? "w-[110%] h-[110%]";
+                const scaleSmClass = dish.imageScaleSm ?? "sm:w-[112%] sm:h-[112%]";
+                return (
+                  <Link
+                    key={dish.title}
+                    href={`/${finalSection}/${dish.slug}`}
+                    className="group relative block w-60 shrink-0 self-end transition-all duration-300 hover:mx-3 hover:scale-110 origin-bottom hover:-translate-y-8 sm:w-70 sm:hover:mx-4 sm:hover:-translate-y-10"
+                  >
+                    {/* Floating Dish Image */}
+                    <div className="absolute left-1/2 top-0 z-20 h-36 w-36 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full border-4 border-white bg-white shadow-lg flex items-center justify-center sm:h-40 sm:w-40">
+                      <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${scaleClass} ${scaleSmClass} overflow-visible`}>
+                        <Image
+                          src={dish.thumbnailSrc}
+                          alt={dish.title}
+                          fill
+                          sizes="200px"
+                          priority={index === 0}
+                          loading={index === 0 ? "eager" : "lazy"}
+                          className="object-contain"
+                        />
+                      </div>
                     </div>
 
-                    <div className="flex h-full flex-col gap-0">
-                      <h3 className="mt-3 min-h-10 text-center text-[1rem] font-semibold text-[#B02627] sm:min-h-10">{dish.title}</h3>
-                      <p className="min-h-18 text-center text-[0.7rem] leading-relaxed text-zinc-600 sm:min-h-18 sm:text-[0.8rem]" suppressHydrationWarning>
-                        {getPreviewText(dish.description)}
-                      </p>
+                    {/* SVG Notch Border Overlay */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[160px] h-[80px] sm:w-[192px] sm:h-[96px] pointer-events-none overflow-visible z-10">
+                      <svg viewBox="0 0 160 80" className="w-full h-full overflow-visible">
+                        <path
+                          d="M 0,0 A 80,80 0 0,0 160,0"
+                          fill="none"
+                          stroke="rgba(0,0,0,0.1)"
+                          strokeWidth="1"
+                          vectorEffect="non-scaling-stroke"
+                        />
+                      </svg>
                     </div>
-                  </article>
-                </Link>
-              ))}
+
+                    {/* Card Wrapper with Drop Shadow */}
+                    <div className="filter drop-shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-all duration-300 group-hover:drop-shadow-[0_20px_40px_rgba(0,0,0,0.12)]">
+                      {/* Card Body (masked to create the cutout) */}
+                      <article
+                        className="[--cutout-radius:80px] [--cutout-inner:79px] sm:[--cutout-radius:96px] sm:[--cutout-inner:95px] relative min-h-82 w-full rounded-[21px] border border-black/10 bg-white px-5 pb-6 pt-24 sm:min-h-103 sm:px-6 sm:pb-6 sm:pt-32"
+                        style={{
+                          WebkitMaskImage: "radial-gradient(circle var(--cutout-radius) at 50% 0, transparent var(--cutout-inner), #000 var(--cutout-radius))",
+                          maskImage: "radial-gradient(circle var(--cutout-radius) at 50% 0, transparent var(--cutout-inner), #000 var(--cutout-radius))",
+                        }}
+                      >
+                        <div className="flex h-full flex-col gap-0">
+                          <h3 className="-mt-1 min-h-10 text-center text-[1rem] font-semibold text-[#B02627] sm:min-h-10">
+                            {dish.title}
+                          </h3>
+                          <p
+                            className="min-h-18 text-center text-[0.7rem] leading-relaxed text-zinc-600 sm:min-h-18 sm:text-[0.8rem]"
+                            suppressHydrationWarning
+                          >
+                            {getPreviewText(dish.description)}
+                          </p>
+                        </div>
+                      </article>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>

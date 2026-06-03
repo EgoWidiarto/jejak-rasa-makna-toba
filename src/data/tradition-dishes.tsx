@@ -1,10 +1,14 @@
+import { image } from "framer-motion/client";
+
 export const dishes = [
   {
-    thumbnailSrc: "/images/tradition-dishes/thumbnail/ikan-arsik-2.png",
+    thumbnailSrc: "/images/tradition-dishes/thumbnail/ikan-arsik-3.png",
     fullImgSrc: "/images/tradition-dishes/full-img/ikan-arsik.png",
     recipeImgSrc: "/images/tradition-dishes/recipe/ikan-arsik.png",
     title: "Ikan Arsik",
     slug: "ikan-arsik",
+    imageScale: "w-[110%] h-[11%]",
+    imageScaleSm: "sm:w-[135%] sm:h-[135%]",
     recipe: {
       ingredients: [
         "1,5 kilo ikan mas tanpa membuang sisiknya",
@@ -40,11 +44,13 @@ export const dishes = [
       "Ikan Mas Arsik (Dekke na niarsik) adalah hidangan tradisional sakral masyarakat Batak Toba yang dimasak kering dengan bumbu khas pegunungan seperti andaliman dan asam cikala. Uniknya, ikan ini dimasak utuh tanpa dibuang sisiknya untuk menjaga autentisitas. Lebih dari sekadar makanan, Arsik merupakan simbol doa, berkat (pasu-pasu), dan kemakmuran yang wajib ada dalam siklus hidup adat, mulai dari kelahiran hingga pernikahan. Dalam tradisi, pihak keluarga perempuan (hula-hula) memberikan hidangan ini dalam jumlah ganjil dengan posisi kepala ikan menghadap penerima sebagai lambang penghormatan dan harapan akan kesuburan serta kehidupan yang baik.",
   },
   {
-    thumbnailSrc: "/images/tradition-dishes/thumbnail/dekke-natinombur.png",
+    thumbnailSrc: "/images/tradition-dishes/thumbnail/dekke-natinombur-2.png",
     fullImgSrc: "/images/tradition-dishes/full-img/dekke-natinombur.png",
     recipeImgSrc: "/images/tradition-dishes/recipe/dekke-natinombur.png",
     title: "Dekke Natinombur",
     slug: "dekke-natinombur",
+    imageScale: "w-[110%] h-[11%]",
+    imageScaleSm: "sm:w-[118%] sm:h-[118%]",
     recipe: {
       ingredients: [
         "1 kg Ikan Nila atau Ikan Mas (bersihkan, lumuri garam dan jeruk nipis)",
@@ -68,11 +74,13 @@ export const dishes = [
       "Ikan Natinombur atau dekke natinombur adalah hidangan ikan mas atau mujair khas Batak Toba yang disajikan dengan cara dipanggang utuh lalu disiram bumbu (tombur). Berbeda dengan Arsik atau Naniura, ikan ini tetap dibiarkan utuh sebagai simbol keutuhan doa. Hidangan ini biasanya disajikan orang tua kepada anak dalam acara syukuran sebagai simbol harapan agar sang anak selalu sehat, sukses, dan murah rezeki. Keunikannya terletak pada perpaduan teknik bakar dan siraman bumbu yang melambangkan kasih sayang keluarga.",
   },
   {
-    thumbnailSrc: "/images/tradition-dishes/thumbnail/manuk-napinadar.png",
+    thumbnailSrc: "/images/tradition-dishes/thumbnail/manuk-napinadar-5.png",
     fullImgSrc: "/images/tradition-dishes/full-img/manuk-napinadar.png",
     recipeImgSrc: "/images/tradition-dishes/recipe/manuk-napinadar.png",
     title: "Manuk Napinadar",
     slug: "manuk-napinadar",
+    imageScale: "w-[110%] h-[11%]",
+    imageScaleSm: "sm:w-[118%] sm:h-[118%]",
     recipe: {
       ingredients: [
         "1 ekor ayam kampung (bersihkan, belah dada/potong 4)",
