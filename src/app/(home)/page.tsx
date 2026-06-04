@@ -29,16 +29,16 @@ export default function Home() {
         <div className="rounded-3xl overflow-hidden bg-[#FFF] p-4 shadow-sm sm:p-5 lg:p-6">
           <div className="grid items-start gap-2 lg:grid-cols-3 lg:items-stretch lg:gap-6">
             <div className="min-w-0 lg:col-span-1 flex flex-col justify-center lg:h-full pr-0 lg:pr-4">
-              <h2 className="mt-1 text-[16px] sm:text-[22px] md:text-[30px] lg:text-[40px] xl:text-[42px] font-roboto-bold text-[#000000] leading-tight">Sejarah dan Filosofi</h2>
-              <h3 className="text-[11px] sm:text-[13px] md:text-[15px] lg:text-[17px] xl:text-[17px] font-roboto-bold tracking-[0.04em] text-[#D98F2D]">Menjelajahi Warisan Budaya Kuliner Batak Toba</h3>
-              <p className="mt-4 sm:mt-6 lg:mt-4 leading-relaxed text-[#282F26] text-[10px] sm:text-[13px] md:text-[13px] lg:text-[13px] xl:text-[14px] font-poppins-regular whitespace-normal wrap-break-word">
+              <h2 className="mt-1 text-[17px] sm:text-[23px] md:text-[31px] lg:text-[41px] xl:text-[43px] font-roboto-bold text-[#000000] leading-tight">Sejarah <br></br>dan Filosofi</h2>
+              <h3 className="text-[11px] sm:text-[13px] md:text-[15px] lg:text-[17px] xl:text-[17px] font-roboto-bold tracking-[0.04em] text-[#D98F2D]">Menjelajahi warisan budaya<br></br>kuliner batak toba</h3>
+              <p className="mt-4 sm:mt-6 lg:mt-4 leading-relaxed text-[#282F26] text-[11px] sm:text-[13px] md:text-[14px] lg:text-[16px] xl:text-[17px] font-poppins-regular whitespace-normal wrap-break-word">
                 Bagi masyarakat Batak Toba, makanan memiliki peran sentral yang terintegrasi dalam sistem adat istiadat untuk menciptakan keteraturan dan kerukunan. Hal ini tercermin dalam falsafah{" "}
-                <span className="text-[#B02627] font-poppins-italic text-[10px] sm:text-[13px] md:text-[13px]"> Dalihan Na Tolu (DNT) </span>
-                yang menekankan hubungan timbal balik antarindividu.
+                <span className="text-[#B02627] font-poppins-italic text-[11px] sm:text-[13px]  md:text-[14px] lg:text-[16px] xl:text-[17px]"> Dalihan Na Tolu (DNT) </span>
+                yang menekankan hubungan timbal balik antar individu.
               </p>
-              <a href="/history" className="mt-4 inline-flex items-center gap-2 text-[10px] font-poppins-regular text-[#B02627] transition-opacity hover:opacity-75">
+              <a href="/history" className="mt-4 inline-flex items-center gap-2 text-[14px] sm:text-[17px] xl:text-[18px] font-poppins-regular text-[#B02627] transition-opacity hover:opacity-75">
                 Telusuri
-                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </a>

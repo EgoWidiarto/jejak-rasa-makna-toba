@@ -33,6 +33,17 @@ export const robotoMedium = localFont({
   variable: "--font-roboto-medium",
 });
 
+export const robotoLight = localFont({
+  src: [
+    {
+      path: "../../public/fonts/Roboto/Roboto-Light.ttf",
+      weight: "300",
+      style: "normal",
+    },
+  ],
+  variable: "--font-roboto-light",
+});
+
 export const poppinsRegular = localFont({
   src: [
     {

@@ -68,30 +68,26 @@ export function HistoryCarousel() {
       className="overflow-x-auto overflow-y-visible pb-16 sm:pb-20 select-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
       style={{ cursor: isDragging ? "grabbing" : "grab" }}>
       {/* Container flex diubah jadi w-max agar bisa di-scroll secara natural */}
-      <div className="flex w-max items-start gap-4 px-4 sm:px-6 lg:px-8">
-        {[0, 1].map((group) => (
-          <div key={group} className="flex items-start gap-4 shrink-0 pointer-events-none">
-            {historySlides.map((slide, i) => (
-              <div key={`${group}-${slide.src}-${i}`} className="flex h-107.5 w-[clamp(220px,28vw,320px)] shrink-0 flex-col overflow-hidden rounded-[22px] border border-zinc-100 bg-white shadow-md sm:h-117.5 lg:h-125">
-                <div className="px-3 pt-3 sm:px-4 sm:pt-4">
-                  <div className="relative aspect-4/3 w-full overflow-hidden rounded-[18px]">
-                    <Image
-                      src={slide.src}
-                      alt={slide.alt}
-                      fill
-                      priority={group === 0 && i === 0}
-                      loading="eager"
-                      sizes="(max-width: 768px) 100vw, 320px"
-                      className="object-cover"
-                      draggable={false} // Mencegah ghost drag bawaan browser pada gambar
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-1 items-start px-4 py-4 sm:px-5 sm:py-5">
-                  <p className="lg:text-sm text-center text-xs leading-relaxed text-zinc-600 [font-family:var(--font-poppins)]">{slide.description}</p>
-                </div>
+      <div className="flex w-max items-start gap-4 px-4 sm:px-6 lg:px-8 pointer-events-none">
+        {historySlides.map((slide, i) => (
+          <div key={`${slide.src}-${i}`} className="flex h-130 w-[clamp(180px,28vw,290px)] shrink-0 flex-col overflow-hidden rounded-[22px] border border-zinc-100 bg-white shadow-md sm:h-125 lg:h-140">
+            <div className="px-3 pt-3 sm:px-4 sm:pt-4">
+              <div className="relative aspect-square w-full overflow-hidden rounded-[18px]">
+                <Image
+                  src={slide.src}
+                  alt={slide.alt}
+                  fill
+                  priority={i === 0}
+                  loading="eager"
+                  sizes="(max-width: 768px) 100vw, 320px"
+                  className="object-cover"
+                  draggable={false}
+                />
               </div>
-            ))}
+            </div>
+            <div className="flex flex-1 items-start px-4 py-4 sm:px-5 sm:py-5">
+              <p className="lg:text-sm text-center text-xs leading-relaxed text-zinc-600 [font-family:var(--font-poppins)]">{slide.description}</p>
+            </div>
           </div>
         ))}
       </div>
