@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { rawMapSVG } from "@/data/map-svg";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface RegionData {
   baseColor: string;
@@ -29,6 +30,7 @@ export default function InteractiveMap({ fullBleed = true }: InteractiveMapProps
   const [isModalClosing, setIsModalClosing] = useState(false);
   const [panPosition, setPanPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
+  const { t } = useLanguage();
   const closeTimeoutRef = useRef<number | null>(null);
   const dragStateRef = useRef({
     isPointerDown: false,
@@ -199,7 +201,7 @@ export default function InteractiveMap({ fullBleed = true }: InteractiveMapProps
               </button>
               <h3 className="text-2xl font-bold text-black mb-3 [font-family:var(--font-roboto)] pr-8">{(rawMapSVG[activeRegion] as RegionData).label}</h3>
               <p className="text-sm leading-relaxed text-[#2C2424] [font-family:var(--font-poppins)]" style={{ textAlign: "justify" }}>
-                {(rawMapSVG[activeRegion] as RegionData).description}
+                {t(`${activeRegion}Desc`)}
               </p>
             </div>
           </div>

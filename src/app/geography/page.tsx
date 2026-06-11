@@ -1,17 +1,18 @@
+"use client";
+
 import Image from "next/image";
 import InteractiveMap from "@/components/interactive-map";
 import { RevealSection } from "@/components/reveal-section";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function GeographyPage() {
-  const description = `Pulau Sumatera merupakan salah satu wilayah di Indonesia yang memiliki kekayaan budaya luar biasa dengan keragaman suku bangsa yang mendiaminya. Di antara sekian banyak etnis tersebut, suku <span className="text-[#B02627]">Batak</span> menjadi kelompok masyarakat yang paling dominan di Provinsi Sumatera Utara. Penting untuk dipahami bahwa suku Batak bukanlah sebuah entitas tunggal, melainkan sebuah rumpun besar yang terdiri dari beberapa sub-etnis. Setiap cabang ini memiliki identitas, adat istiadat, dialek, serta wilayah persebaran geografis yang spesifik dan berbeda satu sama lain.
-\nNah... Secara garis besar, suku <span className="text-[#B02627]">Batak</span> terbagi ke dalam enam kelompok utama, yaitu <span className="text-[#B02627]">Batak Mandailing, Batak Karo, Batak Simalungun, Batak Pakpak Dairi, Batak Toba, dan Batak Angkola</span> (Nelson, 2012). Masing-masing kelompok tersebut menetap di wilayah teritorial tertentu yang memengaruhi corak tradisi mereka. Batak Toba, sebagai salah satu sub-etnis terbesar, mendiami wilayah yang mengelilingi Danau Toba, meliputi Kabupaten Tapanuli Utara, Kabupaten Toba Samosir, Kabupaten Samosir, dan Kabupaten Humbang Hasundutan.
-\nSecara lebih spesifik, E.H. Tambunan dalam bukunya yang berjudul Sekelumit Mengenai Masyarakat <span className="text-[#B02627]">Batak Toba</span> dan Kebudayaannya menjelaskan bahwa inti dari wilayah Toba mencakup area Kabupaten Tapanuli Utara.  Wilayah ini terletak  di sebelah tenggara Kota Medan dengan Tarutung sebagai kota terbesar sekaligus ibu kota kabupaten yang berfungsi sebagai pusat pemerintahan.
-\nMeski sering disebut sebagai satu kesatuan, suku <span className="text-[#B02627]">Batak</span> sebenarnya terbagi ke dalam beberapa kelompok atau cabang yang masing-masing menetap di wilayah teritorial tertentu. Pembagian wilayah ini tidak hanya mencerminkan letak geografis, tetapi juga perbedaan dialek dan tradisi yang menyertainya. Mari kita lihat dibawah, letak geografis persebaran suku Batak di Sumatera Utara.`;
+  const { t } = useLanguage();
+  const description = t("geographyDesc");
 
   return (
     <main className="min-h-screen bg-[#F4F4F4] py-12">
       <RevealSection as="div" className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 pt-10" delay={0.05}>
-        <h1 className="mb-6 text-center text-3xl font-bold text-black [font-family:var(--font-roboto)]">Letak Geografi Suku Batak</h1>
+        <h1 className="mb-6 text-center text-3xl font-bold text-black [font-family:var(--font-roboto)]">{t("geographyTitle")}</h1>
         {/* Ensure Tailwind includes the arbitrary color utility used in injected HTML */}
         <span className="hidden text-[#B02627]">.</span>
 
@@ -42,7 +43,7 @@ export default function GeographyPage() {
           </div>
 
           <div className="w-full lg:w-70 lg:pt-0">
-            <h2 className="text-[2.4rem] text-end font-bold text-black [font-family:var(--font-roboto)] lg:sticky lg:top-3 lg:mt-0">Persebaran Sub-etnis Batak di Sumatera</h2>
+            <h2 className="text-[2.4rem] text-end font-bold text-black [font-family:var(--font-roboto)] lg:sticky lg:top-3 lg:mt-0">{t("geographySub")}</h2>
           </div>
         </div>
       </RevealSection>

@@ -7,6 +7,39 @@ export const dishes = [
     recipeImgSrc: "/images/tradition-dishes/recipe/ikan-arsik.png",
     title: "Ikan Arsik",
     slug: "ikan-arsik",
+    titleEn: "Ikan Arsik",
+    descriptionEn: "Goldfish Arsik (Dekke na niarsik) is a sacred traditional dish of the Batak Toba community cooked dry with signature mountain spices such as andaliman and cikala acid. Uniquely, this fish is cooked whole without removing the scales to maintain authenticity. More than just food, Arsik is a symbol of prayer, blessing (pasu-pasu), and prosperity that must exist in the cultural life cycle, from birth to marriage. In tradition, the female side of the family (hula-hula) provides this dish in odd numbers with the position of the fish head facing the recipient as a symbol of respect and hope for fertility and a good life.",
+    recipeEn: {
+      "ingredients": [
+            "1.5 kg goldfish without removing the scales",
+            "10-15 long beans, choose young ones, cut into 4 parts",
+            "A handful of Batak onions (chives)",
+            "3 kecombrang (torch ginger) flowers",
+            "5 slices of asam gelugur, leave whole"
+      ],
+      "spice": [
+            "10 cloves of garlic",
+            "8 cloves of shallots",
+            "2 large red tomatoes",
+            "100 grams of young galangal",
+            "50 grams of young ginger, sliced and finely ground",
+            "100 - 150 grams of old turmeric, sliced and finely ground",
+            "6 fresh large red chilies, sliced and ground",
+            "3 lemongrass stalks, sliced and finely ground, the remaining green stalks cut into 5-8cm to be used as a base for the fish in the wok",
+            "1 tablespoon of andaliman"
+      ],
+      "steps": [
+            "Arrange sliced galangal, whole lemongrass, and some of the asam gelugur at the bottom of the wok",
+            "Grind all spices until smooth, then coat the fish with the ground spices",
+            "Arrange the fish in the wok. Add Batak onions on top of the fish. Add salt to taste. Drizzle with lime juice",
+            "Add water until it fills ¾ of the wok",
+            "Add daun salam (bay leaves) on top",
+            "Continue cooking on medium heat for about 20 minutes. Cover the wok during this cooking process",
+            "After 20 minutes, open the cover, taste if the salt and sourness are right. Arrange the long beans on top. Cover the wok, continue cooking on medium-low heat for 40 minutes until the gravy is almost gone and all ingredients are cooked",
+            "Cool the dish, then transfer to a serving plate",
+            "Ready to be served with warm white rice"
+      ]
+},
     imageScale: "w-[110%] h-[11%]",
     imageScaleSm: "sm:w-[135%] sm:h-[135%]",
     recipe: {
@@ -49,6 +82,34 @@ export const dishes = [
     recipeImgSrc: "/images/tradition-dishes/recipe/dekke-natinombur.png",
     title: "Dekke Natinombur",
     slug: "dekke-natinombur",
+    titleEn: "Dekke Natinombur",
+    descriptionEn: "Natinombur fish or dekke natinombur is a goldfish or tilapia dish khas of Batak Toba served whole by grilling and then pouring spices (tombur) over it. Unlike Arsik or Naniura, this fish is left whole as a symbol of complete prayers. This dish is usually served by parents to children in a thanksgiving event as a symbol of hope that the child is always healthy, successful, and gets abundant blessings. Its uniqueness lies in the combination of grilling technique and pouring of spices that symbolizes family love.",
+    recipeEn: {
+      "ingredients": [
+            "1 kg Tilapia or Goldfish (clean, rub with salt and lime juice)",
+            "3-5 stalks of Kecombrang/Rias (sliced thin)",
+            "2-3 tomatoes (cut into pieces)",
+            "Lime juice (to taste)",
+            "Hot water / kecombrang boiled water (to taste)",
+            "Salt to taste"
+      ],
+      "spice": [
+            "10 shallots",
+            "5 cloves of garlic",
+            "2 tbsp Andaliman (Batak special spice)",
+            "5-10 red/cayenne peppers (to taste)",
+            "3-4 candlenuts",
+            "1 segment of ginger"
+      ],
+      "steps": [
+            "Grill or fry the fish rubbed with salt and lime juice until cooked and dry. Set aside.",
+            "Roast shallots, garlic, candlenuts, ginger, and chilies until brownish.",
+            "Grind all roasted spices with andaliman and salt until smooth.",
+            "Put kecombrang slices and tomatoes into the chili paste, grind again until blended.",
+            "Add lime juice into the seasoning, then pour hot water or kecombrang boiled water to taste until thick-textured.",
+            "Arrange the fish on a serving plate, pour with natinombur chili paste."
+      ]
+},
     imageScale: "w-[110%] h-[11%]",
     imageScaleSm: "sm:w-[118%] sm:h-[118%]",
     recipe: {
@@ -79,6 +140,34 @@ export const dishes = [
     recipeImgSrc: "/images/tradition-dishes/recipe/manuk-napinadar.png",
     title: "Manuk Napinadar",
     slug: "manuk-napinadar",
+    titleEn: "Manuk Napinadar",
+    descriptionEn: "Manuk Napinadar or chicken napinadar is a grilled chicken dish khas of Batak Toba served with a special sauce from a mixture of the chicken's own blood and strong spices like andaliman. This dish, which requires patience in its processing, is usually served on important life moments, such as the birth of a child or when sending off family members to merantau (migrate). This dish is not just food, but a symbol of prayer and support for someone facing a new phase in life.",
+    recipeEn: {
+      "ingredients": [
+            "1 free-range chicken (clean, split breast / cut into 4)",
+            "1 lime (squeeze for juice)",
+            "Salt to taste",
+            "2 tbsp grated coconut, toasted and ground until oily",
+            "Warm water / chicken broth to taste",
+            "Sweet soy sauce (optional)"
+      ],
+      "spice": [
+            "10-15 shallots",
+            "5-7 cloves of garlic",
+            "20-30 gr andaliman (to taste)",
+            "10-15 red/green cayenne peppers (to taste)",
+            "5 candlenuts",
+            "1 segment of ginger",
+            "1 segment of galangal",
+            "1 tsp coriander powder"
+      ],
+      "steps": [
+            "Lumuri ayam dengan garam dan air jeruk nipis. Panggang ayam di atas bara arang hingga matang, berwarna kecoklatan, dan harum.",
+            "Haluskan semua bumbu halus. Tumis bumbu halus dengan sedikit minyak hingga harum dan matang.",
+            "Tambahkan kelapa gongseng yang sudah diulek ke dalam bumbu tumis. Tuang sedikit air/kaldu, aduk rata hingga saus mengental dan berminyak. Koreksi rasa dengan garam.",
+            "Masukkan ayam bakar ke dalam saus, aduk rata agar bumbu meresap, atau siram bumbu di atas ayam panggang. Manuk Napinadar siap disajikan."
+      ]
+},
     imageScale: "w-[110%] h-[11%]",
     imageScaleSm: "sm:w-[118%] sm:h-[118%]",
     recipe: {
@@ -116,6 +205,35 @@ export const dishes = [
     recipeImgSrc: "/images/tradition-dishes/recipe/naniura.png",
     title: "Naniura",
     slug: "naniura",
+    titleEn: "Naniura",
+    descriptionEn: "Naniura or Dekke Naniura is a raw goldfish dish khas of Batak Toba processed without fire, but 'cooked' through the process of soaking in acid water and spices. Literally, Naniura means 'fish that is ready to be eaten without being cooked.' Formerly, this dish was a sacred food for shamans (datu) and warriors in animist traditions, but now it has become a popular culinary heritage. Although raw, the souring process makes the meat texture solid and tastes far more savory compared to fried or regular chili fish.",
+    recipeEn: {
+      "ingredients": [
+            "1 kg fresh Goldfish (clean, take only the meat or cut between head, remove bones if necessary)",
+            "3-5 Asam jungga fruits (or 10-15 limes/lemons)",
+            "Salt to taste"
+      ],
+      "spice": [
+            "1 tbsp Andaliman (required for signature taste)",
+            "10 shallots",
+            "5 cloves of garlic",
+            "5 roasted candlenuts",
+            "2-3 cm Turmeric (grilled/roasted)",
+            "2 cm Ginger",
+            "10 curly red chilies (to taste)",
+            "5 cayenne peppers (to taste)",
+            "2-3 tbsp roasted peanuts",
+            "2 segments of galangal",
+            "2-3 stalks of Kecombrang/rias (take white/young part, roast briefly)"
+      ],
+      "steps": [
+            "Clean the fish, slice the meat. Rub with salt and asam jungga/lime juice evenly. Let sit in the refrigerator for 1-2 hours until the fish changes color to white (sign of cooked).",
+            "Roast shallots, garlic, candlenuts, chilies, peanuts, and kecombrang until fragrant and slightly wilted.",
+            "Haluskan semua bumbu yang telah disangrai bersama andaliman hingga halus.",
+            "Setelah ikan dimarinasi, tiriskan jika terlalu banyak air. Lumuri ikan dengan bumbu halus hingga ke sela-sela sayatan.",
+            "Diamkan kembali ikan yang sudah dibumbui selama 1 jam di kulkas agar bumbu meresap sempurna. Naniura siap disajikan."
+      ]
+},
     recipe: {
       ingredients: [
         "1 kg Ikan mas segar (pilih yang segar, bersihkan, ambil dagingnya saja atau potong sela-sela kepala, buang tulang jika perlu)",
@@ -152,6 +270,32 @@ export const dishes = [
     recipeImgSrc: "/images/tradition-dishes/recipe/lapet.png",
     title: "Lapet",
     slug: "lapet",
+    titleEn: "Lapet",
+    descriptionEn: "Lapet is a traditional Batak Toba snack made from rice flour, palm sugar, and grated coconut mixed directly into the dough. Unlike Ombus-ombus, Lapet is wrapped in banana leaves with a distinctive triangular shape. This dish is an important element in traditional ceremonies such as weddings and is usually served as a companion to coffee or tea.",
+    recipeEn: {
+      "ingredients": [
+            "500 grams white rice",
+            "100 grams glutinous rice flour",
+            "200 grams sugar",
+            "1 coconut (finely grated)",
+            "½ kg brown sugar",
+            "Salt to taste",
+            "Water to taste",
+            "Banana leaves to taste (for wrapping)"
+      ],
+      "spice": [],
+      "steps": [
+            "Clean the white rice, then soak in water for 4-5 hours.",
+            "After soaking, drain the rice until dry. Grind or pound the rice until fine, set aside.",
+            "Shred the brown sugar finely for the filling.",
+            "Dry the banana leaves until slightly wilted.",
+            "Put the rice flour into a container, steam for 25 minutes.",
+            "In a wadah, sift the steamed rice flour, then mix with glutinous rice flour, sugar, grated coconut, and water. Stir until evenly mixed.",
+            "Take banana leaves, put the dough, shape like a cone, then fill the center with brown sugar. Close the wrap.",
+            "Arrange the wrapped lapet in a steamer, steam until fully cooked for about 30 to 40 minutes.",
+            "Serve on a plate. Delicious Batak lapet is ready to be enjoyed."
+      ]
+},
     recipe: {
       ingredients: [
         "500 gram beras putih",
@@ -185,6 +329,27 @@ export const dishes = [
     recipeImgSrc: "/images/tradition-dishes/recipe/itak-gurgur.png",
     title: "Itak Gurgur",
     slug: "itak-gurgur",
+    titleEn: "Itak Gurgur",
+    descriptionEn: "Itak Gurgur is a traditional Batak Toba food made from rice flour processed without going through the cooking or steaming process. Unlike lapet, this snack is made by pounding and shaping it directly using hands. Itak Gurgur has a sacred meaning and must be present as a medium of prayer in traditional ceremonies, such as manumpan solu-solu (perahu blessing).",
+    recipeEn: {
+      "ingredients": [
+            "250 grams rice flour (for 4 portions)",
+            "¼ coconut, grated and steamed briefly",
+            "100 grams brown sugar (to taste)",
+            "Sugar to taste",
+            "¼ tsp vanilla powder",
+            "¼ tsp salt",
+            "Hot water to taste"
+      ],
+      "spice": [],
+      "steps": [
+            "Mix rice flour, grated coconut, sugar, vanilla powder, and salt.",
+            "If using roasted rice flour, add hot water little by little (so the dough is easy to shape), stir until evenly mixed.",
+            "Add brown sugar to the dough, stir again to blend.",
+            "Compact the dough mixture by squeezing it firmly with hands so the cake is easily formed and does not fall apart.",
+            "Itak gurgur is ready to be served with tea or coffee."
+      ]
+},
     recipe: {
       ingredients: [
         "250 gram tepung beras (untuk 4 porsi)",

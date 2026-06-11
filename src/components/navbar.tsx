@@ -6,15 +6,16 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { dishes as traditionDishes } from "@/data/tradition-dishes";
 import { dailyDishes } from "@/data/daily-dishes";
+import { useLanguage } from "@/context/LanguageContext";
 
 const herbs = [{ name: "Andaliman" }, { name: "Kecombrang" }, { name: "Asam Gelugur" }, { name: "Asam Jungga" }, { name: "Asam Cikala" }, { name: "Bawang Batak / Lokio" }];
 
 const navigationItems = [
-  { label: "Beranda", href: "/" },
-  { label: "Sejarah", href: "/history" },
-  { label: "Hidangan", href: "#hidangan" },
-  { label: "Rempah", href: "#herbs" },
-  { label: "Geografis", href: "/geography" },
+  { label: "Beranda", labelKey: "home", href: "/" },
+  { label: "Sejarah", labelKey: "history", href: "/history" },
+  { label: "Hidangan", labelKey: "dishes", href: "#hidangan" },
+  { label: "Rempah", labelKey: "spices", href: "#herbs" },
+  { label: "Geografis", labelKey: "geography", href: "/geography" },
 ];
 
 
@@ -56,6 +57,7 @@ export function Navbar() {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
   const router = useRouter();
+  const { language, toggleLanguage, t } = useLanguage();
 
   const [selectedHerb, setSelectedHerb] = useState<string | null>(() => {
     try {
@@ -91,11 +93,11 @@ export function Navbar() {
   };
 
   const traditionalDishLinks = traditionDishes.map((item) => ({
-    title: item.title,
+    title: language === 'en' && (item as any).titleEn ? (item as any).titleEn : item.title,
     href: `/tradition-dishes/${item.slug}`,
   }));
   const dailyDishLinks = dailyDishes.map((item) => ({
-    title: item.title,
+    title: language === 'en' && (item as any).titleEn ? (item as any).titleEn : item.title,
     href: `/daily-dishes/${item.slug}`,
   }));
 
@@ -141,7 +143,7 @@ export function Navbar() {
             if (item.label === "Beranda") {
               return (
                 <Link key={item.label} href={item.href} className="text-sm font-medium tracking-wide transition-opacity hover:opacity-75" style={{ color: "#8F1C1D" }}>
-                  {item.label}
+                  {t(item.labelKey)}
                 </Link>
               );
             }
@@ -173,7 +175,7 @@ export function Navbar() {
                   style={{ color: "#8F1C1D" }}
                   aria-haspopup="true"
                   aria-expanded={activeMenu === menuLabel}>
-                  {item.label}
+                  {t(item.labelKey)}
                 </button>
 
                 {/* Dropdown Card */}
@@ -189,14 +191,14 @@ export function Navbar() {
                   {menuLabel === "Sejarah" && (
                     <div className="w-[180px] flex flex-col gap-1">
                       <p className="mb-2 font-roboto-thin text-[10px] text-[#8F1C1D] tracking-wider uppercase">
-                        Jelajahi Sejarah
+                        {t("jelajahiSejarah")}
                       </p>
                       <Link
                         href="/history"
                         onClick={() => setActiveMenu(null)}
                         className="font-roboto-medium text-[14px] leading-[20px] text-[#B02627] transition-colors hover:text-[#6f1617]"
                       >
-                        Sejarah dan Makna
+                        {t("sejarahDanMakna")}
                       </Link>
                     </div>
                   )}
@@ -205,7 +207,7 @@ export function Navbar() {
                     <div className="w-[360px] grid grid-cols-2 gap-6">
                       <div className="flex flex-col gap-1">
                         <p className="mb-2 font-roboto-thin text-[10px] text-[#8F1C1D] tracking-wider uppercase">
-                          Hidangan Tradisional
+                          {t("hidanganTradisional")}
                         </p>
                         <div className="flex flex-col gap-2">
                           {traditionalDishLinks.map((dish) => (
@@ -222,7 +224,7 @@ export function Navbar() {
                       </div>
                       <div className="flex flex-col gap-1">
                         <p className="mb-2 font-roboto-thin text-[10px] text-[#8F1C1D] tracking-wider uppercase">
-                          Hidangan Harian
+                          {t("hidanganHarian")}
                         </p>
                         <div className="flex flex-col gap-2">
                           {dailyDishLinks.map((dish) => (
@@ -243,7 +245,7 @@ export function Navbar() {
                   {menuLabel === "Rempah" && (
                     <div className="w-[180px] flex flex-col gap-1">
                       <p className="mb-2 font-roboto-thin text-[10px] text-[#8F1C1D] tracking-wider uppercase">
-                        Jelajahi Rempah
+                        {t("jelajahiRempah")}
                       </p>
                       <div className="flex flex-col gap-2">
                         {herbs.map((herb) => (
@@ -262,14 +264,14 @@ export function Navbar() {
                   {menuLabel === "Geografis" && (
                     <div className="w-[180px] flex flex-col gap-1">
                       <p className="mb-2 font-roboto-thin text-[10px] text-[#8F1C1D] tracking-wider uppercase">
-                        Jelajahi Geografis
+                        {t("jelajahiGeografis")}
                       </p>
                       <Link
                         href="/geography"
                         onClick={() => setActiveMenu(null)}
                         className="font-medium font-roboto-medium text-[14px] leading-[20px] text-[#B02627] transition-colors hover:text-[#6f1617]"
                       >
-                        Geografis
+                        {t("geography")}
                       </Link>
                     </div>
                   )}
@@ -280,9 +282,17 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-3 text-[#8F1C1D]">
-          <Link href="/" aria-label="Website icon" className="hidden items-center justify-center transition-opacity hover:opacity-75 sm:inline-flex">
+          <button
+            type="button"
+            onClick={toggleLanguage}
+            aria-label="Toggle language"
+            className="flex items-center justify-center transition-opacity hover:opacity-75 cursor-pointer text-[#8F1C1D] hover:bg-[#8F1C1D]/5 p-1.5 rounded-lg border border-[#8F1C1D]/10"
+          >
             <GlobeIcon />
-          </Link>
+            <span className="text-xs font-semibold ml-1.5 select-none font-sans uppercase">
+              {language}
+            </span>
+          </button>
 
           <button
             type="button"
@@ -304,7 +314,7 @@ export function Navbar() {
             onClick={() => setMenuOpen(false)}
             className="rounded-xl px-3 py-2 text-sm font-medium tracking-wide transition-colors hover:bg-[#8F1C1D]/5"
             style={{ color: "#8F1C1D" }}>
-            Beranda
+            {t("home")}
           </Link>
 
           {/* Sejarah dan Makna */}
@@ -313,7 +323,7 @@ export function Navbar() {
             onClick={() => setMenuOpen(false)}
             className="rounded-xl px-3 py-2 text-sm font-medium tracking-wide transition-colors hover:bg-[#8F1C1D]/5"
             style={{ color: "#8F1C1D" }}>
-            Sejarah dan Makna
+            {t("sejarahDanMakna")}
           </Link>
 
           {/* Traditional Dishes */}
@@ -345,7 +355,7 @@ export function Navbar() {
             onClick={() => setMenuOpen(false)}
             className="rounded-xl px-3 py-2 text-sm font-medium tracking-wide transition-colors hover:bg-[#8F1C1D]/5"
             style={{ color: "#8F1C1D" }}>
-            Rempah-rempah
+            {t("spices")}
           </Link>
 
           {/* Geografis */}
@@ -354,7 +364,7 @@ export function Navbar() {
             onClick={() => setMenuOpen(false)}
             className="rounded-xl px-3 py-2 text-sm font-medium tracking-wide transition-colors hover:bg-[#8F1C1D]/5"
             style={{ color: "#8F1C1D" }}>
-            Geografis
+            {t("geography")}
           </Link>
         </nav>
       </div>

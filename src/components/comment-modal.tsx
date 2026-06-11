@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 type Props = {
   open: boolean;
@@ -14,16 +15,17 @@ export default function CommentModal({ open, onClose }: Props) {
   const [comment, setComment] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { t } = useLanguage();
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
     if (!rating) {
-      setError("Pilih jumlah hati terlebih dahulu.");
+      setError(t("errorRating"));
       return;
     }
     if (!name.trim() || !comment.trim()) {
-      setError("Nama dan komentar harus diisi.");
+      setError(t("errorForm"));
       return;
     }
     setLoading(true);
@@ -60,9 +62,9 @@ export default function CommentModal({ open, onClose }: Props) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 12, scale: 0.98 }}
             transition={{ duration: 0.26, ease: [0.22, 1, 0.36, 1] }}>
-            <h3 className="text-lg font-semibold text-zinc-900">Tinggalkan Komentar</h3>
+            <h3 className="text-lg font-semibold text-zinc-900">{t("tinggalkanKomentar")}</h3>
 
-            <p className="mt-3 text-sm text-zinc-700">Pilih jumlah hati, masukkan nama, lalu tulis komentarmu.</p>
+            <p className="mt-3 text-sm text-zinc-700">{t("commentDesc")}</p>
 
             <div className="mt-4 flex items-center gap-2">
               {[1, 2, 3, 4, 5].map((i) => (
@@ -80,26 +82,26 @@ export default function CommentModal({ open, onClose }: Props) {
 
             <div className="mt-4">
               <label className="sr-only" htmlFor="comment-name">
-                Nama
+                {t("namePlaceholder")}
               </label>
               <input
                 id="comment-name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Name"
+                placeholder={t("namePlaceholder")}
                 className="h-10 w-full rounded-full border border-zinc-400 bg-[#D3D3D3] px-4 text-sm text-zinc-900 outline-none placeholder:text-zinc-600 focus:border-zinc-600"
               />
             </div>
 
             <div className="mt-3">
               <label className="sr-only" htmlFor="comment-text">
-                Komentar
+                {t("komentar")}
               </label>
               <textarea
                 id="comment-text"
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
-                placeholder="Komentarmu"
+                placeholder={t("commentPlaceholder")}
                 className="h-28 w-full rounded-lg border border-zinc-400 bg-[#D3D3D3] p-3 text-sm text-zinc-900 outline-none placeholder:text-zinc-600 focus:border-zinc-600"
               />
             </div>
@@ -108,10 +110,10 @@ export default function CommentModal({ open, onClose }: Props) {
 
             <div className="mt-4 flex justify-end gap-2">
               <button type="button" onClick={onClose} className="rounded-full border px-4 py-2 text-sm">
-                Batal
+                {t("batal")}
               </button>
               <button type="submit" disabled={loading} className="rounded-full bg-[#D98F2D] px-4 py-2 text-sm font-semibold text-white disabled:opacity-60">
-                {loading ? "Mengirim..." : "Kirim Komentar"}
+                {loading ? t("mengirim") : t("kirimKomentar")}
               </button>
             </div>
           </motion.form>

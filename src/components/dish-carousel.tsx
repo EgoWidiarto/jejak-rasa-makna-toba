@@ -4,12 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import { dishes } from "@/data/tradition-dishes";
+import { useLanguage } from "@/context/LanguageContext";
 
 type DishItem = {
   thumbnailSrc: string;
   fullImgSrc: string;
   title: string;
+  titleEn?: string;
   description: string;
+  descriptionEn?: string;
   slug: string;
   imageScale?: string;
   imageScaleSm?: string;
@@ -30,6 +33,7 @@ export function DishCarousel({ direction = "rtl", items, section }: { direction?
   const finalSection = section ?? "tradition-dishes";
   const showScrollButtons = finalSection !== "daily-dishes";
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const { language } = useLanguage();
 
   const scroll = (scrollAmount: number) => {
     if (scrollContainerRef.current) {
@@ -50,9 +54,11 @@ export function DishCarousel({ direction = "rtl", items, section }: { direction?
               {itemsList.map((dish, index) => {
                 const scaleClass = dish.imageScale ?? "w-[110%] h-[110%]";
                 const scaleSmClass = dish.imageScaleSm ?? "sm:w-[112%] sm:h-[112%]";
+                const titleText = language === 'en' && dish.titleEn ? dish.titleEn : dish.title;
+                const descText = language === 'en' && dish.descriptionEn ? dish.descriptionEn : dish.description;
                 return (
                   <Link
-                    key={dish.title}
+                    key={dish.slug}
                     href={`/${finalSection}/${dish.slug}`}
                     className="group relative block w-60 shrink-0 self-end transition-all duration-300 hover:mx-3 hover:scale-106 origin-bottom sm:w-70 sm:hover:mx-4"
                   >
@@ -61,7 +67,7 @@ export function DishCarousel({ direction = "rtl", items, section }: { direction?
                       <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${scaleClass} ${scaleSmClass} overflow-visible`}>
                         <Image
                           src={dish.thumbnailSrc}
-                          alt={dish.title}
+                          alt={titleText}
                           fill
                           sizes="200px"
                           priority={index === 0}
@@ -96,13 +102,13 @@ export function DishCarousel({ direction = "rtl", items, section }: { direction?
                       >
                         <div className="flex h-full flex-col gap-0">
                           <h3 className="-mt-1 min-h-10 text-center text-[1rem] font-semibold text-[#B02627] sm:min-h-10">
-                            {dish.title}
+                            {titleText}
                           </h3>
                           <p
                             className="min-h-18 text-center text-[0.7rem] leading-relaxed text-zinc-600 sm:min-h-18 sm:text-[0.8rem]"
                             suppressHydrationWarning
                           >
-                            {getPreviewText(dish.description)}
+                            {getPreviewText(descText)}
                           </p>
                         </div>
                       </article>

@@ -1,0 +1,209 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
+import { DishCarousel } from "@/components/dish-carousel";
+import { RevealSection } from "@/components/reveal-section";
+
+type Dish = {
+  thumbnailSrc: string;
+  fullImgSrc: string;
+  recipeImgSrc?: string;
+  title: string;
+  titleEn?: string;
+  slug: string;
+  description: string;
+  descriptionEn?: string;
+  recipe?: {
+    ingredients: string[];
+    spice: string[];
+    steps: string[];
+  };
+  recipeEn?: {
+    ingredients: string[];
+    spice: string[];
+    steps: string[];
+  };
+  imageScale?: string;
+  imageScaleSm?: string;
+};
+
+interface DishDetailClientProps {
+  dish: Dish | undefined;
+  type: "traditional" | "daily";
+  allDishes: Dish[];
+}
+
+export function DishDetailClient({ dish, type, allDishes }: DishDetailClientProps) {
+  const { language, t } = useLanguage();
+
+  if (!dish) {
+    return (
+      <main className="min-h-screen bg-[#F4F4F4] flex items-center justify-center py-8 sm:py-12 lg:py-16">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold text-[#B02627]">{t("dishNotFound")}</h1>
+          <Link
+            href={type === "traditional" ? "/" : "/"}
+            className="mt-6 inline-block text-[#B02627] hover:text-[#B02627] font-semibold"
+          >
+            {t("backToDishes")}
+          </Link>
+        </div>
+      </main>
+    );
+  }
+
+  const title = language === "en" && dish.titleEn ? dish.titleEn : dish.title;
+  const description = language === "en" && dish.descriptionEn ? dish.descriptionEn : dish.description;
+
+  // Select localized recipe list
+  const ingredients = language === "en" && dish.recipeEn ? dish.recipeEn.ingredients : dish.recipe?.ingredients || [];
+  const spice = language === "en" && dish.recipeEn ? dish.recipeEn.spice : dish.recipe?.spice || [];
+  const steps = language === "en" && dish.recipeEn ? dish.recipeEn.steps : dish.recipe?.steps || [];
+
+  return (
+    <main className="min-h-screen bg-[#F4F4F4] py-8 sm:py-12 lg:py-16">
+      {/* Hero Section */}
+      <RevealSection as="div" className="mx-auto pt-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8" delay={0.05}>
+        {/* Title Outside Container */}
+        <h1 className="text-2xl text-center font-bold text-[#B02627] sm:text-3xl lg:text-4xl mb-6 [font-family:var(--font-roboto)]">
+          {title}
+        </h1>
+
+        <div className="rounded-lg bg-white p-6 sm:p-8 lg:p-10">
+          <div className="flex flex-col gap-8">
+            {/* Image Container */}
+            <div className="relative h-96 w-full sm:h-125 lg:h-150">
+              <Image
+                src={dish.fullImgSrc}
+                alt={title}
+                fill
+                priority
+                className="rounded-lg object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 100vw"
+              />
+              {/* Bottom Left Text Overlay */}
+              <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6">
+                <p
+                  className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] font-roboto-bold leading-tight text-white drop-shadow-2xl"
+                  style={{ textShadow: "0 6px 18px rgba(0,0,0,0.75)" }}
+                >
+                  {type === "traditional" ? t("exploreHeritage") : t("hidanganHarian")}
+                </p>
+                <p
+                  className="mt-2 text-[28px] sm:text-[36px] md:text-[48px] lg:text-[70px] leading-tight text-white drop-shadow-2xl [font-family:var(--font-atziluth)]"
+                  style={{ textShadow: "0 8px 28px rgba(0,0,0,0.8)" }}
+                >
+                  {t("exploreNow")}
+                </p>
+              </div>
+            </div>
+
+            {/* Description Container */}
+            <div className="flex flex-col justify-start">
+              <p className="text-sm leading-relaxed text-black sm:text-base">{description}</p>
+            </div>
+          </div>
+        </div>
+      </RevealSection>
+
+      {/* Recipe Section */}
+      {dish.recipe && (
+        <RevealSection as="div" className="mx-auto w-full max-w-7xl pt-10 px-4 sm:px-6 lg:px-8 mt-12" delay={0.08}>
+          <div className="rounded-lg bg-white p-6 sm:p-8 lg:p-10">
+            <div className="grid gap-8 lg:grid-cols-2">
+              {/* Left Column - Ingredients and Spice */}
+              <div className="flex flex-col gap-8">
+                {/* Ingredients */}
+                {ingredients.length > 0 && (
+                  <div>
+                    <h3 className="text-lg font-bold text-[#B02627] mb-4 [font-family:var(--font-roboto)]">
+                      {t("ingredientsLabel")}
+                    </h3>
+                    <ul className="space-y-2 text-sm text-black sm:text-base">
+                      {ingredients.map((ingredient, index) => (
+                        <li key={index} className="flex items-start gap-2">
+                          <span className="text-[#B02627] font-bold mt-0.5">•</span>
+                          <span>{ingredient}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Spice */}
+                {spice.length > 0 && (
+                  <div>
+                    <h3 className="text-lg font-bold text-[#B02627] mb-4 [font-family:var(--font-roboto)]">
+                      {t("spicesLabel")}
+                    </h3>
+                    <ul className="space-y-2 text-sm text-black sm:text-base">
+                      {spice.map((sp, index) => (
+                        <li key={index} className="flex items-start gap-2">
+                          <span className="text-[#B02627] font-bold mt-0.5">•</span>
+                          <span>{sp}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+
+              {/* Right Column - Recipe Image */}
+              {dish.recipeImgSrc && (
+                <div className="relative h-96 w-full sm:h-125 lg:h-150 flex items-center justify-center">
+                  <div className="relative h-full w-48 sm:w-64 lg:w-80">
+                    <Image
+                      src={dish.recipeImgSrc}
+                      alt={`${title} recipe`}
+                      fill
+                      className="rounded-lg object-cover"
+                      sizes="(max-width: 768px) 192px, (max-width: 1024px) 256px, 320px"
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </RevealSection>
+      )}
+
+      {/* Steps Section */}
+      {steps.length > 0 && (
+        <RevealSection as="div" className="mx-auto pt-10 pb-8 w-full max-w-7xl px-4 sm:px-6 lg:px-8 mt-12" delay={0.1}>
+          <div className="rounded-lg bg-white p-6 sm:p-8 lg:p-10">
+            <h3 className="text-lg font-bold text-[#B02627] mb-6 [font-family:var(--font-roboto)]">
+              {t("stepsLabel")}
+            </h3>
+            <ol className="space-y-3 text-sm text-black sm:text-base list-decimal list-inside">
+              {steps.map((step, index) => (
+                <li key={index} className="leading-relaxed">
+                  {step}
+                </li>
+              ))}
+            </ol>
+          </div>
+        </RevealSection>
+      )}
+
+      {/* Navigation / More Dishes Section */}
+      <RevealSection as="div" className="mx-auto pt-6 w-full pb-12 max-w-7xl px-4 sm:px-6 lg:px-8 mt-6" delay={0.12}>
+        <div className="text-center mb-6">
+          <h2 className="text-3xl font-bold leading-tight text-[#B02627] sm:text-4xl [font-family:var(--font-roboto)]">
+            {t("kenaliLebihDalam")}
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-2xl [font-family:var(--font-roboto)] text-[#B02627]">
+            {type === "traditional" ? t("upacaraAdatSub") : t("harianSub")}
+          </p>
+        </div>
+
+        <DishCarousel
+          direction="ltr"
+          items={allDishes}
+          section={type === "traditional" ? undefined : "daily-dishes"}
+        />
+      </RevealSection>
+    </main>
+  );
+}

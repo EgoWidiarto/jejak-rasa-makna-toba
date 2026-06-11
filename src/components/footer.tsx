@@ -4,16 +4,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import CommentModal from "./comment-modal";
+import { useLanguage } from "@/context/LanguageContext";
 
 const footerLinks = [
   {
-    title: "Eksplorasi",
+    titleKey: "eksplorasi",
     items: [
-      { label: "Beranda", href: "#home" },
-      { label: "Sejarah", href: "/history" },
-      { label: "Hidangan", href: "#tradition-dishes" },
-      { label: "Geografi", href: "/geography" },
-      { label: "Rempah", href: "#herbs" },
+      { labelKey: "home", href: "#home" },
+      { labelKey: "history", href: "/history" },
+      { labelKey: "dishes", href: "#tradition-dishes" },
+      { labelKey: "geography", href: "/geography" },
+      { labelKey: "spices", href: "#herbs" },
     ],
   },
 ];
@@ -53,6 +54,7 @@ const contactItems = [
 
 export function Footer() {
   const [open, setOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <>
@@ -65,22 +67,24 @@ export function Footer() {
                 <Image src="/icon/icon-footer.png" alt="Jejak Rasa Makna Toba" width={160} height={160} className="h-12 w-auto" />
               </div>
 
-              <p className="max-w-xs text-xs leading-6 text-[#FFFDF0]/90">Portal informasi digital yang didedikasikan untuk melestarikan pengetahuan tentang kuliner, sejarah, dan budaya Batak bagi generasi mendatang.</p>
+              <p className="max-w-xs text-xs leading-6 text-[#FFFDF0]/90">
+                {t("footerDesc")}
+              </p>
             </section>
 
             <section>
-              <h2 className="text-lg font-semibold text-[#D98F2D]">Eksplorasi</h2>
+              <h2 className="text-lg font-semibold text-[#D98F2D]">{t("eksplorasi")}</h2>
               <div className="mt-5 space-y-3 text-sm text-[#FFFDF0]/92">
                 {footerLinks[0].items.map((item) => (
-                  <Link key={item.label} href={item.href} className="block transition-opacity hover:opacity-75">
-                    {item.label}
+                  <Link key={item.labelKey} href={item.href} className="block transition-opacity hover:opacity-75">
+                    {t(item.labelKey)}
                   </Link>
                 ))}
               </div>
             </section>
 
             <section>
-              <h2 className="text-lg font-semibold text-[#D98F2D]">Hubungi Kami</h2>
+              <h2 className="text-lg font-semibold text-[#D98F2D]">{t("hubungiKami")}</h2>
               <div className="mt-5 space-y-3 text-sm text-[#FFFDF0]/92">
                 {contactItems.map((item) => (
                   <a key={item.label} href={item.href} className="flex items-start gap-2 transition-opacity hover:opacity-75">
@@ -93,29 +97,31 @@ export function Footer() {
 
             <section>
               <h2 className="text-lg font-semibold text-[#D98F2D]">Newsletter</h2>
-              <p className="mt-5 max-w-xs text-sm leading-6 text-[#FFFDF0]/92">Dapatkan artikel terbaru tentang Budaya Batak Toba.</p>
+              <p className="mt-5 max-w-xs text-sm leading-6 text-[#FFFDF0]/92">
+                {t("dapatkanArtikel")}
+              </p>
             </section>
 
             <section>
-              <h2 className="text-lg font-semibold text-[#D98F2D]">Komentar</h2>
-              <p className="mt-5 text-sm leading-6 text-[#FFFDF0]/92">Berikan komentar terbaikmu</p>
+              <h2 className="text-lg font-semibold text-[#D98F2D]">{t("komentar")}</h2>
+              <p className="mt-5 text-sm leading-6 text-[#FFFDF0]/92">{t("berikanKomentar")}</p>
               <div className="mt-4">
                 <label className="sr-only" htmlFor="footer-comment">
-                  Komentar
+                  {t("komentar")}
                 </label>
                 <button
                   id="footer-comment"
                   type="button"
                   onClick={() => setOpen(true)}
                   className="h-10 w-full rounded-full border border-white/10 bg-white/10 px-4 text-left text-sm text-[#FFFDF0] outline-none placeholder:text-[#FFFDF0]/45">
-                  Klik untuk menulis komentar...
+                  {t("klikKomentar")}
                 </button>
               </div>
             </section>
           </div>
 
           <div className="mt-10 flex items-center justify-end">
-            <span className="text-sm italic text-[#FFFDF0]/70">Hons!</span>
+            <span className="text-sm italic text-[#FFFDF0]/70">Horas!</span>
           </div>
         </div>
       </footer>

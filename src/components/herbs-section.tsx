@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 type Herb = {
   name: string;
   src: string;
   description: string;
+  descriptionEn?: string;
 };
 
 const herbs: Herb[] = [
@@ -14,39 +16,45 @@ const herbs: Herb[] = [
     name: "Andaliman",
     src: "/images/herbs/andaliman.png",
     description: "Andaliman, tuba atau itir-itir adalah tumbuhan dengan buah berbentuk bulat dan bergerombol yang biasa digunakan sebagai bumbu masak khas Batak dan Asia.",
+    descriptionEn: "Andaliman is a flowering plant in the citrus family, producing berries that are widely used as a spice in Batak and Asian cuisine.",
   },
   {
     name: "Kecombrang",
     src: "/images/herbs/kecombrang.png",
     description: "Kecombrang  (Etlingera elatior) adalah sejenis tumbuhan rempah yang bunga, buah, serta bijinya dimanfaatkan sebagai bahan sayuran. ",
+    descriptionEn: "Kecombrang (torch ginger) is a species of herbaceous perennial plant whose showy pink flowers, fruits, and seeds are used in local culinary.",
   },
   {
     name: "Asam Gelugur",
     src: "/images/herbs/asam-gelugur.png",
     description: "Asam gelugur, disebut juga asam potong biasanya dimanfaatkan untuk bumbu masak, bahan perasa minuman, dan bahan dasar pengobatan.",
+    descriptionEn: "Asam gelugur, also known as Garcinia atroviridis, is commonly used as a cooking spice, beverage flavoring, and in traditional medicine.",
   },
   {
     name: "Asam Jungga",
     src: "/images/herbs/asam-jungga.png",
     description: "Jeruk jungga atau disebut juga dengan utte junga atau asam jungga adalah sejenis jeruk purut. Hanya saja jeruk jungga memiliki tingkat keasaman yang tinggi.",
+    descriptionEn: "Jangga lime, also called utte junga or asam jungga, is a type of kaffir lime with extremely high acidity.",
   },
   {
     name: "Asam Cikala",
     src: "/images/herbs/asam-cikala.png",
     description: "Asam cikala adalah buah dari tanaman kecombrang yang  digunakan dalam masakan tradisional Batak Toba, untuk memberikan rasa asam segar.",
+    descriptionEn: "Asam cikala is the fruit of the torch ginger plant used in traditional Batak Toba dishes to provide a fresh, sour taste.",
   },
   {
     name: "Bawang Batak / Lokio",
     src: "/images/herbs/bawang-batak.png",
     description: "Lokio memiliki nama ilmiah  Allium schoenoprasum. Lokio memiliki bentuk yang hampir sama  seperti bawang, namun memiliki tangkai yang lebih panjang.",
+    descriptionEn: "Batak onions, scientifically named Allium schoenoprasum, are similar to green onions/chives but with longer stems.",
   },
 ];
 
 export function HerbsSection() {
-  // PERUBAHAN: Set default state ke "Andaliman"
   const [activeHerbName, setActiveHerbName] = useState<string | null>("Andaliman");
   const [previousHerbName, setPreviousHerbName] = useState<string | null>(null);
   const [isExiting, setIsExiting] = useState(false);
+  const { language, t } = useLanguage();
 
   useEffect(() => {
     const herbParam = sessionStorage.getItem("selectedHerb");
@@ -68,7 +76,6 @@ export function HerbsSection() {
 
   const handleToggleHerb = (herbName: string) => {
     if (activeHerbName === herbName) {
-      // Deselecting - show exit animation first
       setIsExiting(true);
       setTimeout(() => {
         setActiveHerbName(null);
@@ -76,7 +83,6 @@ export function HerbsSection() {
         setIsExiting(false);
       }, 560);
     } else {
-      // Selecting or switching
       setPreviousHerbName(activeHerbName);
       setActiveHerbName(herbName);
       setIsExiting(false);
@@ -86,7 +92,7 @@ export function HerbsSection() {
   return (
     <section id="herbs" className="mx-auto w-full rounded-xl max-w-5xl scroll-mt-28 px-4 py-12 sm:px-6 lg:px-8 bg-[#F4F4F4]">
       <div className="text-center">
-        <h2 className="text-3xl font-bold text-start text-[#B02627] [font-family:var(--font-roboto)] sm:text-4xl">Rempah - Rempah</h2>
+        <h2 className="text-3xl font-bold text-start text-[#B02627] [font-family:var(--font-roboto)] sm:text-4xl">{t("rempahUtama")}</h2>
       </div>
 
       <div className="mt-8 sm:mt-10 flex flex-col lg:flex-row gap-6 lg:gap-12 justify-center items-start">
@@ -103,7 +109,11 @@ export function HerbsSection() {
                   </svg>
                 </button>
 
-                {isActive && <div className="pb-3 pr-4 text-sm leading-relaxed text-zinc-600 [font-family:var(--font-poppins)] animate-in fade-in duration-200">{herb.description}</div>}
+                {isActive && (
+                  <div className="pb-3 pr-4 text-sm leading-relaxed text-zinc-600 [font-family:var(--font-poppins)] animate-in fade-in duration-200">
+                    {language === 'en' && herb.descriptionEn ? herb.descriptionEn : herb.description}
+                  </div>
+                )}
               </div>
             );
           })}
@@ -112,7 +122,6 @@ export function HerbsSection() {
         {/* Image Container */}
         {displayedHerb && (
           <div key={displayedHerb.name} className={`${isSwitching ? "herb-image-cross-fade" : isExiting ? "herb-image-exit" : "herb-image-enter"} relative w-full sm:w-md aspect-square rounded-lg overflow-hidden`}>
-            {/* Saya tambahkan w-full sm:w-md agar gambar responsive di mobile */}
             <Image src={displayedHerb.src} alt={displayedHerb.name} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 320px" priority />
           </div>
         )}

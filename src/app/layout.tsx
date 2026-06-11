@@ -38,6 +38,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { LanguageProvider } from "@/context/LanguageContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -49,9 +51,11 @@ export default function RootLayout({
       className={`${poppins.variable} ${roboto.variable} ${cardo.variable} ${dancingScript.variable} ${atziluth.variable} ${robotoBold.variable} ${robotoMedium.variable} ${poppinsRegular.variable} ${poppinsItalic.variable} ${robotoLight.variable} h-full scroll-smooth scroll-pt-24 antialiased`}
       suppressHydrationWarning>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
-        <Navbar />
-        {children}
-        <Footer />
+        <LanguageProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

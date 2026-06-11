@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 type Testimonial = {
   id: string;
   rating: number;
   name: string;
   comment: string;
+  commentEn?: string;
   createdAt: string;
 };
 
@@ -16,6 +18,7 @@ const DUMMY_TESTIMONIALS: Testimonial[] = [
     rating: 5,
     name: "Raditia Rahman",
     comment: "Dokumentasi makanan khas Batak Toba yang sangat lengkap dan mendalam. Memberikan wawasan baru tentang kekayaan kuliner Indonesia.",
+    commentEn: "A very complete and deep documentation of traditional Batak Toba food. Providing new insights into Indonesia's rich culinary heritage.",
     createdAt: "2026-01-03T10:00:00.000Z",
   },
   {
@@ -23,6 +26,7 @@ const DUMMY_TESTIMONIALS: Testimonial[] = [
     rating: 5,
     name: "Dera Montannah",
     comment: "Sangat menghargai usaha melestarikan warisan budaya kuliner Batak Toba melalui platform digital ini.",
+    commentEn: "Highly appreciate the efforts to preserve the Batak Toba culinary cultural heritage through this digital platform.",
     createdAt: "2026-01-06T10:00:00.000Z",
   },
   {
@@ -30,6 +34,7 @@ const DUMMY_TESTIMONIALS: Testimonial[] = [
     rating: 4,
     name: "Arya Tariq",
     comment: "Platform ini memberikan informasi yang akurat dan menarik tentang tradisi kuliner Batak Toba.",
+    commentEn: "This platform provides accurate and interesting information about the Batak Toba culinary tradition.",
     createdAt: "2026-01-11T10:00:00.000Z",
   },
   {
@@ -37,6 +42,7 @@ const DUMMY_TESTIMONIALS: Testimonial[] = [
     rating: 5,
     name: "Rari Yunitagus",
     comment: "Apresiasi tinggi untuk dokumentasi yang detail dan informatif tentang makanan tradisional Batak.",
+    commentEn: "High appreciation for the detailed and informative documentation of traditional Batak food.",
     createdAt: "2026-01-16T10:00:00.000Z",
   },
 ];
@@ -44,6 +50,7 @@ const DUMMY_TESTIMONIALS: Testimonial[] = [
 export function TestimonialsList() {
   const [items, setItems] = useState<Testimonial[]>([]);
   const [loading, setLoading] = useState(true);
+  const { language, t } = useLanguage();
 
   async function fetchItems(): Promise<Testimonial[]> {
     const res = await fetch("/api/testimonials", { cache: "no-store" });
@@ -87,7 +94,7 @@ export function TestimonialsList() {
     };
   }, []);
 
-  if (loading) return <div className="mt-10 text-center text-sm text-zinc-600">Memuat komentar...</div>;
+  if (loading) return <div className="mt-10 text-center text-sm text-zinc-600">{t("memuatKomentar")}</div>;
 
   const displayedItems = items.length > 0 ? items : DUMMY_TESTIMONIALS;
 
@@ -102,7 +109,9 @@ export function TestimonialsList() {
               </span>
             ))}
           </div>
-          <p className="mt-4 text-[13px] italic leading-6 text-zinc-600 [font-family:var(--font-poppins)] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] overflow-hidden">{t.comment}</p>
+          <p className="mt-4 text-[13px] italic leading-6 text-zinc-600 [font-family:var(--font-poppins)] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] overflow-hidden">
+            {language === 'en' && t.commentEn ? t.commentEn : t.comment}
+          </p>
           <div className="mt-auto flex items-center gap-2 pt-6">
             <div className="h-7 w-7 rounded-full bg-zinc-300" />
             <div>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import { rawMapSVG } from "@/data/map-svg";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface RegionData {
   baseColor: string;
@@ -13,6 +14,7 @@ interface RegionData {
 }
 
 export function LocationMap() {
+  const { t } = useLanguage();
   const [panPosition, setPanPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const dragStateRef = useRef({
@@ -160,16 +162,16 @@ export function LocationMap() {
 
           <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center px-5 text-center sm:px-10 lg:px-14">
             <div className="pointer-events-auto max-w-xl p-0 lg:max-w-2xl">
-              <h2 className="text-3xl font-bold tracking-tight text-[#2C2424] [font-family:var(--font-roboto)] sm:text-5xl">Letak Geografis</h2>
+              <h2 className="text-3xl font-bold tracking-tight text-[#2C2424] [font-family:var(--font-roboto)] sm:text-5xl">{t("letakGeografis")}</h2>
               <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-[#2C2424] [font-family:var(--font-poppins)] sm:text-base lg:max-w-3xl">
-                Wilayah Sumatera Utara yang didiami oleh suku Batak yaitu Batak Toba, Batak Karo, Batak Simalungun, Batak Pakpak, Batak Mandailing, Batak Angkola.
+                {t("mapDesc")}
               </p>
 
               <div className="mt-7 flex justify-center">
                 <Link
                   href="/geography"
                   className="pointer-events-auto inline-flex items-center gap-2 rounded-[15px] bg-[#D9D9D9]/80 px-5 py-2.5 text-sm font-normal text-[#B02627] [font-family:var(--font-poppins)] transition-opacity hover:opacity-80">
-                  Lihat peta budaya
+                  {t("lihatPeta")}
                 </Link>
               </div>
             </div>
