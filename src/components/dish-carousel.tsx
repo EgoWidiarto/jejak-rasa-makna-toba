@@ -105,7 +105,7 @@ export function DishCarousel({ direction = "rtl", items, section }: { direction?
                             {titleText}
                           </h3>
                           <p
-                            className="min-h-18 text-center text-[0.7rem] leading-relaxed text-zinc-600 sm:min-h-18 sm:text-[0.8rem]"
+                            className="min-h-18 text-center text-[0.7rem] leading-relaxed text-black sm:min-h-18 sm:text-[0.8rem]"
                             suppressHydrationWarning
                           >
                             {getPreviewText(descText)}
