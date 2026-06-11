@@ -99,10 +99,25 @@ body {
 }
 
 .pattern-scroll {
-  background-image: url("/images/pattern-3.png");
+  background-image: url("/images/pattern-svg.svg?v=2");
   background-repeat: repeat-x;
   background-position: 0 0;
-  background-size: auto 60%;
+  background-size: auto 75%;
+  
+  /* Width is set to exactly 2 cycles (2 * 16.854576 * height) for seamless repeat */
+  width: 2157.38px; /* height h-16 = 64px */
+}
+
+@media (min-width: 640px) {
+  .pattern-scroll {
+    width: 2696.73px; /* height sm:h-20 = 80px */
+  }
+}
+
+@media (min-width: 1024px) {
+  .pattern-scroll {
+    width: 3236.08px; /* height lg:h-24 = 96px */
+  }
 }
 
 @keyframes pattern-marquee-scroll {

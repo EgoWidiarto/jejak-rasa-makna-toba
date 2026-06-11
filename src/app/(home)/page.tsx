@@ -19,8 +19,8 @@ export default function Home() {
       {/* Pattern */}
       <RevealSection aria-label="Motif Batak berjalan" className="w-full overflow-hidden pt-10" delay={0.05}>
         <div className="pattern-marquee-track flex w-max">
-          <div className="pattern-scroll h-16 w-screen shrink-0 sm:h-20 lg:h-24" />
-          <div className="pattern-scroll h-16 w-screen shrink-0 sm:h-20 lg:h-24" />
+          <div className="pattern-scroll h-16 shrink-0 sm:h-20 lg:h-24" />
+          <div className="pattern-scroll h-16 shrink-0 sm:h-20 lg:h-24" />
         </div>
       </RevealSection>
 
@@ -55,8 +55,8 @@ export default function Home() {
       {/* Tradition Dishes Section */}
       <RevealSection id="tradition-dishes" className="mx-auto w-full max-w-7xl scroll-mt-28 px-4 pb-6 sm:px-6 sm:pb-8 lg:px-8 lg:pb-12 pt-2" delay={0.08}>
         <div className="text-center">
-          <h2 className="text-4xl font-bold leading-tight text-[#B02627] sm:text-4xl [font-family:var(--font-roboto)]">Kenali Lebih Dalam</h2>
-          <p className="mx-auto mt-0 max-w-2xl text-2xl font-normal leading-relaxed text-[#B02627] sm:text-lg [font-family:var(--font-roboto)]">Hidangan yang Disajikan pada Upacara Adat</p>
+          <h2 className="text-4xl font-bold leading-tight text-[#B02627] sm:text-4xl [font-family:var(--font-roboto)]">Hidangan yang Disajikan pada Upacara Adat</h2>
+          <p className="mx-auto mt-0 max-w-2xl text-3xl font-normal leading-relaxed text-[#B02627] sm:text-2xl [font-family:var(--font-roboto)]">Kenali Lebih Dalam</p>
         </div>
 
         <DishCarousel direction="ltr" items={dishes} section="tradition-dishes" />
@@ -65,14 +65,14 @@ export default function Home() {
       {/* Daily Dishes Section */}
       <RevealSection id="daily-dishes" className="mx-auto w-full max-w-7xl scroll-mt-28 px-4 pb-6 sm:px-6 sm:pb-8 lg:px-8 lg:pb-12 pt-2" delay={0.08}>
         <div className="text-center">
-          <h2 className="text-4xl font-bold leading-tight text-[#B02627] sm:text-4xl [font-family:var(--font-roboto)]">Kenali Lebih Dalam</h2>
-          <p className="mx-auto mt-0 max-w-2xl text-2xl font-normal leading-relaxed text-[#B02627] sm:text-lg [font-family:var(--font-roboto)]">Hidangan yang Disajikan sehari-hari</p>
+          <h2 className="text-4xl font-bold leading-tight text-[#B02627] sm:text-4xl [font-family:var(--font-roboto)]">Hidangan yang Disajikan sehari-hari</h2>
+          <p className="mx-auto mt-0 max-w-2xl text-3xl font-normal leading-relaxed text-[#B02627] sm:text-2xl [font-family:var(--font-roboto)]">Kenali Lebih Dalam</p>
         </div>
 
         <DishCarousel direction="rtl" items={dailyDishes} section="daily-dishes" />
       </RevealSection>
 
-      <RevealSection as="div" className="pt-10">
+      <RevealSection as="div" className="pt-10 bg-white pb-10">
         <HerbsSection />
       </RevealSection>
 
@@ -94,8 +94,8 @@ export default function Home() {
       {/* Bottom Pattern */}
       <section aria-label="Motif Batak bawah peta" className="w-full overflow-hidden mt-10 mb-40">
         <div className="pattern-marquee-track pattern-marquee-reverse flex w-max">
-          <div className="pattern-scroll h-16 w-screen shrink-0 sm:h-20 lg:h-24" />
-          <div className="pattern-scroll h-16 w-screen shrink-0 sm:h-20 lg:h-24" />
+          <div className="pattern-scroll h-16 shrink-0 sm:h-20 lg:h-24" />
+          <div className="pattern-scroll h-16 shrink-0 sm:h-20 lg:h-24" />
         </div>
       </section>
     </main>

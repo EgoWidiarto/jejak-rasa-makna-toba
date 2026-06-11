@@ -53,9 +53,11 @@ export function HerbsSection() {
     if (herbParam) {
       const herb = herbs.find((h) => h.name === herbParam);
       if (herb) {
-        setActiveHerbName(herbParam);
-        setPreviousHerbName(null);
-        setIsExiting(false);
+        setTimeout(() => {
+          setActiveHerbName(herbParam);
+          setPreviousHerbName(null);
+          setIsExiting(false);
+        }, 0);
       }
       sessionStorage.removeItem("selectedHerb");
     }
@@ -82,12 +84,9 @@ export function HerbsSection() {
   };
 
   return (
-    <section id="herbs" className="mx-auto w-full max-w-5xl scroll-mt-28 px-4 py-12 sm:px-6 lg:px-8">
+    <section id="herbs" className="mx-auto w-full rounded-xl max-w-5xl scroll-mt-28 px-4 py-12 sm:px-6 lg:px-8 bg-[#F4F4F4]">
       <div className="text-center">
-        <h2 className="text-3xl font-bold text-black text-[#B02627] [font-family:var(--font-roboto)] sm:text-4xl">Rempah - Rempah</h2>
-        <p className="mx-auto mt-2 max-w-3xl text-sm font-normal text-black [font-family:var(--font-poppins)] sm:text-base">
-          Makanan khas Batak Toba banyak menggunakan berbagai macam rempah-rempah, namun rempah yang sangat ikonik dan khas, ada pada rempah andaliman.
-        </p>
+        <h2 className="text-3xl font-bold text-start text-[#B02627] [font-family:var(--font-roboto)] sm:text-4xl">Rempah - Rempah</h2>
       </div>
 
       <div className="mt-8 sm:mt-10 flex flex-col lg:flex-row gap-6 lg:gap-12 justify-center items-start">
@@ -96,7 +95,7 @@ export function HerbsSection() {
           {herbs.map((herb) => {
             const isActive = herb.name === activeHerbName;
             return (
-              <div key={herb.name} className="border-b border-zinc-300 last:border-b-0">
+              <div key={herb.name} className="border-b border-zinc-300 last:border-b-0 text-black">
                 <button onClick={() => handleToggleHerb(herb.name)} className="flex w-full items-center justify-between gap-4 py-3 text-left hover:bg-zinc-50 transition-colors" aria-expanded={isActive}>
                   <span className={`text-lg font-semibold [font-family:var(--font-roboto)] transition-colors ${isActive ? "text-zinc-900" : "text-zinc-700"}`}>{herb.name}</span>
                   <svg className={`h-5 w-5 shrink-0 text-zinc-500 transition-transform duration-300 ${isActive ? "rotate-180" : ""}`} viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8">

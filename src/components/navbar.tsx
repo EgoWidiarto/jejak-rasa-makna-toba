@@ -99,17 +99,6 @@ export function Navbar() {
     href: `/daily-dishes/${item.slug}`,
   }));
 
-  // Refs and position states for desktop mega menu alignment
-  const sejarahRef = useRef<HTMLButtonElement>(null);
-  const hidanganRef = useRef<HTMLButtonElement>(null);
-  const rempahRef = useRef<HTMLButtonElement>(null);
-  const geografiRef = useRef<HTMLButtonElement>(null);
-  const modalContainerRef = useRef<HTMLDivElement>(null);
-
-  const [sejarahLeftOffset, setSejarahLeftOffset] = useState<number | null>(null);
-  const [hidanganLeftOffset, setHidanganLeftOffset] = useState<number | null>(null);
-  const [rempahLeftOffset, setRempahLeftOffset] = useState<number | null>(null);
-  const [geografiLeftOffset, setGeografiLeftOffset] = useState<number | null>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleMouseEnter = (menu: "Sejarah" | "Hidangan" | "Rempah" | "Geografis") => {
@@ -131,39 +120,6 @@ export function Navbar() {
   const handleModalMouseLeave = () => {
     handleMouseLeave();
   };
-
-  useEffect(() => {
-    const updatePositions = () => {
-      if (
-        sejarahRef.current &&
-        hidanganRef.current &&
-        rempahRef.current &&
-        geografiRef.current &&
-        modalContainerRef.current
-      ) {
-        const modalRect = modalContainerRef.current.getBoundingClientRect();
-        const sejarahRect = sejarahRef.current.getBoundingClientRect();
-        const hidanganRect = hidanganRef.current.getBoundingClientRect();
-        const rempahRect = rempahRef.current.getBoundingClientRect();
-        const geografiRect = geografiRef.current.getBoundingClientRect();
-
-        setSejarahLeftOffset(sejarahRect.left - modalRect.left);
-        setHidanganLeftOffset(hidanganRect.left - modalRect.left);
-        setRempahLeftOffset(rempahRect.left - modalRect.left);
-        setGeografiLeftOffset(geografiRect.left - modalRect.left);
-      }
-    };
-
-    updatePositions();
-    window.addEventListener("resize", updatePositions);
-    const timeout = setTimeout(updatePositions, 100);
-
-    return () => {
-      window.removeEventListener("resize", updatePositions);
-      clearTimeout(timeout);
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
-  }, [activeMenu]);
 
   return (
     <header ref={headerRef} className="sticky top-0 z-50 border-b border-black/5 bg-white/95 backdrop-blur-sm">
@@ -190,186 +146,138 @@ export function Navbar() {
               );
             }
 
-            const isSejarah = item.label === "Sejarah";
-            const isHidangan = item.label === "Hidangan";
-            const isRempah = item.label === "Rempah";
-            const isGeografi = item.label === "Geografis";
-
-            let ref;
-            if (isSejarah) ref = sejarahRef;
-            else if (isHidangan) ref = hidanganRef;
-            else if (isRempah) ref = rempahRef;
-            else ref = geografiRef;
+            const menuLabel = item.label as "Sejarah" | "Hidangan" | "Rempah" | "Geografis";
 
             return (
-              <button
+              <div
                 key={item.label}
-                ref={ref}
-                type="button"
-                onMouseEnter={() => handleMouseEnter(item.label as "Sejarah" | "Hidangan" | "Rempah" | "Geografis")}
-                onMouseLeave={handleMouseLeave}
-                onClick={(e) => {
-                  e.currentTarget.blur();
-                  setActiveMenu(activeMenu === item.label ? null : (item.label as "Sejarah" | "Hidangan" | "Rempah" | "Geografis"));
+                className="relative py-2"
+                onMouseEnter={() => {
+                  if (typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches) {
+                    handleMouseEnter(menuLabel);
+                  }
                 }}
-                className="cursor-pointer text-sm font-medium tracking-wide transition-opacity hover:opacity-75 focus-visible:outline-none"
-                style={{ color: "#8F1C1D" }}
-                aria-haspopup="true"
-                aria-expanded={activeMenu === item.label}>
-                {item.label}
-              </button>
+                onMouseLeave={() => {
+                  if (typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches) {
+                    handleMouseLeave();
+                  }
+                }}
+              >
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.currentTarget.blur();
+                    setActiveMenu(activeMenu === menuLabel ? null : menuLabel);
+                  }}
+                  className="cursor-pointer text-sm font-medium tracking-wide transition-opacity hover:opacity-75 focus-visible:outline-none"
+                  style={{ color: "#8F1C1D" }}
+                  aria-haspopup="true"
+                  aria-expanded={activeMenu === menuLabel}>
+                  {item.label}
+                </button>
+
+                {/* Dropdown Card */}
+                <div
+                  onMouseEnter={handleModalMouseEnter}
+                  onMouseLeave={handleModalMouseLeave}
+                  className={`absolute top-[calc(100%+0.5rem)] left-1/2 -translate-x-1/2 z-50 rounded-[24px] border border-black/10 bg-white px-6 py-5 shadow-[0_12px_40px_rgba(0,0,0,0.12)] transition-all duration-200 ${
+                    activeMenu === menuLabel
+                      ? "opacity-100 translate-y-0 pointer-events-auto visible"
+                      : "opacity-0 -translate-y-2 pointer-events-none invisible"
+                  }`}
+                >
+                  {menuLabel === "Sejarah" && (
+                    <div className="w-[180px] flex flex-col gap-1">
+                      <p className="mb-2 font-roboto-thin text-[10px] text-[#8F1C1D] tracking-wider uppercase">
+                        Jelajahi Sejarah
+                      </p>
+                      <Link
+                        href="/history"
+                        onClick={() => setActiveMenu(null)}
+                        className="font-roboto-medium text-[14px] leading-[20px] text-[#B02627] transition-colors hover:text-[#6f1617]"
+                      >
+                        Sejarah dan Makna
+                      </Link>
+                    </div>
+                  )}
+
+                  {menuLabel === "Hidangan" && (
+                    <div className="w-[360px] grid grid-cols-2 gap-6">
+                      <div className="flex flex-col gap-1">
+                        <p className="mb-2 font-roboto-thin text-[10px] text-[#8F1C1D] tracking-wider uppercase">
+                          Hidangan Tradisional
+                        </p>
+                        <div className="flex flex-col gap-2">
+                          {traditionalDishLinks.map((dish) => (
+                            <Link
+                              key={dish.title}
+                              href={dish.href}
+                              onClick={() => setActiveMenu(null)}
+                              className="font-roboto-medium text-[14px] leading-[20px] text-[#B02627] transition-colors hover:text-[#6f1617]"
+                            >
+                              {dish.title}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <p className="mb-2 font-roboto-thin text-[10px] text-[#8F1C1D] tracking-wider uppercase">
+                          Hidangan Harian
+                        </p>
+                        <div className="flex flex-col gap-2">
+                          {dailyDishLinks.map((dish) => (
+                            <Link
+                              key={dish.title}
+                              href={dish.href}
+                              onClick={() => setActiveMenu(null)}
+                              className="font-roboto-medium text-[14px] leading-[20px] text-[#B02627] transition-colors hover:text-[#6f1617]"
+                            >
+                              {dish.title}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {menuLabel === "Rempah" && (
+                    <div className="w-[180px] flex flex-col gap-1">
+                      <p className="mb-2 font-roboto-thin text-[10px] text-[#8F1C1D] tracking-wider uppercase">
+                        Jelajahi Rempah
+                      </p>
+                      <div className="flex flex-col gap-2">
+                        {herbs.map((herb) => (
+                          <button
+                            key={herb.name}
+                            onClick={() => handleHerbClick(herb.name)}
+                            className="text-left font-medium font-roboto-medium text-[14px] leading-[20px] text-[#B02627] transition-colors hover:text-[#6f1617] cursor-pointer"
+                          >
+                            {herb.name}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {menuLabel === "Geografis" && (
+                    <div className="w-[180px] flex flex-col gap-1">
+                      <p className="mb-2 font-roboto-thin text-[10px] text-[#8F1C1D] tracking-wider uppercase">
+                        Jelajahi Geografis
+                      </p>
+                      <Link
+                        href="/geography"
+                        onClick={() => setActiveMenu(null)}
+                        className="font-medium font-roboto-medium text-[14px] leading-[20px] text-[#B02627] transition-colors hover:text-[#6f1617]"
+                      >
+                        Geografis
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              </div>
             );
           })}
         </nav>
-
-        {/* Shared Mega Menu Dropdown */}
-        <div
-          ref={modalContainerRef}
-          onMouseEnter={handleModalMouseEnter}
-          onMouseLeave={handleModalMouseLeave}
-          className={`absolute left-1/2 top-[calc(100%+0.5rem)] z-50 w-[92vw] max-w-5xl -translate-x-1/2 transition-all duration-200 hidden md:block ${activeMenu ? "visible opacity-100 translate-y-0" : "invisible opacity-0 -translate-y-2"
-            }`}
-        >
-          <div className="rounded-[28px] border border-black/10 bg-white px-8 py-7 shadow-[0_18px_60px_rgba(0,0,0,0.12)] relative">
-            {/* Ghost layout for auto-height sizing */}
-            <div className="grid gap-8 grid-cols-4 opacity-0 pointer-events-none">
-              {/* Kolom 1: Sejarah */}
-              <div className="w-[160px]">
-                <p className="mb-2 font-roboto-light text-[10px]">Jelajahi Sejarah</p>
-                <div className="font-roboto-medium l text-[12px] leading-[20px]">Sejarah dan Makna</div>
-              </div>
-              {/* Kolom 2: Hidangan */}
-              <div className="w-[160px]">
-                <p className="mb-2 font-roboto-light text-[10px]">Jelajahi Hidangan</p>
-                <div className="grid gap-2 mb-6">
-                  {traditionalDishLinks.map((dish) => (
-                    <div key={dish.title} className="font-roboto-medium text-[14px] leading-[20px]">{dish.title}</div>
-                  ))}
-                </div>
-                <div className="grid gap-2">
-                  {dailyDishLinks.map((dish) => (
-                    <div key={dish.title} className="font-roboto-medium text-[14px] leading-[20px]">{dish.title}</div>
-                  ))}
-                </div>
-              </div>
-              {/* Kolom 3: Rempah */}
-              <div className="w-[160px]">
-                <p className="mb-2 font-roboto-light text-[10px]">Jelajahi Rempah-rempah</p>
-                <div className="grid gap-2">
-                  {herbs.map((herb) => (
-                    <div key={herb.name} className="font-medium font-roboto-medium text-[10px] lg:text-[14px] leading-[20px]">{herb.name}</div>
-                  ))}
-                </div>
-              </div>
-              {/* Kolom 4: s */}
-              <div className="w-[160px]">
-                <p className="mb-2 font-roboto-light text-[10px]">Jelajahi Geografis</p>
-                <div className="font-medium font-roboto-medium text-[14px] leading-[20px]">Geografis</div>
-              </div>
-            </div>
-
-            {/* Sejarah Column */}
-            <div
-              className="absolute top-7 transition-all duration-200"
-              style={{
-                left: sejarahLeftOffset !== null ? `${sejarahLeftOffset}px` : "10%",
-                width: "160px",
-              }}
-            >
-              <p className="mb-2 font-roboto-thin text-[10px] text-[#8F1C1D]">
-                Jelajahi Sejarah
-              </p>
-              <Link
-                href="/history"
-                onClick={() => setActiveMenu(null)}
-                className="font-roboto-medium text-[14px] leading-[20px] text-[#B02627] transition-colors hover:text-[#6f1617]"
-              >
-                Sejarah dan Makna
-              </Link>
-            </div>
-
-            {/* Hidangan Column */}
-            <div
-              className="absolute top-7 transition-all duration-200"
-              style={{
-                left: hidanganLeftOffset !== null ? `${hidanganLeftOffset}px` : "32%",
-                width: "160px",
-              }}
-            >
-              <p className="mb-2 font-roboto-thin text-[10px] text-[#8F1C1D]">
-                Jelajahi Hidangan
-              </p>
-              <div className="grid gap-2 mb-6">
-                {traditionalDishLinks.map((dish) => (
-                  <Link
-                    key={dish.title}
-                    href={dish.href}
-                    onClick={() => setActiveMenu(null)}
-                    className="font-roboto-medium text-[14px] leading-[20px] text-[#B02627] transition-colors hover:text-[#6f1617]"
-                  >
-                    {dish.title}
-                  </Link>
-                ))}
-              </div>
-              <div className="grid gap-2">
-                {dailyDishLinks.map((dish) => (
-                  <Link
-                    key={dish.title}
-                    href={dish.href}
-                    onClick={() => setActiveMenu(null)}
-                    className="font-roboto-medium text-[14px] leading-[20px] text-[#B02627] transition-colors hover:text-[#6f1617]"
-                  >
-                    {dish.title}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Rempah Column */}
-            <div
-              className="absolute top-7 transition-all duration-200"
-              style={{
-                left: rempahLeftOffset !== null ? `${rempahLeftOffset}px` : "55%",
-                width: "160px",
-              }}
-            >
-              <p className="mb-2 font-roboto-thin text-[10px] text-[#8F1C1D]">
-                Jelajahi Rempah-rempah
-              </p>
-              <div className="grid gap-2">
-                {herbs.map((herb) => (
-                  <button
-                    key={herb.name}
-                    onClick={() => handleHerbClick(herb.name)}
-                    className="text-left font-medium font-roboto-medium text-[14px] leading-[20px] text-[#B02627] transition-colors hover:text-[#6f1617] cursor-pointer"
-                  >
-                    {herb.name}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Geografis Column */}
-            <div
-              className="absolute top-7 transition-all duration-200"
-              style={{
-                left: geografiLeftOffset !== null ? `${geografiLeftOffset}px` : "78%",
-                width: "160px",
-              }}
-            >
-              <p className="mb-2 font-roboto-thin text-[10px] text-[#8F1C1D]">
-                Jelajahi Geografis
-              </p>
-              <Link
-                href="/geography"
-                onClick={() => setActiveMenu(null)}
-                className="font-medium font-roboto-medium text-[14px] leading-[20px] text-[#B02627] transition-colors hover:text-[#6f1617]"
-              >
-                Geografis
-              </Link>
-            </div>
-          </div>
-        </div>
 
         <div className="flex items-center gap-3 text-[#8F1C1D]">
           <Link href="/" aria-label="Website icon" className="hidden items-center justify-center transition-opacity hover:opacity-75 sm:inline-flex">
