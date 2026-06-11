@@ -14,7 +14,7 @@ const navigationItems = [
   { label: "Sejarah", href: "/history" },
   { label: "Hidangan", href: "#hidangan" },
   { label: "Rempah", href: "#herbs" },
-  { label: "Geografi", href: "/geography" },
+  { label: "Geografis", href: "/geography" },
 ];
 
 
@@ -51,7 +51,7 @@ function CloseIcon() {
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeMenu, setActiveMenu] = useState<"Sejarah" | "Hidangan" | "Rempah" | "Geografi" | null>(null);
+  const [activeMenu, setActiveMenu] = useState<"Sejarah" | "Hidangan" | "Rempah" | "Geografis" | null>(null);
   const headerRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
   const isHomePage = pathname === "/";
@@ -112,7 +112,7 @@ export function Navbar() {
   const [geografiLeftOffset, setGeografiLeftOffset] = useState<number | null>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const handleMouseEnter = (menu: "Sejarah" | "Hidangan" | "Rempah" | "Geografi") => {
+  const handleMouseEnter = (menu: "Sejarah" | "Hidangan" | "Rempah" | "Geografis") => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setActiveMenu(menu);
   };
@@ -193,7 +193,7 @@ export function Navbar() {
             const isSejarah = item.label === "Sejarah";
             const isHidangan = item.label === "Hidangan";
             const isRempah = item.label === "Rempah";
-            const isGeografi = item.label === "Geografi";
+            const isGeografi = item.label === "Geografis";
 
             let ref;
             if (isSejarah) ref = sejarahRef;
@@ -206,11 +206,11 @@ export function Navbar() {
                 key={item.label}
                 ref={ref}
                 type="button"
-                onMouseEnter={() => handleMouseEnter(item.label as "Sejarah" | "Hidangan" | "Rempah" | "Geografi")}
+                onMouseEnter={() => handleMouseEnter(item.label as "Sejarah" | "Hidangan" | "Rempah" | "Geografis")}
                 onMouseLeave={handleMouseLeave}
                 onClick={(e) => {
                   e.currentTarget.blur();
-                  setActiveMenu(activeMenu === item.label ? null : (item.label as "Sejarah" | "Hidangan" | "Rempah" | "Geografi"));
+                  setActiveMenu(activeMenu === item.label ? null : (item.label as "Sejarah" | "Hidangan" | "Rempah" | "Geografis"));
                 }}
                 className="cursor-pointer text-sm font-medium tracking-wide transition-opacity hover:opacity-75 focus-visible:outline-none"
                 style={{ color: "#8F1C1D" }}
@@ -261,10 +261,10 @@ export function Navbar() {
                   ))}
                 </div>
               </div>
-              {/* Kolom 4: Geografi */}
+              {/* Kolom 4: s */}
               <div className="w-[160px]">
-                <p className="mb-2 font-roboto-light text-[10px]">Jelajahi Geografi</p>
-                <div className="font-medium font-roboto-medium text-[14px] leading-[20px]">Geografi</div>
+                <p className="mb-2 font-roboto-light text-[10px]">Jelajahi Geografis</p>
+                <div className="font-medium font-roboto-medium text-[14px] leading-[20px]">Geografis</div>
               </div>
             </div>
 
@@ -349,7 +349,7 @@ export function Navbar() {
               </div>
             </div>
 
-            {/* Geografi Column */}
+            {/* Geografis Column */}
             <div
               className="absolute top-7 transition-all duration-200"
               style={{
@@ -358,14 +358,14 @@ export function Navbar() {
               }}
             >
               <p className="mb-2 font-roboto-thin text-[10px] text-[#8F1C1D]">
-                Jelajahi Geografi
+                Jelajahi Geografis
               </p>
               <Link
                 href="/geography"
                 onClick={() => setActiveMenu(null)}
                 className="font-medium font-roboto-medium text-[14px] leading-[20px] text-[#B02627] transition-colors hover:text-[#6f1617]"
               >
-                Geografi
+                Geografis
               </Link>
             </div>
           </div>
@@ -440,13 +440,13 @@ export function Navbar() {
             Rempah-rempah
           </Link>
 
-          {/* Geografi */}
+          {/* Geografis */}
           <Link
             href="/geography"
             onClick={() => setMenuOpen(false)}
             className="rounded-xl px-3 py-2 text-sm font-medium tracking-wide transition-colors hover:bg-[#8F1C1D]/5"
             style={{ color: "#8F1C1D" }}>
-            Geografi
+            Geografis
           </Link>
         </nav>
       </div>

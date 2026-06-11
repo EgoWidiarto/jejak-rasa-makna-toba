@@ -26,7 +26,7 @@ export default async function DishDetailPage(props: PageProps) {
       <main className="min-h-screen bg-[#F4F4F4] flex items-center justify-center py-8 sm:py-12 lg:py-16">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-[#B02627]">Hidangan Tidak Ditemukan</h1>
-          <Link href="/tradition-dishes" className="mt-6 inline-block text-[#D93B2D] hover:text-[#B02627] font-semibold">
+          <Link href="/tradition-dishes" className="mt-6 inline-block text-[#B02627] hover:text-[#B02627] font-semibold">
             Kembali ke Daftar Hidangan
           </Link>
         </div>

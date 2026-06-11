@@ -55,8 +55,8 @@ export default function Home() {
       {/* Tradition Dishes Section */}
       <RevealSection id="tradition-dishes" className="mx-auto w-full max-w-7xl scroll-mt-28 px-4 pb-6 sm:px-6 sm:pb-8 lg:px-8 lg:pb-12 pt-2" delay={0.08}>
         <div className="text-center">
-          <h2 className="text-4xl font-bold leading-tight text-[#D93B2D] sm:text-4xl [font-family:var(--font-roboto)]">Kenali Lebih Dalam</h2>
-          <p className="mx-auto mt-0 max-w-2xl text-2xl font-normal leading-relaxed text-[#D93B2D] sm:text-lg [font-family:var(--font-roboto)]">Hidangan yang Disajikan pada Upacara Adat</p>
+          <h2 className="text-4xl font-bold leading-tight text-[#B02627] sm:text-4xl [font-family:var(--font-roboto)]">Kenali Lebih Dalam</h2>
+          <p className="mx-auto mt-0 max-w-2xl text-2xl font-normal leading-relaxed text-[#B02627] sm:text-lg [font-family:var(--font-roboto)]">Hidangan yang Disajikan pada Upacara Adat</p>
         </div>
 
         <DishCarousel direction="ltr" items={dishes} section="tradition-dishes" />
@@ -65,8 +65,8 @@ export default function Home() {
       {/* Daily Dishes Section */}
       <RevealSection id="daily-dishes" className="mx-auto w-full max-w-7xl scroll-mt-28 px-4 pb-6 sm:px-6 sm:pb-8 lg:px-8 lg:pb-12 pt-2" delay={0.08}>
         <div className="text-center">
-          <h2 className="text-4xl font-bold leading-tight text-[#D93B2D] sm:text-4xl [font-family:var(--font-roboto)]">Kenali Lebih Dalam</h2>
-          <p className="mx-auto mt-0 max-w-2xl text-2xl font-normal leading-relaxed text-[#D93B2D] sm:text-lg [font-family:var(--font-roboto)]">Hidangan yang Disajikan sehari-hari</p>
+          <h2 className="text-4xl font-bold leading-tight text-[#B02627] sm:text-4xl [font-family:var(--font-roboto)]">Kenali Lebih Dalam</h2>
+          <p className="mx-auto mt-0 max-w-2xl text-2xl font-normal leading-relaxed text-[#B02627] sm:text-lg [font-family:var(--font-roboto)]">Hidangan yang Disajikan sehari-hari</p>
         </div>
 
         <DishCarousel direction="rtl" items={dailyDishes} section="daily-dishes" />

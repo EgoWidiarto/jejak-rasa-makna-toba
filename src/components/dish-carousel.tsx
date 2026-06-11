@@ -41,10 +41,10 @@ export function DishCarousel({ direction = "rtl", items, section }: { direction?
   };
 
   return (
-    <div className="overflow-visible py-16 sm:py-20">
+    <div className="overflow-visible py-10 sm:py-18">
       <div className="relative">
         {/* Carousel Container */}
-        <div ref={scrollContainerRef} className="-mt-10 overflow-x-auto overflow-y-visible scrollbar-hide pt-32 sm:-mt-12 sm:pt-36 lg:-mt-14 lg:pt-40">
+        <div ref={scrollContainerRef} className="-mt-20 overflow-x-auto overflow-y-visible scrollbar-hide pt-32 sm:-mt-12 sm:pt-36 lg:-mt-14 lg:pt-40">
           <div className={`section-carousel-track ${direction === "ltr" ? "section-carousel-reverse" : ""} overflow-visible flex w-max items-stretch`}>
             <div className="flex shrink-0 items-stretch gap-4 pr-4 sm:gap-5 sm:pr-5">
               {itemsList.map((dish, index) => {
@@ -54,7 +54,7 @@ export function DishCarousel({ direction = "rtl", items, section }: { direction?
                   <Link
                     key={dish.title}
                     href={`/${finalSection}/${dish.slug}`}
-                    className="group relative block w-60 shrink-0 self-end transition-all duration-300 hover:mx-3 hover:scale-110 origin-bottom hover:-translate-y-8 sm:w-70 sm:hover:mx-4 sm:hover:-translate-y-10"
+                    className="group relative block w-60 shrink-0 self-end transition-all duration-300 hover:mx-3 hover:scale-106 origin-bottom sm:w-70 sm:hover:mx-4"
                   >
                     {/* Floating Dish Image */}
                     <div className="absolute left-1/2 top-0 z-20 h-36 w-36 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full border-4 border-white bg-white shadow-lg flex items-center justify-center sm:h-40 sm:w-40">
