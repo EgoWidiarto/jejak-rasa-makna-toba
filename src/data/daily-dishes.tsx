@@ -69,7 +69,7 @@ export const dailyDishes = [
             "Arrange stick noodles in a bowl, pour with soup. Serve with fried foods and warm tea."
       ]
 },
-    imageScale: "w-[110%] h-[11%]",
+    imageScale: "w-[110%] h-[110%]",
     imageScaleSm: "sm:w-[165%] sm:h-[165%]",
     recipe: {
       ingredients: [

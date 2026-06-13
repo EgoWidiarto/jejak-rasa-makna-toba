@@ -40,7 +40,7 @@ export const dishes = [
             "Ready to be served with warm white rice"
       ]
 },
-    imageScale: "w-[110%] h-[11%]",
+    imageScale: "w-[110%] h-[110%]",
     imageScaleSm: "sm:w-[135%] sm:h-[135%]",
     recipe: {
       ingredients: [
@@ -110,7 +110,7 @@ export const dishes = [
             "Arrange the fish on a serving plate, pour with natinombur chili paste."
       ]
 },
-    imageScale: "w-[110%] h-[11%]",
+    imageScale: "w-[110%] h-[110%]",
     imageScaleSm: "sm:w-[118%] sm:h-[118%]",
     recipe: {
       ingredients: [
@@ -168,7 +168,7 @@ export const dishes = [
             "Masukkan ayam bakar ke dalam saus, aduk rata agar bumbu meresap, atau siram bumbu di atas ayam panggang. Manuk Napinadar siap disajikan."
       ]
 },
-    imageScale: "w-[110%] h-[11%]",
+    imageScale: "w-[110%] h-[110%]",
     imageScaleSm: "sm:w-[118%] sm:h-[118%]",
     recipe: {
       ingredients: [
