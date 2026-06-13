@@ -49,6 +49,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${poppins.variable} ${roboto.variable} ${cardo.variable} ${dancingScript.variable} ${atziluth.variable} ${robotoBold.variable} ${robotoMedium.variable} ${poppinsRegular.variable} ${poppinsItalic.variable} ${robotoLight.variable} h-full scroll-smooth scroll-pt-24 antialiased`}
+      data-scroll-behavior="smooth"
       suppressHydrationWarning>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <LanguageProvider>

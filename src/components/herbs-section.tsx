@@ -95,7 +95,7 @@ export function HerbsSection() {
         <h2 className="text-3xl font-bold text-start text-[#B02627] [font-family:var(--font-roboto)] sm:text-4xl">{t("rempahUtama")}</h2>
       </div>
 
-      <div className="mt-8 sm:mt-10 flex flex-col lg:flex-row gap-6 lg:gap-12 justify-center items-start">
+      <div className="mt-8 sm:mt-10 flex flex-col items-center lg:items-start lg:flex-row gap-6 lg:gap-12 justify-center">
         {/* Herbs List */}
         <div className={`${isExiting && !displayedHerb ? "herb-list-slide-out" : ""} w-full max-w-sm`}>
           {herbs.map((herb) => {

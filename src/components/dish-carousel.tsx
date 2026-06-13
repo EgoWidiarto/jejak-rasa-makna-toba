@@ -31,7 +31,6 @@ function getPreviewText(description: string, wordCount = 30) {
 export function DishCarousel({ direction = "rtl", items, section }: { direction?: "ltr" | "rtl"; items?: DishItem[]; section?: "tradition-dishes" | "daily-dishes" }) {
   const itemsList = (items ?? dishes) as DishItem[];
   const finalSection = section ?? "tradition-dishes";
-  const showScrollButtons = finalSection !== "daily-dishes";
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const { language } = useLanguage();
 
@@ -121,7 +120,6 @@ export function DishCarousel({ direction = "rtl", items, section }: { direction?
         </div>
 
         {/* Bottom-center scroll buttons */}
-        {showScrollButtons ? (
           <div className="mt-6 flex justify-center gap-3">
             <button
               onClick={() => scroll(-300)}
@@ -136,7 +134,6 @@ export function DishCarousel({ direction = "rtl", items, section }: { direction?
               &gt;
             </button>
           </div>
-        ) : null}
       </div>
     </div>
   );

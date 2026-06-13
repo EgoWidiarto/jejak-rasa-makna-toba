@@ -21,8 +21,8 @@ const footerLinks = [
 
 const contactItems = [
   {
-    label: "@jejakrasa.maknatoba",
-    href: "https://instagram.com",
+    label: "@jejakrasa_maknatoba",
+    href: "https://www.instagram.com/jejakrasa_maknatoba?igsh=M2w4Y2JpMDY2ZXgz",
     icon: (
       <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-none stroke-current stroke-[1.8]">
         <rect x="4" y="4" width="16" height="16" rx="4" />
@@ -32,8 +32,8 @@ const contactItems = [
     ),
   },
   {
-    label: "+628 1119 0425 ii",
-    href: "tel:+62811190425",
+    label: "+62 87719042511",
+    href: "tel:+6287719042511",
     icon: (
       <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-none stroke-current stroke-[1.8]">
         <path d="M6.5 4.5h3l1.3 4-2 1.8c.9 1.8 2.4 3.3 4.2 4.2l1.8-2 4 1.3v3c0 .8-.6 1.5-1.4 1.5C10.9 18.3 5.7 13.1 5.5 5.9c0-.8.7-1.4 1.5-1.4Z" />
