@@ -93,11 +93,11 @@ export function Navbar() {
   };
 
   const traditionalDishLinks = traditionDishes.map((item) => ({
-    title: language === 'en' && (item as any).titleEn ? (item as any).titleEn : item.title,
+    title: language === 'en' && (item as { titleEn?: string }).titleEn ? (item as { titleEn?: string }).titleEn : item.title,
     href: `/tradition-dishes/${item.slug}`,
   }));
   const dailyDishLinks = dailyDishes.map((item) => ({
-    title: language === 'en' && (item as any).titleEn ? (item as any).titleEn : item.title,
+    title: language === 'en' && (item as { titleEn?: string }).titleEn ? (item as { titleEn?: string }).titleEn : item.title,
     href: `/daily-dishes/${item.slug}`,
   }));
 

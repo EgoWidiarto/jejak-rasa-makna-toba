@@ -19,7 +19,7 @@ export default function GeographyPage() {
         <div className="rounded-lg bg-white p-6 shadow-sm sm:p-8 lg:p-10">
           <div className="flex flex-col gap-6">
             <div className="w-full overflow-hidden rounded-lg">
-              <Image src="/images/hero-img-3.png" alt="Letak Geografi" width={1200} height={700} className="h-auto w-full rounded-lg object-cover" priority />
+              <Image src="/images/hero-img-3.png" alt="Letak Geografis" width={1200} height={700} className="h-auto w-full rounded-lg object-cover" priority />
             </div>
 
             <div>

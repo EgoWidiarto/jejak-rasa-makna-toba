@@ -23,6 +23,7 @@ const contactItems = [
   {
     label: "@jejakrasa_maknatoba",
     href: "https://www.instagram.com/jejakrasa_maknatoba?igsh=M2w4Y2JpMDY2ZXgz",
+    target: "_blank",
     icon: (
       <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-none stroke-current stroke-[1.8]">
         <rect x="4" y="4" width="16" height="16" rx="4" />
@@ -32,21 +33,23 @@ const contactItems = [
     ),
   },
   {
-    label: "+62 87719042511",
-    href: "tel:+6287719042511",
+    label: "Jejak Rasa Makna Toba",
+    href: "https://youtu.be/b0isUBrkYYY?si=g2ueliyyOTOcbv4L",
+    target: "_blank",
     icon: (
-      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-none stroke-current stroke-[1.8]">
-        <path d="M6.5 4.5h3l1.3 4-2 1.8c.9 1.8 2.4 3.3 4.2 4.2l1.8-2 4 1.3v3c0 .8-.6 1.5-1.4 1.5C10.9 18.3 5.7 13.1 5.5 5.9c0-.8.7-1.4 1.5-1.4Z" />
+      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-none stroke-current stroke-[1.8]" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M2.5 7.1C2.5 6 3.4 5 4.5 5h15c1.1 0 2 .9 2 2v9.8c0 1.1-.9 2-2 2h-15c-1.1 0-2-.9-2-2V7.1z" />
+        <path d="M10 9l5 3-5 3V9z" />
       </svg>
     ),
   },
   {
-    label: "jejakrasa.maknatoba",
-    href: "mailto:hello@jejakrasa.id",
+    label: "+62 87719042511",
+    href: "tel:+6287719042511",
+    target: "_blank",
     icon: (
       <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 fill-none stroke-current stroke-[1.8]">
-        <rect x="4" y="6" width="16" height="12" rx="2" />
-        <path d="m5.5 7.5 6.5 5 6.5-5" />
+        <path d="M6.5 4.5h3l1.3 4-2 1.8c.9 1.8 2.4 3.3 4.2 4.2l1.8-2 4 1.3v3c0 .8-.6 1.5-1.4 1.5C10.9 18.3 5.7 13.1 5.5 5.9c0-.8.7-1.4 1.5-1.4Z" />
       </svg>
     ),
   },
@@ -87,7 +90,7 @@ export function Footer() {
               <h2 className="text-lg font-semibold text-[#D98F2D]">{t("hubungiKami")}</h2>
               <div className="mt-5 space-y-3 text-sm text-[#FFFDF0]/92">
                 {contactItems.map((item) => (
-                  <a key={item.label} href={item.href} className="flex items-start gap-2 transition-opacity hover:opacity-75">
+                  <a key={item.label} href={item.href} target={item.target} rel={item.target === "_blank" ? "noopener noreferrer" : undefined} className="flex items-start gap-2 transition-opacity hover:opacity-75">
                     <span className="mt-0.5 text-[#FFFDF0]">{item.icon}</span>
                     <span>{item.label}</span>
                   </a>

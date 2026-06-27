@@ -14,17 +14,20 @@ interface LanguageContextProps {
 const LanguageContext = createContext<LanguageContextProps | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguage] = useState<Language>('en'); // Default to English as requested
+  const [language, setLanguage] = useState<Language>('en');
 
   useEffect(() => {
-    try {
-      const savedLang = localStorage.getItem('language') as Language;
-      if (savedLang === 'en' || savedLang === 'id') {
-        setLanguage(savedLang);
+    const timer = setTimeout(() => {
+      try {
+        const savedLang = localStorage.getItem('language') as Language;
+        if (savedLang === 'en' || savedLang === 'id') {
+          setLanguage(savedLang);
+        }
+      } catch {
+        // Ignore
       }
-    } catch (e) {
-      // Ignore
-    }
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   const toggleLanguage = () => {
@@ -32,7 +35,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       const next = prev === 'en' ? 'id' : 'en';
       try {
         localStorage.setItem('language', next);
-      } catch (e) {
+      } catch {
         // Ignore
       }
       return next;
@@ -42,12 +45,12 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const t = (key: string) => {
     const section = translations[language];
     if (section && key in section) {
-      return (section as any)[key];
+      return section[key as keyof typeof section];
     }
     // Fallback to English if not found, then key itself
     const fallbackSection = translations['en'];
     if (fallbackSection && key in fallbackSection) {
-      return (fallbackSection as any)[key];
+      return fallbackSection[key as keyof typeof fallbackSection];
     }
     return key;
   };
